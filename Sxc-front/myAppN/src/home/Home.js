@@ -1,170 +1,225 @@
 import React, { Component } from 'react';
-import { TextInput,TouchableOpacity,StatusBar,
-    View,  Text, Image,
-    FlatList, Dimensions ,ScrollView, StyleSheet } from 'react-native';
+import {
+    TextInput, TouchableOpacity, StatusBar,
+    View, Text, Image,
+    FlatList, Dimensions, ScrollView, StyleSheet
+} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-const {width} = Dimensions.get('window')
+import Swiper from 'react-native-swiper';
+const { width } = Dimensions.get('window')
 const s = width / 640;
 
 
-export default class Home extends Component {    
-    
+export default class Home extends Component {
+
     render() {
         console.log('home')
         return (
             <View style={{
-                flex:1,
-                flexDirection:'column',
-                justifyContent:'center',
-                backgroundColor:'#eee'}}>
-                    
-                <StatusBar backgroundColor="red"/> 
+                flex: 1,
+                flexDirection: 'column',
+                justifyContent: 'center',
+                backgroundColor: '#fff'
+            }}>
+
+                <StatusBar backgroundColor="red" />
+                <View style={{
+                    width: '100%',
+                    height: 70 * s,
+                    borderColor: '#eee',
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                }}>
+                    <TouchableOpacity style={{ width: '15%', alignItems: 'center' }}>
+                        <Icon
+                            name="bars"
+                            style={{
+                                color: '#ccc', fontSize: 25
+                            }}
+                        />
+                    </TouchableOpacity>
                     <View style={{
-                            width:'100%',
-                            height:70*s,
-                            borderColor:'#eee',
-                            flexDirection:'row',
-                            alignItems:'center',   
-                            backgroundColor:'red',
-                        }}>
-                        <View style={{
-                            marginTop:10*s,
-                            marginLeft:25*s,
-                            marginBottom:10*s,
-                            marginRight:25*s,
-                            width:520*s,
-                            height:50*s,
-                            flexDirection:'row',
-                            justifyContent:'center',
-                            alignItems:'center',
-                            borderRadius:25,
-                            backgroundColor:'#fff',
-                            opacity:0.75,
-                            paddingLeft:10
-                        }}>
-                            <TouchableOpacity>
-                                <Icon 
-                                    name="search" 
-                                    style={{color:'#fff',fontSize:22}}
-                                />
-                            </TouchableOpacity>
-                            <TextInput placeholderTextColor="#fff"
-                                placeholder="请输入您要搜索的关键字"
-                                style={{
-                                    width:'86%',
-                                    height:40,
-                                    color:'#fff'
-                                }}
-                            />
-                        </View>
+                        marginTop: 10 * s,
+                        marginBottom: 10 * s,
+                        width: '80%',
+                        height: 50 * s,
+                        flexDirection: 'row',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        borderRadius: 25,
+                        backgroundColor: '#eee',
+                        opacity: 0.75,
+                        paddingLeft: 10
+                    }}>
                         <TouchableOpacity>
-                            <Icon 
-                                name="shopping-cart" 
-                                style={{
-                                    color:'#fff',fontSize:25
-                                }}
+                            <Icon
+                                name="search"
+                                style={{ color: 'gray', fontSize: 20 }}
                             />
                         </TouchableOpacity>
+                        <TextInput placeholderTextColor="gray"
+                            placeholder="音乐会晚礼服"
+                            style={{
+                                width: '86%',
+                                height: 40,
+                                color: '#fff'
+                            }}
+                        />
                     </View>
-                    <ScrollView 
-                        pagingEnabled={true} 
+                </View>
+                {/* <Swiper style={{height:273*s,width:640*s}} showsButtons={false}>
+                        <View style={styles.slide}>
+                            <Image style={{width:width}} source={require('../../assets/icon/xk.png')} />
+                        </View>
+                        <View style={styles.slide}>
+                            <Image style={{width:width}} source={require('../../assets/icon/xk.png')} />
+                        </View>
+                        <View style={styles.slide}>
+                            <Image style={{width:width}} source={require('../../assets/icon/xk.png')} />
+                        </View>
+                    </Swiper> */}
+
+                <ScrollView>
+                    <ScrollView
+                        pagingEnabled={true}
                         horizontal={true}
-                        style={{height:273*s,width:640*s}}
+                        style={{ height: 300 * s, width: 640 * s }}
                     >
                         <View style={styles.slide}>
-                            <Image resizeMode="contain" source={require('../../assets/icon/xk.png')} />
+                            <Image style={{width:'100%',height:'100%'}} resizeMode='stretch' source={require('../../assets/raw_1528737077.png')} />
                         </View>
                         <View style={styles.slide}>
-                            <Image resizeMode="contain" source={require('../../assets/icon/xk.png')} />
+                            <Image style={{width:'100%',height:'100%'}} resizeMode='stretch' source={require('../../assets/raw_1528737129.png')} />
                         </View>
                         <View style={styles.slide}>
-                            <Image resizeMode="contain" source={require('../../assets/icon/xk.png')} />
+                            <Image style={{width:'100%',height:'100%'}} resizeMode='stretch' source={require('../../assets/raw_1528737195.png')} />
+                        </View>
+                        <View style={styles.slide}>
+                            <Image style={{width:'100%',height:'100%'}} resizeMode='stretch' source={require('../../assets/raw_1528737314.png')} />
                         </View>
                     </ScrollView>
-                    <ScrollView>
+                    <ScrollView
+                        pagingEnabled={true}
+                        horizontal={true}
+                    >
                         <View style={{
-                            width:width,
-                            height:520*s,
-                            alignItems:'center',   
+                            width: 190 * s,
+                            height: 180 * s,
+                            alignItems: 'center',
                         }}>
                             <TouchableOpacity style={styles.btn}>
-                                <Icon name="shopping-cart" 
-                                    style={{
-                                        width:'15%',color:'#02F78B',fontSize:30
-                                    }}/>
-                                <Text style={{width:'70%'}}>居家维修保养</Text>
-                                <Icon name="angle-right"  style={styles.rbtn}/>
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.btn}>
-                                <Icon name="flag" 
-                                    style={{
-                                        width:'15%',color:'red',fontSize:30,
-                                    }}/>
-                                <Text style={{width:'70%'}}>住宿优惠</Text>
-                                <Icon name="angle-right"  style={styles.rbtn}/>
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.btn}>
-                                <Icon name="tachometer" 
-                                    style={{
-                                        width:'15%',color:'pink',fontSize:30
-                                    }}/>
-                                <Text style={{width:'70%'}}>出行接送</Text>
-                                <Icon name="angle-right"  style={styles.rbtn}/>
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.btn}>
-                                <Icon name="shopping-bag" 
-                                    style={{
-                                        width:'15%',color:'#46A3FF',fontSize:30
-                                    }}/>
-                                <Text style={{width:'70%'}}>E族活动</Text>
-                                <Icon name="angle-right" style={styles.rbtn}/>
+                                <Text>实用券攻略</Text>
+                                <Text style={{fontSize:10}}>礼盒券后直减130</Text>
+                                <View style={styles.img}>
+                                    <Image style={{width:'30%',height:'100%'}} resizeMode='stretch' source={require('../../assets/v2_q5kktg.jpg')}/>
+                                    <Image  style={{width:'45%',height:'50%'}} resizeMode='stretch' source={require('../../assets/v2_q5kkuw.jpg')}/>
+                                </View>
                             </TouchableOpacity>
                         </View>
-                        <TouchableOpacity
-                            style={{
-                                width:545*s,
-                                height:70*s,
-                                backgroundColor:'red',
-                                alignItems:"center",
-                                justifyContent:'center',
-                                borderRadius:5,
-                                marginTop:40*s,
-                                marginBottom:55*s,
-                                marginLeft:50*s,
-                            }}
-                        >
-                            <Text style={{color:'#fff'}}>发布需求</Text>
-                        </TouchableOpacity>
-                        <Text style={{textAlign:'center',color:'gray'}}>@E族之家 版权所有</Text>
+                        <View style={{
+                            width: 190 * s,
+                            height: 180 * s,
+                            alignItems: 'center',
+                        }}>
+                            <TouchableOpacity style={styles.btn}>
+                                <Text>神价热销榜</Text>
+                                <Text style={{fontSize:10}}>礼盒券后直减130</Text>
+                                <View style={styles.img}>
+                                <Image style={{width:'90%',height:'30%',marginTop:100*s}} resizeMode='stretch' source={require('../../assets/v2_q5kkvl.jpg')}/>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
+                        <View style={{
+                            width: 190 * s,
+                            height: 180 * s,
+                            alignItems: 'center',
+                        }}>
+                            <TouchableOpacity style={styles.btn}>
+                                <Text>包包特价</Text>
+                                <Text style={{fontSize:10}}>礼盒券后直减130</Text>
+                                <View style={styles.img}>
+                                    <Image style={{width:'45%',height:'85%'}} resizeMode='stretch' source={require('../../assets/v2_q5kl1a.jpg')}/>
+                                    <Image  style={{width:'35%',height:'75%',marginLeft:10*s}} resizeMode='stretch' source={require('../../assets/v2_q5kl1u.jpg')}/>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
+                        <View style={{
+                            width: 190 * s,
+                            height: 180 * s,
+                            alignItems: 'center',
+                        }}>
+                            <TouchableOpacity style={styles.btn}>
+                                <Text>防晒美白榜</Text>
+                                <Text style={{fontSize:10}}>礼盒券后直减130</Text>
+                                <View style={styles.img}>
+                                    <Image style={{width:'20%',height:'90%'}} resizeMode='stretch' source={require('../../assets/raw_1521984443.png')}/>
+                                    <Image  style={{width:'20%',height:'90%',marginLeft:20*s}} resizeMode='stretch' source={require('../../assets/raw_1521984479.png')}/>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
                     </ScrollView>
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', alignItems: 'center', flexWrap: 'wrap', }}>
+                        <View style={{
+                            width: '45%',
+                            height: 360 * s,
+                            alignItems: 'center',
+                            justifyContent:'center',
+                            marginTop: 20*s,
+                        }}>
+                            <TouchableOpacity style={{width:'100%'}}>
+                                <Image  style={{width:'100%',height:'100%'}} resizeMode='stretch' source={require('../../assets/v2_q5klar.jpg')} />
+                            </TouchableOpacity>
+                        </View>
+                        <View style={{
+                            width: '45%',
+                            height: 360 * s,
+                            alignItems: 'center',
+                            marginTop: 20*s,
+                        }}>
+                            <TouchableOpacity style={{width:'100%'}}>
+                                <Image   style={{width:'100%',height:'100%'}} resizeMode='stretch' source={require('../../assets/v2_q5klq0.jpg')} />
+                            </TouchableOpacity>
+                        </View>
+                        
+                    </View>
+                </ScrollView>
             </View>
-                
-                
-            
+
+
+
         )
     }
 }
 const styles = StyleSheet.create({
-    btn:{
-        width: 640*s,
-        height: 120*s,
+    btn: {
+        width: 170 * s,
+        height: 160 * s,
         color: '#fff',
-        flexDirection:'row',
-        justifyContent:'center',
-        alignItems:'center',
-        // textAlignVertical: 'center',
-        backgroundColor: '#fff',
-        marginTop:10*s
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#eee',
+        marginTop: 10 * s,
+        // padding:'5%'
     },
-    slide:{
-        width:640*s,
+    img:{
+        width:'100%',
+        height:'60%',
+        flexDirection: 'row',
+        flexWrap:'wrap',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 10 * s,
+    },
+    slide: {
+        // flex:1,
+        width: 640 * s,
         // height: 280,
         backgroundColor: 'red',
         justifyContent: 'center',
         alignItems: 'center'
     },
-    rbtn:{
-        color:'gray',
-        fontSize:20
+    rbtn: {
+        color: 'gray',
+        fontSize: 20
     }
 })
