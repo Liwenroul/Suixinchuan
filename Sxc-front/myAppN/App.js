@@ -17,6 +17,7 @@ import Forget from './src/common/Forget';
 import Mine from './src/mine/Mine';
 import Youhui from './src/mine/Youhui';
 import Pay from './src/mine/Pay';
+import Xianzhi from './src/mine/Xianzhi';
 
 
 console.disableYellowBox = true;
@@ -163,6 +164,7 @@ const App = () => {
 									<Scene key='mine' hideNavBar={true} component={Mine}/>
 									<Scene key='youhui' hideNavBar={true} component={Youhui}/>
 									<Scene key='pay' hideNavBar={true} component={Pay}/>
+									<Scene key='xianzhi' hideNavBar={true} component={Xianzhi}/>
 								</Scene>
 								
 							</Tabs>
