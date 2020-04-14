@@ -9,7 +9,7 @@ import Swiper from 'react-native-swiper';
 const { width } = Dimensions.get('window')
 const s = width / 640;
 
-
+let ran=Math.random();
 export default class Home extends Component {
 
     render() {
@@ -104,8 +104,9 @@ export default class Home extends Component {
                     >
                         <View style={{
                             width: 190 * s,
-                            height: 180 * s,
+                            height: 200 * s,
                             alignItems: 'center',
+                            justifyContent:'center'
                         }}>
                             <TouchableOpacity style={styles.btn}>
                                 <Text>实用券攻略</Text>
@@ -118,8 +119,9 @@ export default class Home extends Component {
                         </View>
                         <View style={{
                             width: 190 * s,
-                            height: 180 * s,
+                            height: 200 * s,
                             alignItems: 'center',
+                            justifyContent:'center'
                         }}>
                             <TouchableOpacity style={styles.btn}>
                                 <Text>神价热销榜</Text>
@@ -131,8 +133,9 @@ export default class Home extends Component {
                         </View>
                         <View style={{
                             width: 190 * s,
-                            height: 180 * s,
+                            height: 200 * s,
                             alignItems: 'center',
+                            justifyContent:'center'
                         }}>
                             <TouchableOpacity style={styles.btn}>
                                 <Text>包包特价</Text>
@@ -145,8 +148,9 @@ export default class Home extends Component {
                         </View>
                         <View style={{
                             width: 190 * s,
-                            height: 180 * s,
+                            height: 200 * s,
                             alignItems: 'center',
+                            justifyContent:'center'
                         }}>
                             <TouchableOpacity style={styles.btn}>
                                 <Text>防晒美白榜</Text>
@@ -157,28 +161,70 @@ export default class Home extends Component {
                                 </View>
                             </TouchableOpacity>
                         </View>
+                        <View style={{
+                            width: 190 * s,
+                            height: 200 * s,
+                            alignItems: 'center',
+                            justifyContent:'center'
+                        }}>
+                            <TouchableOpacity style={styles.btn}>
+                                <Text>人气面膜榜</Text>
+                                <Text style={{fontSize:10}}>礼盒券后直减130</Text>
+                                <View style={styles.img}>
+                                    <Image style={{width:'35%',height:'70%'}} resizeMode='stretch' source={require('../../assets/raw_1521984866.png')}/>
+                                    <Image  style={{width:'36%',height:'85%',marginLeft:10*s}} resizeMode='stretch' source={require('../../assets/raw_1521984570.png')}/>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
+                        <View style={{
+                            width: 190 * s,
+                            height: 200 * s,
+                            alignItems: 'center',
+                            justifyContent:'center'
+                        }}>
+                            <TouchableOpacity style={styles.btn}>
+                                <Text>查看全部</Text>
+                                <Text style={{fontSize:10}}>See more</Text>
+                            </TouchableOpacity>
+                        </View>
                     </ScrollView>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', alignItems: 'center', flexWrap: 'wrap', }}>
                         <View style={{
                             width: '45%',
-                            height: 360 * s,
+                            height: 450 * s,
                             alignItems: 'center',
                             justifyContent:'center',
                             marginTop: 20*s,
                         }}>
-                            <TouchableOpacity style={{width:'100%'}}>
-                                <Image  style={{width:'100%',height:'100%'}} resizeMode='stretch' source={require('../../assets/v2_q5klar.jpg')} />
+                            <TouchableOpacity style={{width:'100%',height:'90%'}}>
+                                <Image  style={{width:'100%',height:'85%',borderRadius:20}} resizeMode='stretch' source={require('../../assets/v2_q5klar.jpg')} />
+                                <Text style={{marginTop:8*s}}>酒红色蕾丝优雅长款礼裙</Text>
+                                <Text style={{marginTop:8*s}}>BLANCHE</Text>
                             </TouchableOpacity>
+                            <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',width:'100%',height:'10%'}}>
+                                <Text style={{color:'red',}}>￥399/4日</Text>
+                                <TouchableOpacity>
+                                    <Icon name='heart-o' style={{fontSize:25,color:'#000'}}/>
+                                </TouchableOpacity>
+                            </View>
                         </View>
                         <View style={{
                             width: '45%',
-                            height: 360 * s,
+                            height: 450 * s,
                             alignItems: 'center',
                             marginTop: 20*s,
                         }}>
-                            <TouchableOpacity style={{width:'100%'}}>
-                                <Image   style={{width:'100%',height:'100%'}} resizeMode='stretch' source={require('../../assets/v2_q5klq0.jpg')} />
+                            <TouchableOpacity style={{width:'100%',height:'90%'}}>
+                                <Image   style={{width:'100%',height:'85%',borderRadius:20}} resizeMode='stretch' source={require('../../assets/v2_q5klq0.jpg')} />
+                                <Text style={{marginTop:8*s}}>宝石蓝抹胸晚礼服</Text>
+                                <Text style={{marginTop:8*s}}>BLANCHE</Text>
                             </TouchableOpacity>
+                            <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',width:'100%',height:'10%'}}>
+                                <Text style={{color:'red'}}>￥399/4日</Text>
+                                <TouchableOpacity>
+                                    <Icon name='heart-o' style={{fontSize:25,color:ran>0.5?'#000':'red'}}/>
+                                </TouchableOpacity>
+                            </View>
                         </View>
                         
                     </View>

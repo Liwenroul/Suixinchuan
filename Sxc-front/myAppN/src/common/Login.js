@@ -127,7 +127,7 @@ export default class Login extends Component {
                     source={this.state.imageUrl}
                   />
                   :
-                  <Image source={require('../../assets/icon/user.png')} style={{ width: 130, height: 130,}} ></Image>
+                  <Image source={require('../../assets/v2_q5kx5v.jpg')} style={{ width: 130, height: 130,}} ></Image>
 
               }
 
