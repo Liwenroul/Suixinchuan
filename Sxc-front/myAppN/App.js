@@ -15,6 +15,8 @@ import Userinfor from './src/userinfor/Userinfor';
 import Mypublish from './src/userinfor/Mypublish';
 import Forget from './src/common/Forget';
 import Mine from './src/mine/Mine';
+import Youhui from './src/mine/Youhui';
+import Pay from './src/mine/Pay';
 
 
 console.disableYellowBox = true;
@@ -159,6 +161,8 @@ const App = () => {
 									
 								>
 									<Scene key='mine' hideNavBar={true} component={Mine}/>
+									<Scene key='youhui' hideNavBar={true} component={Youhui}/>
+									<Scene key='pay' hideNavBar={true} component={Pay}/>
 								</Scene>
 								
 							</Tabs>

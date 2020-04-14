@@ -102,10 +102,10 @@ export default class Mine extends Component {
                     </View>
                 </View>
                 <View style={styles.view2}>
-                    <Text style={{paddingLeft:20}}>我的优惠券</Text>
+                    <Text style={{paddingLeft:20}} onPress={Actions.youhui}>我的优惠券</Text>
                 </View>
                 <View style={styles.view2}>
-                    <Text style={{paddingLeft:20}}>我的钱包</Text>
+                    <Text style={{paddingLeft:20}} onPress={Actions.pay}>我的钱包</Text>
                 </View>
                 <View style={styles.view2}>
                     <Text style={{paddingLeft:20}}>我的置闲</Text>
