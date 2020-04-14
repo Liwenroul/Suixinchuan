@@ -14,6 +14,7 @@ import Register from './src/common/Register';
 import Userinfor from './src/userinfor/Userinfor';
 import Mypublish from './src/userinfor/Mypublish';
 import Forget from './src/common/Forget';
+import Mine from './src/mine/Mine';
 
 
 console.disableYellowBox = true;
@@ -157,8 +158,7 @@ const App = () => {
 									hideNavBar={true}
 									
 								>
-									<Scene key='user' hideNavBar={true} component={Userinfor}/>
-									<Scene key='publish' hideNavBar={true} component={Mypublish}/>
+									<Scene key='mine' hideNavBar={true} component={Mine}/>
 								</Scene>
 								
 							</Tabs>
