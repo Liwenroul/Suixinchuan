@@ -10,9 +10,31 @@ import { Actions } from 'react-native-router-flux';
 const { width } = Dimensions.get('window')
 const s = width / 640;
 
-let ran=Math.random();
 export default class Home extends Component {
-
+    constructor(){
+        super();
+        this.state={
+            // name:'heart-o',
+            // color:'',
+            wish:false,
+        }
+    }
+    shoucang =()=>{
+        if(!this.state.wish){
+            this.refs.changeColor.color='red',
+            this.setState({
+                // name:'heart',
+                wish:true
+            })
+        }
+        else{
+            this.refs.changeColor.color='#000',
+            this.setState({
+                // name:'heart-o',
+                wish:false
+            })
+        }
+    }
     render() {
         console.log('home')
         return (
@@ -204,8 +226,8 @@ export default class Home extends Component {
                             </TouchableOpacity>
                             <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',width:'100%',height:'10%'}}>
                                 <Text style={{color:'red',}}>￥399/4日</Text>
-                                <TouchableOpacity>
-                                    <Icon name='heart-o' style={{fontSize:25,color:'#000'}}/>
+                                <TouchableOpacity  onPress={this.shoucang}>
+                                    <Icon name='heart-o' ref="changeColor" style={{fontSize:25}}/>
                                 </TouchableOpacity>
                             </View>
                         </View>
@@ -222,8 +244,8 @@ export default class Home extends Component {
                             </TouchableOpacity>
                             <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',width:'100%',height:'10%'}}>
                                 <Text style={{color:'red'}}>￥399/4日</Text>
-                                <TouchableOpacity>
-                                    <Icon name='heart-o' style={{fontSize:25,color:ran>0.5?'#000':'red'}}/>
+                                <TouchableOpacity  >
+                                    <Icon name='heart-o' style={{fontSize:25,}}/>
                                 </TouchableOpacity>
                             </View>
                         </View>
