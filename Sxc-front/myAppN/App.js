@@ -27,7 +27,10 @@ import Shezhi from './src/mine/Shezhi';
 import Zudao from './src/mine/Zudao';
 import Daishai from './src/mine/Daishai';
 import Zuguo from './src/mine/Zuguo';
-
+import wear from './src/wear/Wear';
+import wish from './src/wish/Wish';
+import cloth from './src/wear/cloth';
+import chuanda from './src/wear/chuanda';
 
 console.disableYellowBox = true;
 
@@ -143,7 +146,7 @@ const App = () => {
 									}
 									
 								>
-									<Scene key="goods" hideNavBar={true} component={Goods}/>
+									<Scene key="wear" hideNavBar={true} component={wear}/>
 								</Scene>
 								<Scene key='likePage'
 									title='心愿单'
@@ -155,7 +158,7 @@ const App = () => {
 									}
 									
 								>
-									<Scene key="goods" hideNavBar={true} component={Goods}/>
+									<Scene key="wish" hideNavBar={true} component={wish}/>
 								</Scene>
 								{/* 用户中心 */}
 								<Scene 
@@ -194,6 +197,8 @@ const App = () => {
 				{/* <Scene key="login" component={ShowMyName}/> */}
 				{/* <Scene key="login1" component={Login}/> */}
 				<Scene key='detail' hideNavBar component={Detail} />
+				<Scene key='cloth' hideNavBar component={cloth} />
+				<Scene key='chuanda' hideNavBar component={chuanda} />
 				<Scene key='sizedetail' hideNavBar component={SizeDetail} />
 				<Scene key='date' hideNavBar component={Date} />
 			</Modal>

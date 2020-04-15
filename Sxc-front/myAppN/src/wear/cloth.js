@@ -10,7 +10,6 @@ import {
     TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { Actions } from 'react-native-router-flux';
 const {width,scale} = Dimensions.get('window');
 const s = width / 640;
 
@@ -25,7 +24,7 @@ const goods = [
     },
 ]
 
-export default class Wear extends Component {
+export default class cloth extends Component {
     constructor(){
         super();
         this.state = {
@@ -44,20 +43,12 @@ export default class Wear extends Component {
                     numColumns={2}
                     renderItem={({item})=>(
                         <View style={styles.good}>
-                            <TouchableOpacity onPress={()=>Actions.chuanda()}>
                             <Image 
                                 resizeMode="contain"
                                 source={item.img}
                                 style={{height:180*s,marginTop: 60*s}}
                             />
-                            </TouchableOpacity>
                             <Text style={{marginTop: 30}}>{item.title}</Text>
-                            <TouchableOpacity onPress={()=>Actions.cloth()}>
-                                <Text style={{fontSize:10,marginLeft:-50,color:'red'}}>
-                                    衣服详情
-                                </Text>
-                            </TouchableOpacity>
-                            
                             <Icon name='heart-o' style={{fontSize:25,color:'#000',marginLeft:120*s}}/>
                         </View>
                     )}
