@@ -197,7 +197,7 @@ export default class Home extends Component {
                             justifyContent:'center',
                             marginTop: 20*s,
                         }}>
-                            <TouchableOpacity style={{width:'100%',height:'90%'}}>
+                            <TouchableOpacity style={{width:'100%',height:'90%'}} onPress={()=>Actions.detail()}>
                                 <Image  style={{width:'100%',height:'85%',borderRadius:20}} resizeMode='stretch' source={require('../../assets/v2_q5klar.jpg')} />
                                 <Text style={{marginTop:8*s}}>酒红色蕾丝优雅长款礼裙</Text>
                                 <Text style={{marginTop:8*s}}>BLANCHE</Text>

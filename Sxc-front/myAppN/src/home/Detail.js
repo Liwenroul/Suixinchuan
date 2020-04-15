@@ -63,7 +63,6 @@ const styles=StyleSheet.create({
          width:54*s,
          height:40*s,
          borderWidth:1,
-         borderColor:'#cfcfcf',
          alignItems:'center',
          justifyContent:'center',
          marginLeft:10*s,
@@ -77,7 +76,14 @@ export default class Detail extends Component {
         this.state={
             name:'hearto',
             color:'',
-            wish:false
+            wish:false,
+            sizeBorderS:'#cfcfcf',
+            sizeBorderM:'#cfcfcf',
+            sizeBorderL:'#cfcfcf',
+            chooseS:false,
+            chooseM:false,
+            chooseL:false,
+            botn:'请选择尺码'
         }
     }
     shoucang=()=>{
@@ -100,6 +106,71 @@ export default class Detail extends Component {
         this.setState({
             visible2: false,
         });
+    }
+    chooseSizeS=()=>{
+        if(!this.state.chooseS){
+            this.setState({
+                sizeBorderS:'#ea3b3b',
+                sizeBorderM:'#cfcfcf',
+                sizeBorderL:'#cfcfcf',
+                chooseS:true,
+                chooseM:false,
+                chooseL:false,
+                botn:'请选择租期'
+            })
+        }
+        else{
+            this.setState({
+                sizeBorderS:'#cfcfcf',
+                chooseS:false,
+                botn:'请选择尺码'
+            })
+        }
+    }
+    chooseSizeM=()=>{
+        if(!this.state.chooseM){
+            this.setState({
+                sizeBorderS:'#cfcfcf',
+                sizeBorderM:'#ea3b3b',
+                sizeBorderL:'#cfcfcf',
+                chooseS:false,
+                chooseM:true,
+                chooseL:false,
+                botn:'请选择租期'
+            })
+        }
+        else{
+            this.setState({
+                sizeBorderM:'#cfcfcf',
+                chooseM:false,
+                botn:'请选择尺码'
+            })
+        }
+    }
+    chooseSizeL=()=>{
+        if(!this.state.chooseL){
+            this.setState({
+                sizeBorderS:'#cfcfcf',
+                sizeBorderM:'#cfcfcf',
+                sizeBorderL:'#ea3b3b',
+                chooseS:false,
+                chooseM:false,
+                chooseL:true,
+                botn:'请选择租期'
+            })
+        }
+        else{
+            this.setState({
+                sizeBorderL:'#cfcfcf',
+                chooseL:false,
+                botn:'请选择尺码'
+            })
+        }
+    }
+    chooseDate=()=>{
+        if(this.state.botn=="请选择租期"){
+            Actions.date();
+        }
     }
     render() {
         return (
@@ -179,28 +250,27 @@ export default class Detail extends Component {
                         <Icon name='close' style={{marginLeft:283*s,marginTop:18*s}}/>
                     </TouchableOpacity>    
                     <Text style={{fontSize:14*s,marginTop:50*s,marginLeft:10*s,fontWeight:'bold'}}>请选择尺码</Text>
-                    <View style={{flexDirection:'row',alignItems:'center',marginLeft:217*s,marginTop:-20}}>
+                    <TouchableOpacity onPress={()=>Actions.sizedetail()} style={{flexDirection:'row',alignItems:'center',marginLeft:217*s,marginTop:-20}}>
                         <Text style={{color:'#ea3b3b'}}>尺码详情页</Text>
                         <Icon name='caretright' style={{color:'#ea3b3b'}}/>
-                    </View>
+                    </TouchableOpacity>
                     <View style={{flexDirection:'row'}}>
-                        <View style={styles.size}>
+                        <TouchableOpacity style={[styles.size,{borderColor:this.state.sizeBorderS}]} onPress={this.chooseSizeS}>
                             <Text>S</Text>
                             <Text>160/64A</Text>
-                        </View>
-                        <View style={styles.size}>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={[styles.size,{borderColor:this.state.sizeBorderM}]} onPress={this.chooseSizeM}>
                             <Text>M</Text>
                             <Text>170/72A</Text>
-                        </View>
-                        <View style={styles.size}>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={[styles.size,{borderColor:this.state.sizeBorderL}]} onPress={this.chooseSizeL}>
                             <Text>L</Text>
                             <Text>175/76A</Text>
-                        </View>
+                        </TouchableOpacity>
                     </View>
-                    <TouchableOpacity style={{width:width,height:46*s,backgroundColor:'#ea3b3b',alignItems:'center',justifyContent:'center',marginTop:95*s}}>
-                        <Text style={{color:'white',fontSize:16*s,fontWeight:'bold'}}>请选择尺码</Text>
+                    <TouchableOpacity onPress={this.chooseDate} style={{width:width,height:46*s,backgroundColor:'#ea3b3b',alignItems:'center',justifyContent:'center',marginTop:95*s}}>
+                        <Text style={{color:'white',fontSize:16*s,fontWeight:'bold'}}>{this.state.botn}</Text>
                     </TouchableOpacity>
-                {/* </View> */}
                     </Modal>
                 </Provider>
             </View>

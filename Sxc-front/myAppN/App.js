@@ -9,21 +9,18 @@ import Home from './src/home/Home';
 import Goods from './src/goods/Goods';
 import Login from './src/common/Login';
 import SwiperPage from './src/common/SwiperPage';
-import User from './src/userinfor/Userinfor';
+// import User from './src/userinfor/Userinfor';
 import Register from './src/common/Register';
-import Userinfor from './src/userinfor/Userinfor';
-import Mypublish from './src/userinfor/Mypublish';
+// import Userinfor from './src/userinfor/Userinfor';
+// import Mypublish from './src/userinfor/Mypublish';
 import Forget from './src/common/Forget';
-<<<<<<< Updated upstream
 import Mine from './src/mine/Mine';
 import Youhui from './src/mine/Youhui';
 import Pay from './src/mine/Pay';
 import Xianzhi from './src/mine/Xianzhi';
-=======
 import Detail from './src/home/Detail';
 import SizeDetail from './src/home/SizeDetail';
-
->>>>>>> Stashed changes
+import Date  from './src/home/Date';
 
 
 console.disableYellowBox = true;
@@ -186,6 +183,7 @@ const App = () => {
 				{/* <Scene key="login1" component={Login}/> */}
 				<Scene key='detail' hideNavBar component={Detail} />
 				<Scene key='sizedetail' hideNavBar component={SizeDetail} />
+				<Scene key='date' hideNavBar component={Date} />
 			</Modal>
 			{/* <Scene component={Message}/> */}
 			</Overlay>
