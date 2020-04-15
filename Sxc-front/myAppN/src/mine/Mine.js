@@ -67,7 +67,7 @@ export default class Mine extends Component {
             <View  style={{flex: 1,backgroundColor: '#fff'}}>
                 <View style={{flexDirection: 'row',height:40,paddingTop:10,width:'100%'}}>
                     <Text style={{fontSize:18,paddingLeft:'45%'}}>我的</Text>
-                    <Icon name="setting" style={{paddingLeft:130,color:'black'}}/>
+                    <Icon name="setting" style={{paddingLeft:130,color:'black'}} onPress={Actions.shezhi}/>
                 </View>
                 <View style={{height:120,flexDirection: 'row'}}>
                     <Button 
