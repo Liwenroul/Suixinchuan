@@ -14,10 +14,16 @@ import Register from './src/common/Register';
 import Userinfor from './src/userinfor/Userinfor';
 import Mypublish from './src/userinfor/Mypublish';
 import Forget from './src/common/Forget';
+<<<<<<< Updated upstream
 import Mine from './src/mine/Mine';
 import Youhui from './src/mine/Youhui';
 import Pay from './src/mine/Pay';
 import Xianzhi from './src/mine/Xianzhi';
+=======
+import Detail from './src/home/Detail';
+import SizeDetail from './src/home/SizeDetail';
+
+>>>>>>> Stashed changes
 
 
 console.disableYellowBox = true;
@@ -178,6 +184,8 @@ const App = () => {
 				<Scene key='forget' hideNavBar component={Forget} />
 				{/* <Scene key="login" component={ShowMyName}/> */}
 				{/* <Scene key="login1" component={Login}/> */}
+				<Scene key='detail' hideNavBar component={Detail} />
+				<Scene key='sizedetail' hideNavBar component={SizeDetail} />
 			</Modal>
 			{/* <Scene component={Message}/> */}
 			</Overlay>

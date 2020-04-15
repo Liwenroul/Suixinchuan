@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Swiper from 'react-native-swiper';
+import { Actions } from 'react-native-router-flux';
 const { width } = Dimensions.get('window')
 const s = width / 640;
 
