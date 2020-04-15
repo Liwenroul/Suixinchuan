@@ -24,6 +24,9 @@ import SizeDetail from './src/home/SizeDetail';
 import Date  from './src/home/Date';
 import Tousu from './src/mine/Tousu';
 import Shezhi from './src/mine/Shezhi';
+import Zudao from './src/mine/Zudao';
+import Daishai from './src/mine/Daishai';
+import Zuguo from './src/mine/Zuguo';
 
 
 console.disableYellowBox = true;
@@ -174,6 +177,9 @@ const App = () => {
 									<Scene key='changjian' hideNavBar={true} component={Changjian}/>
 									<Scene key='tousu' hideNavBar={true} component={Tousu}/>
 									<Scene key='shezhi' hideNavBar={true} component={Shezhi}/>
+									<Scene key='zudao' hideNavBar={true} component={Zudao}/>
+									<Scene key='daishai' hideNavBar={true} component={Daishai}/>
+									<Scene key='zuguo' hideNavBar={true} component={Zuguo}/>
 								</Scene>
 								
 							</Tabs>

@@ -89,16 +89,16 @@ export default class Mine extends Component {
                 </View>
                 <View style={{height:100,flexDirection:'row',borderBottomWidth:1,borderBottomColor:'#bbb'}}>
                     <View style={styles.view}>
-                        <Icon name='shop' color='black'style={{fontSize:30}}/> 
-                        <Text style={{paddingTop:10}}>我租到的</Text>
+                        <Icon name='shop' color='black'style={{fontSize:30}} onPress={Actions.zudao}/> 
+                        <Text style={{paddingTop:10}} onPress={Actions.zudao}>我租到的</Text>
                     </View>
                     <View style={styles.view}>
-                        <Icon name='camera' color='black'style={{fontSize:30}}/> 
-                        <Text style={{paddingTop:10}}>待晒的</Text>
+                        <Icon name='camera' color='black'style={{fontSize:30}} onPress={Actions.daishai}/> 
+                        <Text style={{paddingTop:10}} onPress={Actions.daishai}>待晒的</Text>
                     </View>
                     <View style={styles.view}>
-                        <Icon name='shopping' color='black'style={{fontSize:30}}/> 
-                        <Text style={{paddingTop:10}}>我租过的</Text>
+                        <Icon name='shopping' color='black'style={{fontSize:30}} onPress={Actions.zuguo}/> 
+                        <Text style={{paddingTop:10}} onPress={Actions.zuguo}>我租过的</Text>
                     </View>
                 </View>
                 <View style={styles.view2}>
