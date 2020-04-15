@@ -18,6 +18,7 @@ import Mine from './src/mine/Mine';
 import Youhui from './src/mine/Youhui';
 import Pay from './src/mine/Pay';
 import Xianzhi from './src/mine/Xianzhi';
+import Changjian from './src/mine/Changjian';
 
 
 console.disableYellowBox = true;
@@ -165,6 +166,7 @@ const App = () => {
 									<Scene key='youhui' hideNavBar={true} component={Youhui}/>
 									<Scene key='pay' hideNavBar={true} component={Pay}/>
 									<Scene key='xianzhi' hideNavBar={true} component={Xianzhi}/>
+									<Scene key='changjian' hideNavBar={true} component={Changjian}/>
 								</Scene>
 								
 							</Tabs>
