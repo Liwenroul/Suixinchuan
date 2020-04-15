@@ -9,16 +9,22 @@ import Home from './src/home/Home';
 import Goods from './src/goods/Goods';
 import Login from './src/common/Login';
 import SwiperPage from './src/common/SwiperPage';
-import User from './src/userinfor/Userinfor';
+// import User from './src/userinfor/Userinfor';
 import Register from './src/common/Register';
-import Userinfor from './src/userinfor/Userinfor';
-import Mypublish from './src/userinfor/Mypublish';
+// import Userinfor from './src/userinfor/Userinfor';
+// import Mypublish from './src/userinfor/Mypublish';
 import Forget from './src/common/Forget';
 import Mine from './src/mine/Mine';
 import Youhui from './src/mine/Youhui';
 import Pay from './src/mine/Pay';
 import Xianzhi from './src/mine/Xianzhi';
+<<<<<<< HEAD
 import Changjian from './src/mine/Changjian';
+=======
+import Detail from './src/home/Detail';
+import SizeDetail from './src/home/SizeDetail';
+import Date  from './src/home/Date';
+>>>>>>> 5944ac42bc2600744a33796628b88c316789c6d5
 
 
 console.disableYellowBox = true;
@@ -180,6 +186,9 @@ const App = () => {
 				<Scene key='forget' hideNavBar component={Forget} />
 				{/* <Scene key="login" component={ShowMyName}/> */}
 				{/* <Scene key="login1" component={Login}/> */}
+				<Scene key='detail' hideNavBar component={Detail} />
+				<Scene key='sizedetail' hideNavBar component={SizeDetail} />
+				<Scene key='date' hideNavBar component={Date} />
 			</Modal>
 			{/* <Scene component={Message}/> */}
 			</Overlay>
