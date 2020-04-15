@@ -18,13 +18,11 @@ import Mine from './src/mine/Mine';
 import Youhui from './src/mine/Youhui';
 import Pay from './src/mine/Pay';
 import Xianzhi from './src/mine/Xianzhi';
-<<<<<<< HEAD
 import Changjian from './src/mine/Changjian';
-=======
 import Detail from './src/home/Detail';
 import SizeDetail from './src/home/SizeDetail';
 import Date  from './src/home/Date';
->>>>>>> 5944ac42bc2600744a33796628b88c316789c6d5
+import Tousu from './src/mine/Tousu';
 
 
 console.disableYellowBox = true;
@@ -173,6 +171,7 @@ const App = () => {
 									<Scene key='pay' hideNavBar={true} component={Pay}/>
 									<Scene key='xianzhi' hideNavBar={true} component={Xianzhi}/>
 									<Scene key='changjian' hideNavBar={true} component={Changjian}/>
+									<Scene key='tousu' hideNavBar={true} component={Tousu}/>
 								</Scene>
 								
 							</Tabs>
