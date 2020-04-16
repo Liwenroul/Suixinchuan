@@ -29,7 +29,7 @@ export default class SwiperPage extends Component {
                     
                     <Text style={styles.start1}>衣服是外在内涵</Text>
                     <TouchableOpacity onPress={this.start} style={styles.start}>
-                        <Text style={{color:'#fff'}}>开始体验</Text>
+                        <Text style={{color:'red'}}>开始体验</Text>
                     </TouchableOpacity>
                 </View>
             </Swiper>
@@ -53,8 +53,11 @@ const styles = StyleSheet.create({
         textAlignVertical: 'center',
         alignItems:'center',
         justifyContent:'center',
-        backgroundColor: 'red',
+        // backgroundColor: 'red',
         borderRadius: 20,
+        borderColor:'red',
+        borderWidth:1,
+        // opacity:0.1
         // zIndex:999
     },
     start1: {

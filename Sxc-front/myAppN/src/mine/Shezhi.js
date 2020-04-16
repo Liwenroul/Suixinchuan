@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, Button,} from 'react-native'
+import { Text, View, StyleSheet, Button,AsyncStorage} from 'react-native'
 import { Actions } from 'react-native-router-flux'
 import { Icon } from '@ant-design/react-native'
 
@@ -27,7 +27,7 @@ export default class Shezhi extends Component {
                     <Text style={{fontSize:16}}>清理心愿单</Text>
                 </View>
                 <View style={{marginTop:150,height:20,width:'50%',marginLeft:90}}>
-                    <Button title="退出登录" color='#bbb'></Button>
+                    <Button onPress={()=>{AsyncStorage.removeItem('user');Actions.login()}} title="退出登录" color='#bbb'></Button>
                 </View>
             </View>
         )

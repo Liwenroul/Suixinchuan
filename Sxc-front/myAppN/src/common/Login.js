@@ -156,7 +156,7 @@ export default class Login extends Component {
             <Text style={{color:'#fff',fontSize:25}}>登录</Text>
           </TouchableOpacity>
           <View style={styles.rows}>
-            <TouchableOpacity onPress={() => Actions.register()} style={{width:160*s,height:50*s,alignItems:'center',justifyContent:'center'}} >
+            <TouchableOpacity onPress={() => Actions.register()} style={{width:180*s,height:50*s,alignItems:'center',justifyContent:'center'}} >
               <Text style={{ fontSize: 16, color: "blue" }}>手机快速注册</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => Actions.forget()} style={{width:120*s,height:50*s,alignItems:'center',justifyContent:'center'}}>
@@ -169,7 +169,7 @@ export default class Login extends Component {
             ? <View style={{ justifyContent: 'center', alignItems: 'center' }}><Text style={{ textAlign: 'center' }}>正在登录···</Text></View>
             : null
         }
-        <View style={{ width:640*s,height:120*s,alignItems: 'center' ,position:'absolute',bottom:20}}>
+        <View style={{ width:640*s,height:220*s,alignItems: 'center' ,position:'relative',marginTop:100*s,}}>
           <Text style={{color:'gray'}}>第三方登录</Text>
           <View style={styles.ricon}>
             <TouchableOpacity style={{width:50*s,height:50*s,borderRadius:25,borderColor:'green',borderWidth:1,justifyContent:'center',alignItems:'center'}}>

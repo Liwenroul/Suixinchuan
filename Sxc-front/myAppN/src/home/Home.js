@@ -214,10 +214,12 @@ export default class Home extends Component {
                     <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', alignItems: 'center', flexWrap: 'wrap', }}>
                         <View style={{
                             width: '45%',
-                            height: 450 * s,
+                            height: 500 * s,
                             alignItems: 'center',
                             justifyContent:'center',
                             marginTop: 20*s,
+                            padding:4,
+                            backgroundColor:'#eee'
                         }}>
                             <TouchableOpacity style={{width:'100%',height:'90%'}} onPress={()=>Actions.detail()}>
                                 <Image  style={{width:'100%',height:'85%',borderRadius:20}} resizeMode='stretch' source={require('../../assets/v2_q5klar.jpg')} />
@@ -233,9 +235,11 @@ export default class Home extends Component {
                         </View>
                         <View style={{
                             width: '45%',
-                            height: 450 * s,
+                            height: 500 * s,
                             alignItems: 'center',
                             marginTop: 20*s,
+                            padding:4,
+                            backgroundColor:'#eee'
                         }}>
                             <TouchableOpacity style={{width:'100%',height:'90%'}}>
                                 <Image   style={{width:'100%',height:'85%',borderRadius:20}} resizeMode='stretch' source={require('../../assets/v2_q5klq0.jpg')} />
