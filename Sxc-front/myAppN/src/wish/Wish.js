@@ -52,9 +52,9 @@ export default class Wish extends Component {
                     renderItem={({item})=>(
                         <View style={styles.good}>
                             <Image 
-                                resizeMode="contain"
+                                // resizeMode="contain"
                                 source={item.img}
-                                style={{height:180*s,marginTop: 40*s,marginLeft:-352*s}}
+                                style={{height:220*s,marginTop: 15*s,width:180*s,borderRadius:10}}
                             />
                             <Text
                                 style={{marginTop:-180*s,marginLeft:350*s}}

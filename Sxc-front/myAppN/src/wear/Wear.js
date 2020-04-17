@@ -17,10 +17,12 @@ const s = width / 640;
 const goods = [
     {
         title: '仙气十足的一条裙子',
+        num:1,
         img: require('../../assets/wish1.jpg')
     },
     {
         title: '简单的说就是好看',
+        num:2,
         img: require('../../assets/wish2.jpg')
     },
 ]
@@ -46,14 +48,15 @@ export default class Wear extends Component {
                         <View style={styles.good}>
                             <TouchableOpacity onPress={()=>Actions.chuanda()}>
                             <Image 
-                                resizeMode="contain"
+                                // resizeMode="contain"
                                 source={item.img}
-                                style={{height:180*s,marginTop: 60*s}}
+                                style={{height:350*s,marginTop: 10*s,width:280*s,borderRadius:10}}
                             />
                             </TouchableOpacity>
-                            <Text style={{marginTop: 30}}>{item.title}</Text>
-                            <Text style={{fontSize:10,marginLeft:-50,color:'red'}} onPress={Actions.cloth}>衣服详情</Text>
-                            <Icon name='heart-o' style={{fontSize:25,color:'#000',marginLeft:120*s}}/>
+                            <Text style={{marginTop: 20*s}}>{item.title}</Text>
+                            <Text style={{fontSize:10,marginLeft:-90,color:'red'}} onPress={Actions.cloth}>衣服详情</Text>
+                            <Text style={{fontSize:10,marginLeft:40,marginTop:-20}}>{item.num}</Text>
+                            <Icon name='heart-o' style={{fontSize:25,color:'red',marginLeft:180*s,marginTop:-20}}/>
                         </View>
                     )}
                 />
