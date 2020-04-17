@@ -250,7 +250,7 @@ export default class Detail extends Component {
                         <Icon name='close' style={{marginLeft:283*s,marginTop:18*s}}/>
                     </TouchableOpacity>    
                     <Text style={{fontSize:14*s,marginTop:50*s,marginLeft:10*s,fontWeight:'bold'}}>请选择尺码</Text>
-                    <TouchableOpacity onPress={()=>Actions.sizedetail()} style={{flexDirection:'row',alignItems:'center',marginLeft:217*s,marginTop:-20}}>
+                    <TouchableOpacity onPress={()=>Actions.order()} style={{flexDirection:'row',alignItems:'center',marginLeft:217*s,marginTop:-20}}>
                         <Text style={{color:'#ea3b3b'}}>尺码详情页</Text>
                         <Icon name='caretright' style={{color:'#ea3b3b'}}/>
                     </TouchableOpacity>

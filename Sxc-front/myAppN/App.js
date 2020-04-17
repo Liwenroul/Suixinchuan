@@ -31,6 +31,7 @@ import wear from './src/wear/Wear';
 import wish from './src/wish/Wish';
 import cloth from './src/wear/cloth';
 import chuanda from './src/wear/chuanda';
+import Order from './src/home/Order';
 
 console.disableYellowBox = true;
 
@@ -201,6 +202,7 @@ const App = () => {
 				<Scene key='chuanda' hideNavBar component={chuanda} />
 				<Scene key='sizedetail' hideNavBar component={SizeDetail} />
 				<Scene key='date' hideNavBar component={Date} />
+				<Scene key='order' hideNavBar component={Order} />
 			</Modal>
 			{/* <Scene component={Message}/> */}
 			</Overlay>
