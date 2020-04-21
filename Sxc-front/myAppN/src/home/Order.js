@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {View,Text, TouchableOpacity,Dimensions,Image,StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
+import { Actions } from 'react-native-router-flux';
 
 const { width ,height} = Dimensions.get('window');
 const s = width / 340;
@@ -65,11 +66,11 @@ export default class Order extends Component {
                     <Icon name='left' style={{fontSize:16*s,marginLeft:10*s}}/>
                     <Text style={{fontSize:16*s,marginLeft:112*s,fontWeight:'bold'}}>确认订单</Text>
                 </View>
-                <View style={styles.address}>
+                <TouchableOpacity onPress={()=>Actions.address()} style={styles.address}>
                     <Text style={styles.tit}>收货地址</Text>
                     <Text style={{color:'#aba8a8',marginTop:10*s,marginLeft:10*s}}>请添加收货地址</Text>
                     <Icon name='right' style={{fontSize:14*s,marginTop:-28*s,marginLeft:295*s}}/>
-                </View>
+                </TouchableOpacity>
                 <View style={styles.zudate}>
                     <Text style={styles.tit}>租借时间</Text>
                     <View style={{flexDirection:'row',marginLeft:10*s,marginTop:10*s}}>
