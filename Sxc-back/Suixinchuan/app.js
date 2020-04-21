@@ -126,7 +126,7 @@ app.get('/manager',function(err,res){
 
 app.get('/userinfo',jsonParser,(req,res)=>{
   // console.log(req.body);
-  con.query('select * from userinfo',function(err,result){
+  con.query('select * from user',function(err,result){
       if(err){
           console.log('[SELECT ERROR] - ', err.message);
           return;
