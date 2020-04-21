@@ -11,7 +11,8 @@ export default class Forget extends Component {
             username: '',
             usertel: '',
             pwd: '',
-            isRegister: true
+            isregister: true,
+            isreseting:false
         }
     }
     userhandle = (text) => {
@@ -22,6 +23,17 @@ export default class Forget extends Component {
     }
     pwdhandle = (text) => {
         this.setState({ pwd: text })
+    }
+    reset=()=>{
+        if(this.state.username!=''||this.state.usertel!=''){
+        this.setState({reseting:true}) ;
+        }
+        // this.setState({pwd: pwd })
+    }
+    ok=()=>{
+        if(this.state.pwd!=''){
+           Actions.login()
+        }
     }
     // register = () => {
     // 	this.setState({ isRegister: true })
@@ -41,7 +53,7 @@ export default class Forget extends Component {
 
     render() {
         return (
-            <View style={{flex:1,backgroundColor:'#fff'}}>
+            <View style={{ flex:1, backgroundColor: '#fff' }}>
                 <View style={{ flexDirection: 'row', height: '10%', width: '90%', marginTop: '5%', marginBottom: '15%' }}>
                     <TouchableOpacity onPress={() => Actions.login()} style={{ flexDirection: 'row', left: '5%' }} >
                         <Icon1
@@ -66,7 +78,7 @@ export default class Forget extends Component {
 
                         <TextInput placeholder="手机号/用户名"
                             onChangeText={this.userhandle}
-                            style={{width: '60%'}}
+                            style={{ width: '60%' }}
                         />
                         <TouchableOpacity
                             style={{
@@ -75,43 +87,48 @@ export default class Forget extends Component {
                                 backgroundColor: '#ccc',
                                 alignItems: 'center',
                                 justifyContent: 'center',
-                                borderRadius:10
+                                borderRadius: 10
                             }}
-                            // onPress={}
+                        onPress={this.reset}
                         >
-                            <Text style={{color:'#fff'}}>忘记密码</Text>
+                            <Text style={{ color: '#fff' }}>忘记密码</Text>
                         </TouchableOpacity>
                     </View>
-                    <View
-                        style={{
-                            width: '80%',
-                            marginRight: 10,
-                            borderBottomColor: '#ccc',
-                            borderBottomWidth: 1,
-                            flexDirection: 'row',
-                            alignItems: 'center',
-                            // paddingLeft: 20,
-                        }}>
-                        <TextInput
-                            style={{width: '60%'}}
-                            onChangeText={this.pwdhandle}
-                            placeholder="请输入新的密码"
-                            secureTextEntry={true}
-                        />
-                        <TouchableOpacity
-                            style={{
-                                width: '40%',
-                                height: 40,
-                                backgroundColor: '#ccc',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                borderRadius:10
-                            }}
-                            // onPress={}
-                        >
-                            <Text style={{color:'#fff'}}>确定</Text>
-                        </TouchableOpacity>
-                    </View>
+                    {
+                        this.state.reseting
+                            ? <View
+                                style={{
+                                    width: '80%',
+                                    marginRight: 10,
+                                    borderBottomColor: '#ccc',
+                                    borderBottomWidth: 1,
+                                    flexDirection: 'row',
+                                    alignItems: 'center',
+                                    // paddingLeft: 20,
+                                }}>
+                                <TextInput
+                                    style={{ width: '60%' }}
+                                    onChangeText={this.pwdhandle}
+                                    placeholder="请输入新的密码"
+                                    secureTextEntry={true}
+                                />
+                                <TouchableOpacity
+                                    style={{
+                                        width: '40%',
+                                        height: 40,
+                                        backgroundColor: '#ccc',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        borderRadius: 10
+                                    }}
+                                onPress={this.ok}
+                                >
+                                    <Text style={{ color: '#fff' }}>确定</Text>
+                                </TouchableOpacity>
+                            </View>
+                            : null
+                    }
+
                 </View>
             </View>
         );
