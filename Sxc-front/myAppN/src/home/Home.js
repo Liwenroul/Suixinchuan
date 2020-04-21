@@ -131,7 +131,7 @@ export default class Home extends Component {
                             alignItems: 'center',
                             justifyContent:'center'
                         }}>
-                            <TouchableOpacity style={styles.btn}>
+                            <TouchableOpacity style={styles.btn}  onPress={()=>Actions.detail()}>
                                 <Text>实用券攻略</Text>
                                 <Text style={{fontSize:10}}>礼盒券后直减130</Text>
                                 <View style={styles.img}>
@@ -146,7 +146,7 @@ export default class Home extends Component {
                             alignItems: 'center',
                             justifyContent:'center'
                         }}>
-                            <TouchableOpacity style={styles.btn}>
+                            <TouchableOpacity style={styles.btn} onPress={()=>Actions.detail()}>
                                 <Text>神价热销榜</Text>
                                 <Text style={{fontSize:10}}>礼盒券后直减130</Text>
                                 <View style={styles.img}>
@@ -160,7 +160,7 @@ export default class Home extends Component {
                             alignItems: 'center',
                             justifyContent:'center'
                         }}>
-                            <TouchableOpacity style={styles.btn}>
+                            <TouchableOpacity style={styles.btn} onPress={()=>Actions.detail()}>
                                 <Text>包包特价</Text>
                                 <Text style={{fontSize:10}}>礼盒券后直减130</Text>
                                 <View style={styles.img}>
@@ -175,7 +175,7 @@ export default class Home extends Component {
                             alignItems: 'center',
                             justifyContent:'center'
                         }}>
-                            <TouchableOpacity style={styles.btn}>
+                            <TouchableOpacity style={styles.btn}  onPress={()=>Actions.detail()}>
                                 <Text>防晒美白榜</Text>
                                 <Text style={{fontSize:10}}>礼盒券后直减130</Text>
                                 <View style={styles.img}>
@@ -190,7 +190,7 @@ export default class Home extends Component {
                             alignItems: 'center',
                             justifyContent:'center'
                         }}>
-                            <TouchableOpacity style={styles.btn}>
+                            <TouchableOpacity style={styles.btn}  onPress={()=>Actions.detail()}>
                                 <Text>人气面膜榜</Text>
                                 <Text style={{fontSize:10}}>礼盒券后直减130</Text>
                                 <View style={styles.img}>
@@ -205,7 +205,7 @@ export default class Home extends Component {
                             alignItems: 'center',
                             justifyContent:'center'
                         }}>
-                            <TouchableOpacity style={styles.btn}>
+                            <TouchableOpacity style={styles.btn}  onPress={()=>Actions.detail()}>
                                 <Text>查看全部</Text>
                                 <Text style={{fontSize:10}}>See more</Text>
                             </TouchableOpacity>
