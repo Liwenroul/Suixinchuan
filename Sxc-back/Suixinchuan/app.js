@@ -384,7 +384,7 @@ app.get('/dynamic',function(err,res){
 });
 //管理员  httpS://localhost:8081/manager
 app.get('/manager',function(err,res){
-  con.query('select * from manerger',function(err,result){
+  con.query('select * from manager',function(err,result){
       if(err){
           console.log('[SELECT ERROR] - ', err.message);
           return;
@@ -395,7 +395,7 @@ app.get('/manager',function(err,res){
 app.post('/manager',(req,res)=>{
   let data=req.body;
   console.log(data);
-        con.query('insert into manerger(mid) values(?)',[data.mid],function(err,result){
+        con.query('insert into manager(mid) values(?)',[data.mid],function(err,result){
           if(err){
                 console.log(err);
             }else{
