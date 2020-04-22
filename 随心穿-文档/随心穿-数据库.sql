@@ -169,12 +169,13 @@ CREATE TABLE `size` (
   `sizenum` varchar(20) DEFAULT NULL,
   `sizebody` varchar(50) DEFAULT NULL,
   `sizeinfo` varchar(50) DEFAULT NULL,
+  `merid` varchar(20) NOT NULL,
   PRIMARY KEY (`sizeid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 /*Data for the table `size` */
 
-insert  into `size`(`sizeid`,`sizes`,`sizenum`,`sizebody`,`sizeinfo`) values ('s147632','S,160/64A,M,170/70A,','20,30,10','腰围,胸围,臀围','66,66,66,70,70,70,52,52,52'),('s564536','S,160/64A,M,170/70A,','10,23,22','腰围,胸围,臀围','66,66,66,70,70,70,52,52,52'),('s853576','均码','20','长,宽,高','22,10,10');
+insert  into `size`(`sizeid`,`sizes`,`sizenum`,`sizebody`,`sizeinfo`,`merid`) values ('s147632','S,160/64A,M,170/70A,','20,30,10','腰围,胸围,臀围','66,66,66,70,70,70,52,52,52','m123456'),('s564536','S,160/64A,M,170/70A,','10,23,22','腰围,胸围,臀围','66,66,66,70,70,70,52,52,52','m576383'),('s853576','均码','20','长,宽,高','22,10,10','m756742');
 
 /*Table structure for table `user` */
 
