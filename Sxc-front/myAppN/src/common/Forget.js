@@ -53,7 +53,7 @@ export default class Forget extends Component {
 
     render() {
         return (
-            <View style={{ flex:1, backgroundColor: '#fff' }}>
+            <View style={{  backgroundColor: '#eee' }}>
                 <View style={{ flexDirection: 'row', height: '10%', width: '90%', marginTop: '5%', marginBottom: '15%' }}>
                     <TouchableOpacity onPress={() => Actions.login()} style={{ flexDirection: 'row', left: '5%' }} >
                         <Icon1
@@ -72,18 +72,19 @@ export default class Forget extends Component {
                             borderBottomColor: '#ccc',
                             borderBottomWidth: 1,
                             flexDirection: 'row',
+                            justifyContent:'space-between',
                             alignItems: 'center',
                             // paddingLeft: 20,
                         }}>
 
                         <TextInput placeholder="手机号/用户名"
                             onChangeText={this.userhandle}
-                            style={{ width: '60%' }}
+                            style={{ width: '60%',backgroundColor:'#fff' }}
                         />
                         <TouchableOpacity
                             style={{
-                                width: '40%',
-                                height: 40,
+                                width: '35%',
+                                height: 50,
                                 backgroundColor: '#ccc',
                                 alignItems: 'center',
                                 justifyContent: 'center',
@@ -98,24 +99,25 @@ export default class Forget extends Component {
                         this.state.reseting
                             ? <View
                                 style={{
-                                    width: '80%',
+                                    width: '80%',marginTop:20,
                                     marginRight: 10,
                                     borderBottomColor: '#ccc',
                                     borderBottomWidth: 1,
                                     flexDirection: 'row',
+                                    justifyContent:'space-between',
                                     alignItems: 'center',
                                     // paddingLeft: 20,
                                 }}>
                                 <TextInput
-                                    style={{ width: '60%' }}
+                                    style={{ width: '60%',backgroundColor:'#fff' }}
                                     onChangeText={this.pwdhandle}
                                     placeholder="请输入新的密码"
                                     secureTextEntry={true}
                                 />
                                 <TouchableOpacity
                                     style={{
-                                        width: '40%',
-                                        height: 40,
+                                        width: '35%',
+                                        height: 50,
                                         backgroundColor: '#ccc',
                                         alignItems: 'center',
                                         justifyContent: 'center',

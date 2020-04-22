@@ -408,7 +408,7 @@ app.post('/manager',(req,res)=>{
 
 app.get('/userinfo',jsonParser,(req,res)=>{
   // console.log(req.body);
-  con.query('select * from userinfo',function(err,result){
+  con.query('select * from user',function(err,result){
       if(err){
           console.log('[SELECT ERROR] - ', err.message);
           return;
@@ -479,7 +479,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-var server = app.listen(8081, function () {
+var server = app.listen(8082, function () {
 
   var host = server.address().address;
   var port = server.address().port;
