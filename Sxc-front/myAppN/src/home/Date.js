@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 
 import MinimalismCalendar from 'react-native-ocalendar';
+import { Actions } from 'react-native-router-flux';
 export default class Date extends Component {
   constructor(props){
      super(props)
@@ -37,6 +38,9 @@ export default class Date extends Component {
               <Text style={{fontSize:15,color:'black'}}>{this.state.data}</Text>
           </TouchableOpacity>
          <MinimalismCalendar DateTransfer={this.DateTransfer}/>
+         <TouchableOpacity onPress={Actions.order()} style={styles.ensure}>
+           <Text style={{color:'white'}}>确定</Text>
+         </TouchableOpacity>
       </View>
     );
   }
@@ -46,6 +50,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F5FCFF',
-    marginTop: 30
+  },
+  ensure:{
+    width:150,
+    height:40,
+    backgroundColor:'#ea3b3b',
+    justifyContent:'center',
+    alignItems:'center',
+    borderRadius:20,
+    position:'relative',
+    top:-300,
+    left:100
   }
 });

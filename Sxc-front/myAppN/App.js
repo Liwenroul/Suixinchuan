@@ -34,6 +34,8 @@ import chuanda from './src/wear/chuanda';
 import Order from './src/home/Order';
 import Address  from './src/home/Address';
 import AddAddress  from './src/home/AddAddress';
+import City  from './src/home/City';
+
 
 
 console.disableYellowBox = true;
@@ -208,6 +210,7 @@ const App = () => {
 				<Scene key='order' hideNavBar component={Order} />
 				<Scene key='address' hideNavBar component={Address}/>
 				<Scene key='addAddress' hideNavBar component={AddAddress}/>
+				<Scene key='city' hideNavBar component={City}/>
 			</Modal>
 			{/* <Scene component={Message}/> */}
 			</Overlay>

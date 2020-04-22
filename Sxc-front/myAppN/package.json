@@ -20,6 +20,7 @@
     "react-native-image-picker": "^2.3.1",
     "react-native-message-bar": "^2.0.10",
     "react-native-ocalendar": "^1.0.1",
+    "react-native-picker": "^4.3.7",
     "react-native-router-flux": "4.0.6",
     "react-native-splash-screen": "^3.2.0",
     "react-native-swiper": "^1.6.0-nightly.5",

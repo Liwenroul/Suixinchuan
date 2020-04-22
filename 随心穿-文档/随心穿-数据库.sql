@@ -28,12 +28,13 @@ CREATE TABLE `address` (
   `addcity` varchar(20) DEFAULT NULL,
   `addarea` varchar(20) DEFAULT NULL,
   `addinfo` varchar(20) DEFAULT NULL,
+  `addtel` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`addressid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 /*Data for the table `address` */
 
-insert  into `address`(`addressid`,`addpro`,`userid`,`isdefault`,`addcity`,`addarea`,`addinfo`) values ('a784657','河北省','u123456',0,'石家庄市','新华区','体育路青溪小区'),('a734788','河北省','u123456',0,'石家庄市','裕华区','图书路35号');
+insert  into `address`(`addressid`,`addpro`,`userid`,`isdefault`,`addcity`,`addarea`,`addinfo`,`addtel`) values ('a784657','河北省','u123456',0,'石家庄市','新华区','体育路青溪小区','7652734'),('a734788','河北省','u123456',0,'石家庄市','裕华区','图书路35号','3467288');
 
 /*Table structure for table `collect` */
 
