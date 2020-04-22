@@ -104,6 +104,275 @@ app.use('/dongtai', dongtaiRouter);
 app.use('/rent', rentRouter);
 app.use('/zhuce', zhuceRouter);
 
+
+//查找用户  httpS://localhost:8081/user
+app.get('/user',jsonParser,(req,res)=>{
+  // console.log(req.body);
+  con.query('select * from user',function(err,result){
+      if(err){
+          console.log('[SELECT ERROR] - ', err.message);
+          return;
+      }
+      res.json(result); 
+  }); 
+}) 
+
+app.post('/user',(req,res)=>{
+  let data=req.body;
+  console.log(data);
+        con.query('insert into user(userid) values(?)',[data.userid],function(err,result){
+          if(err){
+                console.log(err);
+            }else{
+              console.log(result);
+              res.json(result);
+            }
+               
+        })
+})
+
+//穿搭  httpS://localhost:8081/wear
+app.get('/wear',jsonParser,(req,res)=>{
+  // console.log(req.body);
+  con.query('select * from wear',function(err,result){
+      if(err){
+          console.log('[SELECT ERROR] - ', err.message);
+          return;
+      }
+      res.json(result); 
+  }); 
+}) 
+
+app.post('/wear',(req,res)=>{
+  let data=req.body;
+  console.log(data);
+        con.query('insert into wear(dynid) values(?)',[data.dynid],function(err,result){
+          if(err){
+                console.log(err);
+            }else{
+              console.log(result);
+              res.json(result);
+            }
+               
+        })
+})
+
+
+//查找商家  httpS://localhost:8081/allShop
+app.get('/allShop',jsonParser,(req,res)=>{
+  // console.log(req.body);
+  con.query('select * from shop',function(err,result){
+      if(err){
+          console.log('[SELECT ERROR] - ', err.message);
+          return;
+      }
+      res.json(result); 
+  }); 
+}) 
+
+app.post('/allShop',(req,res)=>{
+  let data=req.body;
+  console.log(data);
+        con.query('insert into shop(shopid) values(?)',[data.shopid],function(err,result){
+          if(err){
+                console.log(err);
+            }else{
+              console.log(result);
+              res.json(result);
+            }
+               
+        })
+})
+
+
+//查找地址  httpS://localhost:8081/address
+app.get('/address',jsonParser,(req,res)=>{
+  // console.log(req.body);
+  con.query('select * from address',function(err,result){
+      if(err){
+          console.log('[SELECT ERROR] - ', err.message);
+          return;
+      }
+      res.json(result); 
+  }); 
+}) 
+
+app.post('/address',(req,res)=>{
+  let data=req.body;
+  console.log(data);
+        con.query('insert into address(addressid) values(?)',[data.addressid],function(err,result){
+          if(err){
+                console.log(err);
+            }else{
+              console.log(result);
+              res.json(result);
+            }
+               
+        })
+})
+
+//尺码  httpS://localhost:8081/size
+app.get('/size',jsonParser,(req,res)=>{
+  // console.log(req.body);
+  con.query('select * from size',function(err,result){
+      if(err){
+          console.log('[SELECT ERROR] - ', err.message);
+          return;
+      }
+      res.json(result); 
+  }); 
+}) 
+
+app.post('/size',(req,res)=>{
+  let data=req.body;
+  console.log(data);
+        con.query('insert into size(sizeid) values(?)',[data.sizeid],function(err,result){
+          if(err){
+                console.log(err);
+            }else{
+              console.log(result);
+              res.json(result);
+            }
+               
+        })
+})
+
+
+
+//收藏  httpS://localhost:8081/collect
+app.get('/collect',jsonParser,(req,res)=>{
+  // console.log(req.body);
+  con.query('select * from collect',function(err,result){
+      if(err){
+          console.log('[SELECT ERROR] - ', err.message);
+          return;
+      }
+      res.json(result); 
+  }); 
+}) 
+
+app.post('/collect',(req,res)=>{
+  let data=req.body;
+  console.log(data);
+        con.query('insert into collect(cid) values(?)',[data.cid],function(err,result){
+          if(err){
+                console.log(err);
+            }else{
+              console.log(result);
+              res.json(result);
+            }
+               
+        })
+})
+
+//商品  httpS://localhost:8081/merchandise
+app.get('/merchandise',jsonParser,(req,res)=>{
+  // console.log(req.body);
+  con.query('select * from merchandise',function(err,result){
+      if(err){
+          console.log('[SELECT ERROR] - ', err.message);
+          return;
+      }
+      res.json(result); 
+  }); 
+}) 
+
+app.post('/merchandise',(req,res)=>{
+  let data=req.body;
+  console.log(data);
+        con.query('insert into merchandise(merid) values(?)',[data.merid],function(err,result){
+          if(err){
+                console.log(err);
+            }else{
+              console.log(result);
+              res.json(result);
+            }
+               
+        })
+})
+
+//组借  httpS://localhost:8081/rentAll
+app.get('/rentAll',jsonParser,(req,res)=>{
+  // console.log(req.body);
+  con.query('select * from rent',function(err,result){
+      if(err){
+          console.log('[SELECT ERROR] - ', err.message);
+          return;
+      }
+      res.json(result); 
+  }); 
+}) 
+
+app.post('/rentAll',(req,res)=>{
+  let data=req.body;
+  console.log(data);
+        con.query('insert into rent(rentid) values(?)',[data.rentid],function(err,result){
+          if(err){
+                console.log(err);
+            }else{
+              console.log(result);
+              res.json(result);
+            }
+               
+        })
+})
+
+
+
+//卖  httpS://localhost:8081/sale
+app.get('/sale',jsonParser,(req,res)=>{
+  // console.log(req.body);
+  con.query('select * from sale',function(err,result){
+      if(err){
+          console.log('[SELECT ERROR] - ', err.message);
+          return;
+      }
+      res.json(result); 
+  }); 
+}) 
+
+app.post('/sale',(req,res)=>{
+  let data=req.body;
+  console.log(data);
+        con.query('insert into sale(saleid) values(?)',[data.saleid],function(err,result){
+          if(err){
+                console.log(err);
+            }else{
+              console.log(result);
+              res.json(result);
+            }
+               
+        })
+})
+
+
+
+//意见  httpS://localhost:8081/complain
+app.get('/complain',jsonParser,(req,res)=>{
+  // console.log(req.body);
+  con.query('select * from complain',function(err,result){
+      if(err){
+          console.log('[SELECT ERROR] - ', err.message);
+          return;
+      }
+      res.json(result); 
+  }); 
+}) 
+
+app.post('/complain',(req,res)=>{
+  let data=req.body;
+  console.log(data);
+        con.query('insert into complain(compid) values(?)',[data.compid],function(err,result){
+          if(err){
+                console.log(err);
+            }else{
+              console.log(result);
+              res.json(result);
+            }
+               
+        })
+})
+
 app.get('/dynamic',function(err,res){
   con.query('select * from dynamic',function(err,result){
       if(err){
@@ -113,9 +382,9 @@ app.get('/dynamic',function(err,res){
       res.json(result); 
   }); 
 });
-
+//管理员  httpS://localhost:8081/manager
 app.get('/manager',function(err,res){
-  con.query('select * from manager',function(err,result){
+  con.query('select * from manerger',function(err,result){
       if(err){
           console.log('[SELECT ERROR] - ', err.message);
           return;
@@ -123,6 +392,19 @@ app.get('/manager',function(err,res){
       res.json(result); 
   }); 
 });
+app.post('/manager',(req,res)=>{
+  let data=req.body;
+  console.log(data);
+        con.query('insert into manerger(mid) values(?)',[data.mid],function(err,result){
+          if(err){
+                console.log(err);
+            }else{
+              console.log(result);
+              res.json(result);
+            }
+               
+        })
+})
 
 app.get('/userinfo',jsonParser,(req,res)=>{
   // console.log(req.body);
