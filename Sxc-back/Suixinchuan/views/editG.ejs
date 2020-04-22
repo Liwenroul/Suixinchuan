@@ -62,10 +62,10 @@
             <div class="a">
                 <h1 onclick="showUser()">用户管理</h1>
             </div>
-            <div class="a" style="background: #1daea9;">
+            <div class="a">
                 <h1  onclick="showShop()">商家管理</h1>
             </div>
-            <div class="a">
+            <div class="a"  style="background: #1daea9;">
                 <h1 onclick="showGoods()">商品管理</h1>
             </div>
             <div class="a">
@@ -76,18 +76,38 @@
             </div>
         </div>
         
-        <form class="zhuce" action="/editShop?shopid=<%=editSList[0].shopid%>" method="POST">
+        <form class="zhuce" action="/editGoods?merid=<%=editGList[0].merid%>" method="POST">
             <div class="divv">
-                <h3>商家名:</h3>
-                <input type="text" name="shopname" value=<%=editSList[0].shopname%>>
+                <h3>商家ID:</h3>
+                <input type="text" name="shopid" value=<%=editGList[0].shopid%>>
             </div>
             <div class="divv">
-                <h3>商家电话:</h3>
-                <input type="text" name="tel" value=<%=editSList[0].shoptel%>>
+                <h3>优惠ID:</h3>
+                <input type="text" name="saleid" value=<%=editGList[0].saleid%>>
             </div>
             <div class="divv">
-                <h3>密码:</h3>
-                <input type="text" name="pwd" value=<%=editSList[0].shoppwd%>>
+                <h3>标题:</h3>
+                <input type="text" name="tit" value=<%=editGList[0].tit%>>
+            </div>
+            <div class="divv">
+                <h3>押金:</h3>
+                <input type="text" name="mermon" value=<%=editGList[0].mermon%>>
+            </div>
+            <div class="divv">
+                <h3>价钱:</h3>
+                <input type="text" name="price" value=<%=editGList[0].price%>>
+            </div>
+            <div class="divv">
+                <h3>品牌:</h3>
+                <input type="text" name="shopbrand" value=<%=editGList[0].shopbrand%>>
+            </div>
+            <div class="divv">
+                <h3>颜色:</h3>
+                <input type="text" name="mercolor" value=<%=editGList[0].mercolor%>>
+            </div>
+            <div class="divv">
+                <h3>余量:</h3>
+                <input type="text" name="mernum" value=<%=editGList[0].mernum%>>
             </div>
             <div><button>确认</button></div>
             

@@ -56,12 +56,43 @@
                 <table>
                     <tr>
                         <th style="width:6px;"> </th>
+                        <th>租借ID</th>
                         <th>用户ID</th>
                         <th>商品ID</th>
                         <th>租借时间</th>
+                        <th>归还</th>
+                        <th>评价</th>
                         <th>操作</th>
                     </tr>
-                    
+                    <%for(var i=0;i < rent.length;i++){%>
+                        <tr>
+                            <td style="width:6px"><input type="checkbox"></td>
+                            <td>
+                                <%= rent[i]["rentid"]%>
+                            </td>
+                            <td>
+                                <%= rent[i]["userid"]%>
+                            </td>
+                            <td>
+                                <%= rent[i]["merid"]%>
+                            </td>
+                            <td>
+                                <%= rent[i]["renttim"]%>
+                            </td>
+
+                            <td>
+                                <%= rent[i]["isback"]%>
+                            </td>
+                            <td>
+                                <%= rent[i]["isevaluate"]%>
+                            </td>
+
+                            <td>
+                                    <button><a href="/editR?rentid=<%= rent[i]["rentid"]%>">编辑</a></button>
+                                    <button><a href="/delr?rentid=<%= rent[i]["rentid"]%>">删除</a></button>
+                            </td>
+                        </tr>
+                    <%}%>
                 </table>
                 
             </div>

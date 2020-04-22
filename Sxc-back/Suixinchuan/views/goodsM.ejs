@@ -57,19 +57,61 @@
                     <tr>
                         <th style="width:6px;"> </th>
                         <th>商品ID</th>
-                        <th>用户ID</th>
+                        <th>商家ID</th>
+                        <th>优惠ID</th>
                         <th>图片</th>
+                        <th>标题</th>
                         <th>押金</th>
                         <th>价钱</th>
-                        <th>标题</th>
-                        <th>型号</th>
                         <th>尺码</th>
                         <th>品牌</th>
                         <th>颜色</th>
-                        <th>是否被收藏</th>
-                        <th>收藏人</th>
+                        <th>余量</th>
                         <th>操作</th>
                     </tr>
+                    <%for(var i=0;i < goods.length;i++){%>
+                        <tr>
+                            <td ><label><input type="radio" name="0" ></label></td>
+                            <td>
+                                <%= goods[i]["merid"]%>
+                            </td>
+                            <td>
+                                <%= goods[i]["shopid"]%>
+                            </td>
+                            <td>
+                                <%= goods[i]["saleid"]%>
+                            </td>
+                            <td>
+                                <%= goods[i]["mermig"]%>
+                            </td>
+                            <td>
+                                <%= goods[i]["tit"]%>
+                            </td>
+                            <td>
+                                <%= goods[i]["mermon"]%>
+                            </td>
+                            <td>
+                                <%= goods[i]["price"]%>
+                            </td>
+                            <td><button><a href="/lists?merId=<%= goods[i]["merid"]%>">尺码表</a></button></td>
+                            <td>
+                                <%= goods[i]["shopbrand"]%>
+                            </td>
+                            <td>
+                                <%= goods[i]["mercolor"]%>
+                            </td>
+                            <td>
+                                <%= goods[i]["mernum"]%>
+                            </td>
+                            <!-- <td>
+                                <%= goods[i][""]%>
+                            </td> -->
+                            <td>
+                                <button><a href="/editG?merid=<%=goods[i]["merid"]%>">编辑</a></button>
+                                <button><a href="/delg?merid=<%= goods[i]["merid"]%>">删除</a></button>
+                            </td>
+                        </tr>
+                    <%}%>
                     
                 </table>
                 

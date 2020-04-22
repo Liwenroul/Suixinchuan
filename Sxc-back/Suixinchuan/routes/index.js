@@ -106,7 +106,7 @@ router.post('/this_system',function(req,res,next){
       console.log(err);
     }
     else{
-      res.render('editM',{editMList:result});
+      res.render('system',{editMList:result});
     }
   })
 });
@@ -178,11 +178,10 @@ router.post('/this_user',function(req,res,next){
       console.log(err);
     }
     else{
-      res.render('editU',{editUList:result});
+      res.render('userGuanli',{editUList:result});
     }
   })
 });
-
 
 // // 商家管理
 router.get('/shop', function(req, res, next) {
@@ -252,7 +251,7 @@ router.post('/this_shop',function(req,res,next){
       console.log(err);
     }
     else{
-      res.render('editS',{editSList:result});
+      res.render('shopM',{editSList:result});
     }
   })
 });
@@ -271,6 +270,70 @@ router.get('/goods', function(req, res, next) {
     }
   });
 });
+// 编辑商品
+router.get('/editG', function(req, res, next) {
+  var merId=req.query.merid;
+  con.query("select * from merchandise where merid=?",[merId],function(err,result){
+    if(err){
+      console.log(err);
+    }
+    else{
+      console.log(result);
+      res.render('editG',{editGList:result});
+    }
+  })
+});
+router.post('/editGoods',function(req,res,next){
+  var merid=req.query.merid;
+  var shopid= req.body.shopid;
+  var saleid=req.body.saleid;
+  var tit=req.body.tit;
+  var mermon= req.body.mermon;
+  var price=req.body.price;
+  var shopbrand=req.body.shopbrand;
+  var mercolor= req.body.mercolor;
+  var mernum=req.body.mernum;
+  con.query("update merchandise set shopid=?,saleid=?,tit=?,mermon=?,price=?,shopbrand=?,mercolor=?,mernum=? where merid=?",[shopid,saleid,tit,mermon,price,shopbrand,mercolor,mernum,merid],function(err,result){
+    if(err){
+      console.log(err);
+    }
+    else{
+      res.redirect("/goods");
+    }
+  })
+})
+// 删除商品
+router.get('/delg',function(req,res,next){
+  var merId=req.query.merid;
+  con.query("SET FOREIGN_KEY_CHECKS=0")
+  con.query("delete from merchandise where merid=?",[merId],function(err,result){
+    if(err){
+      console.log(err);
+    }
+    else{
+      console.log(result);
+    res.redirect("/goods");
+    }
+  });
+});
+//查询商品
+router.post('/this_goods',function(req,res,next){
+  console.log(req.body);
+  var search_result = JSON.stringify(req.body.search_Dongtai).slice(1,-1);
+  console.log(search_result);
+  var selectSQL = "select * from merchandise where merid=?";
+  console.log(selectSQL);
+  con.query(selectSQL,search_result,function(err,result){
+    console.log(result);
+    if(err){
+      console.log(err);
+    }
+    else{
+      res.render('goodsM',{editGList:result});
+    }
+  })
+});
+
 
 // 动态管理
 router.get('/dongtai', function(req, res, next) {
@@ -284,49 +347,64 @@ router.get('/dongtai', function(req, res, next) {
     }
   });
 });
-// router.post('/dongtai',function(req,res,next){
-// var search_result = JSON.stringify(req.body.search_Dongtai).slice(1,-1);
-// console.log(search_result);
-//   var selectSQL = "select * from dynamic where dynamicId=?";
-//   console.log(selectSQL);
-//   con.query(selectSQL,search_result,function(err,result){
-//     console.log(result);
-//     if(err){
-//       console.log(err);
-//     }
-//     else{
-//       res.render("dongtaiM",{dynamic:result});
-//     }
-//   })
-// })
-// // 编辑动态
-// router.get('/editD', function(req, res, next) {
-//   var dynamicId=req.query.dynamicId;
-//   con.query("select * from dynamic where dynamicId=?",[dynamicId],function(err,result){
-//     if(err){
-//       console.log(err);
-//     }
-//     else{
-//       console.log(result);
-//       res.render('editD',{editDList:result});
-//     }
-//   })
-// });
-// router.post('/editDynamic',function(req,res,next){
-//   var dynamicId=req.query.dynamicId;
-//   var dynamicContent=req.body.content;
-//   var dynamicImg= req.body.img;
-//   var likeNum=req.body.num;
- 
-//   con.query("update dynamic set dynamicContent=?,dynamicImg=?,likeNum=? where dynamicId=?",[dynamicContent,dynamicImg,likeNum,dynamicId],function(err,result){
-//     if(err){
-//       console.log(err);
-//     }
-//     else{
-//       res.redirect("/dongtai");
-//     }
-//   })
-// })
+// 编辑动态
+router.get('/editD', function(req, res, next) {
+  var dynid=req.query.dynid;
+  con.query("select * from wear where dynid=?",[dynid],function(err,result){
+    if(err){
+      console.log(err);
+    }
+    else{
+      console.log(result);
+      res.render('editD',{editDList:result});
+    }
+  })
+});
+router.post('/editDynamic',function(req,res,next){
+  var dynid=req.query.dynid;
+  var dynContent=req.body.dynContent;
+  var dynImg= req.body.img;
+  var likenum=req.body.likenum;
+  con.query("update wear set dynContent=?,dynImg=?,likenum=? where dynid=?",[dynContent,dynImg,likenum,dynid],function(err,result){
+    if(err){
+      console.log(err);
+    }
+    else{
+      res.redirect("/dongtai");
+    }
+  })
+})
+// 删除动态
+router.get('/deld',function(req,res,next){
+  var dynId=req.query.dynid;
+  con.query("SET FOREIGN_KEY_CHECKS=0")
+  con.query("delete from wear where dynid=?",[dynId],function(err,result){
+    if(err){
+      console.log(err);
+    }
+    else{
+      console.log(result);
+      res.redirect("/dongtai");
+    }
+  });
+});
+//查找动态
+router.post('/this_dongtai',function(req,res,next){
+var search_result = JSON.stringify(req.body.search_Dongtai).slice(1,-1);
+console.log(search_result);
+  var selectSQL = "select * from wear where dynid=?";
+  console.log(selectSQL);
+  con.query(selectSQL,search_result,function(err,result){
+    console.log(result);
+    if(err){
+      console.log(err);
+    }
+    else{
+      res.render("dongtaiM",{dynamic:result});
+    }
+  })
+})
+
 
 // // 租借管理
 router.get('/rent', function(req, res, next) {
@@ -342,6 +420,65 @@ router.get('/rent', function(req, res, next) {
     }
   });
 });
+// 编辑租借
+router.get('/editR', function(req, res, next) {
+  var rentid=req.query.rentid;
+  con.query("select * from rent where rentid=?",[rentid],function(err,result){
+    if(err){
+      console.log(err);
+    }
+    else{
+      console.log(result);
+      res.render('editR',{editRList:result});
+    }
+  })
+});
+router.post('/editRent',function(req,res,next){
+  var rentid=req.query.rentid;
+  var userid=req.body.userid;
+  var merid= req.body.merid;
+  var renttim=req.body.renttim;
+  var isback= req.body.isback;
+  var isevaluate=req.body.isevaluate;
+  con.query("update rent set userid=?,merid=?,renttim=?,isback=?,isevaluate=? where rentid=?",[userid,merid,renttim,isback,isevaluate,rentid],function(err,result){
+    if(err){
+      console.log(err);
+    }
+    else{
+      res.redirect("/rent");
+    }
+  })
+})
+// 删除租借
+router.get('/delr',function(req,res,next){
+  var rentid=req.query.rentid;
+  con.query("SET FOREIGN_KEY_CHECKS=0")
+  con.query("delete from rent where rentid=?",[rentid],function(err,result){
+    if(err){
+      console.log(err);
+    }
+    else{
+      console.log(result);
+      res.redirect("/rent");
+    }
+  });
+});
+//查找租借
+router.post('/this_rent',function(req,res,next){
+var search_result = JSON.stringify(req.body.search_Dongtai).slice(1,-1);
+console.log(search_result);
+  var selectSQL = "select * from rent where rentid=?";
+  console.log(selectSQL);
+  con.query(selectSQL,search_result,function(err,result){
+    console.log(result);
+    if(err){
+      console.log(err);
+    }
+    else{
+      res.render("rentM",{rent:result});
+    }
+  })
+})
 
 
 
@@ -378,6 +515,21 @@ router.get('/lista', function(req, res, next) {
     else{
       console.log(result)
       res.render("lista",{address:result});
+      // console.log(result);
+    }
+  });
+});
+//尺码表（商品管理）
+router.get('/lists', function(req, res, next) {
+  var merId=req.query.merId;
+  console.log(merId)
+  con.query("select * from size where merid=?",[merId],function(err,result){
+    if(err){
+      console.log(err);
+    }
+    else{
+      console.log(result)
+      res.render("lists",{size:result});
       // console.log(result);
     }
   });

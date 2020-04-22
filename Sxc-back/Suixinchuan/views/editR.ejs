@@ -62,7 +62,7 @@
             <div class="a">
                 <h1 onclick="showUser()">用户管理</h1>
             </div>
-            <div class="a" style="background: #1daea9;">
+            <div class="a">
                 <h1  onclick="showShop()">商家管理</h1>
             </div>
             <div class="a">
@@ -71,23 +71,31 @@
             <div class="a">
                 <h1 onclick="showDongTai()">动态管理</h1>
             </div>
-            <div class="a">
+            <div class="a" style="background: #1daea9;">
                 <h1 onclick="showRent()">租借管理</h1>
             </div>
         </div>
         
-        <form class="zhuce" action="/editShop?shopid=<%=editSList[0].shopid%>" method="POST">
+        <form class="zhuce" action="/editRent?rentid=<%=editRList[0].rentid%>" method="POST">
             <div class="divv">
-                <h3>商家名:</h3>
-                <input type="text" name="shopname" value=<%=editSList[0].shopname%>>
+                <h3>用户ID:</h3>
+                <input type="text" name="userid" value=<%=editRList[0].userid%>>
             </div>
             <div class="divv">
-                <h3>商家电话:</h3>
-                <input type="text" name="tel" value=<%=editSList[0].shoptel%>>
+                <h3>商品ID:</h3>
+                <input type="text" name="merid" value=<%=editRList[0].merid%>>
             </div>
             <div class="divv">
-                <h3>密码:</h3>
-                <input type="text" name="pwd" value=<%=editSList[0].shoppwd%>>
+                <h3>租借时间:</h3>
+                <input type="text" name="renttim" value=<%=editRList[0].renttim%>>
+            </div>
+            <div class="divv">
+                <h3>归还:</h3>
+                <input type="text" name="isback" value=<%=editRList[0].isback%>>
+            </div>
+            <div class="divv">
+                <h3>评价:</h3>
+                <input type="text" name="isevaluate" value=<%=editRList[0].isevaluate%>>
             </div>
             <div><button>确认</button></div>
             

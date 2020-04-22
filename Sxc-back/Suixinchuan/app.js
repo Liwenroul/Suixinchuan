@@ -26,24 +26,6 @@ app.all('*', function(req, res, next) {
 });
 
 
-// var indexRouter = require('./routes/index');
-// var usersRouter = require('./routes/users');
-// var listRouter = require('./routes/index');
-// var listtRouter = require('./routes/list');
-
-// var listbRouter = require('./routes/index');
-// var listdRouter = require('./routes/index');
-// var listeRouter = require('./routes/index');
-// var dongtaiRouter = require('./routes/index');
-// var zhuceRouter = require('./routes/index');
-// var showPlayRouter = require('./routes/index');
-
-// var editDRouter = require('./routes/index');
-// var editARouter = require('./routes/index');
-// var activityRouter = require('./routes/index');
-// var systemRouter = require('./routes/index');
-// var userguanRouter = require('./routes/index');
-// var app = express();
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -73,22 +55,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// app.use('/', indexRouter);
-// app.use('/users', usersRouter);
-// app.use('/list', listRouter);
-// app.use('/listt', listtRouter);
-// app.use('/listb', listbRouter);
-// app.use('/listd', listdRouter);
-// app.use('/liste', listeRouter);
-// app.use('/zhuce', zhuceRouter);
-// app.use('/showPlay',showPlayRouter);
-
-
-// app.use('/editD', editDRouter);
-// app.use('/editA', editARouter);
-// app.use('/activity', activityRouter);
-// app.use('/dongtai', dongtaiRouter);
-// app.use('/system', systemRouter);
 
 // app.use('/userguanli', userguanRouter);
 // catch 404 and forward to error handler

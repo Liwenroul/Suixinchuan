@@ -76,18 +76,19 @@
             </div>
         </div>
         
-        <form class="zhuce" action="/editDynamic?dynamicId=<%=editDList[0].dynamicId%>" method="POST">
+        <form class="zhuce" action="/editDynamic?dynid=<%=editDList[0].dynid%>" method="POST">
             <div class="divv">
                 <h3>标题:</h3>
-                <input type="text" name="content" value=<%=editDList[0].dynamicContent%>>
+                <input type="text" name="dynContent" value=<%=editDList[0].dynContent%>>
             </div>
             <div class="divv">
                 <h3>图片:</h3>
-                <input type="text" name="img" value=<%=editDList[0].dynamicImg%>>
+                <input type="text" name="img">
+                <!-- <input type="text" name="img" value=<%=editDList[0].dynImg%>> -->
             </div>
             <div class="divv">
                 <h3>点赞次数:</h3>
-                <input type="text" name="num" value=<%=editDList[0].likeNum%>>
+                <input type="text" name="likenum" value=<%=editDList[0].likenum%>>
             </div>
             <div><button>确认</button></div>
             

@@ -56,30 +56,33 @@
                         <th>点赞次数</th>
                         <th>操作</th>
                     </tr>
-                    <!-- <%for(var i=0;i < dynamic.length;i++){%>
+                    <%for(var i=0;i < dynamic.length;i++){%>
                         <tr>
                             <td style="width:6px"><input type="checkbox"></td>
                             <td>
-                                <%= dynamic[i]["dynamicId"]%>
+                                <%= dynamic[i]["dynid"]%>
                             </td>
                             <td>
-                                <%= dynamic[i]["dynamicContent"]%>
+                                <%= dynamic[i]["userid"]%>
+                            </td>
+                            
+                            <td>
+                                <!-- <img style="width: 80px;" src=<%=dynamic[i]["dynImg"]%> alt=""/> -->
+                                图片
                             </td>
                             <td>
-                                <img style="width: 80px;" src=<%=dynamic[i]["dynamicImg"]%> alt=""/>
+                                <%= dynamic[i]["dynContent"]%>
                             </td>
                             <td>
-                                <%= dynamic[i]["likeNum"]%>
+                                <%= dynamic[i]["likenum"]%>
                             </td>
+
                             <td>
-                            <%= dynamic[i]["userId"]%>
-                            </td>
-                            <td>
-                                    <button><a href="/editD?dynamicId=<%= dynamic[i]["dynamicId"]%>">编辑</a></button>
-                                    <button><a href="/deld?dynamicId=<%= dynamic[i]["dynamicId"]%>">删除</a></button>
+                                    <button><a href="/editD?dynid=<%= dynamic[i]["dynid"]%>">编辑</a></button>
+                                    <button><a href="/deld?dynid=<%= dynamic[i]["dynid"]%>">删除</a></button>
                             </td>
                         </tr>
-                    <%}%> -->
+                    <%}%>
                 </table>
             </div>
         </div>
