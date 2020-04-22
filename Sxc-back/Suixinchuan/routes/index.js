@@ -27,27 +27,27 @@ router.get('/system', function(req, res, next) {
 });
 // 编辑管理员
 router.get('/editM', function(req, res, next) {
-  var mId=req.query.mId;
-  con.query("select * from manager where mId=?",[mId],function(err,result){
+  var mid=req.query.mid;
+  con.query("select * from manager where mid=?",[mid],function(err,result){
     if(err){
       console.log(err);
     }
     else{
       console.log(result);
-      res.render('editM',{editMList:result});
+      res.render("editM",{editMList:result});
     }
   })
 });
 router.post('/editManager',function(req,res,next){
-  var mId=req.query.mId;
-  console.log(mId);
-  var mName=req.body.user;
-  var mRealName= req.body.username;
-  var mPwd=req.body.pwd;
-  var mSex=req.body.mSex;
-  var mTel=req.body.mTel;
-  var mEmail=req.body.mEmail;
-  con.query("update manager set mName=?,mRealName=?,mSex=?,mTel=?,mEmail=?,mPwd=? where mId=?",[mName,mRealName,mSex,mTel,mEmail,mPwd,mId],function(err,result){
+  var mid=req.query.mid;
+  console.log(mid);
+  var mname=req.body.user;
+  var mrealname= req.body.username;
+  var mpwd=req.body.pwd;
+  var msex=req.body.msex;
+  var mtel=req.body.mtel;
+  var memail=req.body.memail;
+  con.query("update manager set mname=?,mrealname=?,msex=?,mtel=?,memail=?,mpwd=? where mid=?",[mname,mrealname,msex,mtel,memail,mpwd,mid],function(err,result){
     if(err){
       console.log(err);
     }
@@ -59,20 +59,20 @@ router.post('/editManager',function(req,res,next){
 
 // 用户管理
 router.get('/userguanli', function(req, res, next) {
-  con.query("select * from userinfo",function(err,result){
+  con.query("select * from user",function(err,result){
     if(err){
       console.log(err);
     }
     else{
-      res.render("userGuanli",{userinfo:result});
+      res.render("userGuanli",{user:result});
       // console.log(result);
     }
   });
 });
 // 编辑用户
 router.get('/editU', function(req, res, next) {
-  var userId=req.query.userId;
-  con.query("select * from userinfo where userId=?",[userId],function(err,result){
+  var userid=req.query.userid;
+  con.query("select * from user where userid=?",[userid],function(err,result){
     if(err){
       console.log(err);
     }
@@ -83,11 +83,11 @@ router.get('/editU', function(req, res, next) {
   })
 });
 router.post('/editUser',function(req,res,next){
-  var userId=req.query.userId;
-  var userName= req.body.username;
-  var userPassword=req.body.pwd;
-  var userTel=req.body.tel;
-  con.query("update userinfo set userName=?,userTel=?,userPassword=? where userId=?",[userName,userTel,userPassword,userId],function(err,result){
+  var userid=req.query.userid;
+  var username= req.body.username;
+  var userpwd=req.body.pwd;
+  var usertel=req.body.tel;
+  con.query("update user set username=?,usertel=?,userpwd=? where userid=?",[username,usertel,userpwd,userid],function(err,result){
     if(err){
       console.log(err);
     }
@@ -178,44 +178,44 @@ router.post('/editUser',function(req,res,next){
 //   res.render("rentM");
 // });
 
-// // 注册管理（添加管理员）
-// router.get('/zhuce', function(req, res, next) {
-// res.render('zhuceM', {List:List});
-// });
+// 注册管理（添加管理员）
+router.get('/zhuce', function(req, res, next) {
+res.render('zhuceM', {List:List});
+});
 
-// //编辑
+//编辑
 
-// // 添加管理员
-// router.post('/add',function(req,res,next){
-//     var mName=req.body.user;
-//     var mRealName= req.body.username;
-//     var mPwd=req.body.pwd;
-//     var mSex=req.body.mSex;
-//     var mTel=req.body.mTel;
-//     var mEmail=req.body.mEmail;
-//     con.query("insert into manager(mId,mName,mRealName,mSex,mTel,mEmail,mPwd) values(?,?,?,?,?,?,?)",[parseInt((Math.random()*1000)),mName,mRealName,mSex,mTel,mEmail,mPwd],function(err,result){
-//       if(err){
-//         console.log(err);
-//       }
-//       else{
-//         console.log(result);
-//         res.redirect("/system");
-//       }
-//     });
-//   });
-// // 删除管理员
-//   router.get('/del',function(req,res,next){
-//       var mId=req.query.mId;
-//       con.query("delete from manager where mId=?",[mId],function(err,result){
-//         if(err){
-//           console.log(err);
-//         }
-//         else{
-//           console.log(result);
-//         res.redirect("/system");
-//         }
-//       });
-//     });
+// 添加管理员
+router.post('/add',function(req,res,next){
+    var mname=req.body.user;
+    var mrealname= req.body.username;
+    var mpwd=req.body.pwd;
+    var msex=req.body.msex;
+    var mtel=req.body.mtel;
+    var memail=req.body.memail;
+    con.query("insert into manager(mid,mname,mrealname,msex,mtel,memail,mpwd) values(?,?,?,?,?,?,?)",[parseInt((Math.random()*1000)),mname,mrealname,msex,mtel,memail,mpwd],function(err,result){
+      if(err){
+        console.log(err);
+      }
+      else{
+        console.log(result);
+        res.redirect("/system");
+      }
+    });
+  });
+// 删除管理员
+  router.get('/del',function(req,res,next){
+      var mid=req.query.mid;
+      con.query("delete from manager where mid=?",[mid],function(err,result){
+        if(err){
+          console.log(err);
+        }
+        else{
+          console.log(result);
+        res.redirect("/system");
+        }
+      });
+    });
 // // 删除动态  
 //     router.get('/deld',function(req,res,next){
 //       var dynamicId=req.query.dynamicId;
@@ -229,55 +229,55 @@ router.post('/editUser',function(req,res,next){
 //         }
 //       });
 //     });
-// // 删除用户
-//     router.get('/delu',function(req,res,next){
-//       var userId=req.query.userId;
-//       con.query("SET FOREIGN_KEY_CHECKS=0")
-//       con.query("delete from userinfo where userId=?",[userId],function(err,result){
-//         if(err){
-//           console.log(err);
-//         }
-//         else{
-//           console.log(result);
-//         res.redirect("/userguanli");
-//         }
-//       });
-//     });
+// 删除用户
+    router.get('/delu',function(req,res,next){
+      var userid=req.query.userid;
+      con.query("SET FOREIGN_KEY_CHECKS=0")
+      con.query("delete from user where userid=?",[userid],function(err,result){
+        if(err){
+          console.log(err);
+        }
+        else{
+          console.log(result);
+        res.redirect("/userguanli");
+        }
+      });
+    });
 
-// // 查询用户
-// router.post('/this_manager',function(req,res,next){
-//   console.log(req.body);
-//   var search_result = JSON.stringify(req.body.search_Dongtai).slice(1,-1);
-//   console.log(search_result);
-//   var selectSQL = "select * from userinfo where userId=?";
-//   console.log(selectSQL);
-//   con.query(selectSQL,search_result,function(err,result){
-//     console.log(result);
-//     if(err){
-//       console.log(err);
-//     }
-//     else{
-//       res.render("userGuanli",{userinfo:result});
-//     }
-//   })
-// });
-// // 查询管理员
-// router.post('/this_system',function(req,res,next){
-//   console.log(req.body);
-//   var search_result = JSON.stringify(req.body.search_Dongtai).slice(1,-1);
-//   console.log(search_result);
-//   var selectSQL = "select * from manager where mId=?";
-//   console.log(selectSQL);
-//   con.query(selectSQL,search_result,function(err,result){
-//     console.log(result);
-//     if(err){
-//       console.log(err);
-//     }
-//     else{
-//       res.render('editM',{editMList:result});
-//     }
-//   })
-// });
+// 查询用户
+router.post('/this_user',function(req,res,next){
+  console.log(req.body);
+  var search_result = JSON.stringify(req.body.search_Dongtai).slice(1,-1);
+  console.log(search_result);
+  var selectSQL = "select * from user where userid=?";
+  console.log(selectSQL);
+  con.query(selectSQL,search_result,function(err,result){
+    console.log(result);
+    if(err){
+      console.log(err);
+    }
+    else{
+      res.render("userGuanli",{user:result});
+    }
+  })
+});
+// 查询管理员
+router.post('/this_system',function(req,res,next){
+  console.log(req.body);
+  var search_result = JSON.stringify(req.body.search_Dongtai).slice(1,-1);
+  console.log(search_result);
+  var selectSQL = "select * from manager where mid=?";
+  console.log(selectSQL);
+  con.query(selectSQL,search_result,function(err,result){
+    console.log(result);
+    if(err){
+      console.log(err);
+    }
+    else{
+      res.render('editM',{editMList:result});
+    }
+  })
+});
 
 // // 表中表
 // router.get('/listt', function(req, res, next) {
@@ -321,26 +321,26 @@ router.post('/editUser',function(req,res,next){
 //   });
 // });
 
-// // /* POST 登录验证 && GET login page. */
-// router.get('/login', function(req, res, next) {
-//   var response = {
-//     "username":req.query.username,
-//     "pwd":req.query.pwd,
-// };
-// var selectSQL = "select mRealName,mPwd from manager where mRealName = '"+req.query.username+"' and mPwd = '"+req.query.pwd+"'";
+// /* POST 登录验证 && GET login page. */
+router.get('/login', function(req, res, next) {
+  var response = {
+    "username":req.query.username,
+    "pwd":req.query.pwd,
+};
+var selectSQL = "select mrealname,mpwd from manager where mrealname = '"+req.query.username+"' and mpwd = '"+req.query.pwd+"'";
    
-//   con.query(selectSQL,function(err,result){
-//     if(err){
-//       console.log(err);
-//     }
-//     else if(result==''){
-//       res.json({ret_code : 1, ret_msg : '用户名密码错误'});// 若登录失败
-//     }
-//     else{
-//         res.redirect('/system');
+  con.query(selectSQL,function(err,result){
+    if(err){
+      console.log(err);
+    }
+    else if(result==''){
+      res.json({ret_code : 1, ret_msg : '用户名密码错误'});// 若登录失败
+    }
+    else{
+        res.redirect('/system');
       
-//     }
-//   });
-// });
+    }
+  });
+});
 
 module.exports = router;

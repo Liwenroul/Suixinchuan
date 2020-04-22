@@ -165,31 +165,36 @@
                       <th>余额</th>
                       <th>操作</th>
                     </tr>
-                    <!-- <%for(var i=0;i < userinfo.length;i++){%>
+                    <%for(var i=0;i < user.length;i++){%>
                         <tr>
                             <td ><label><input type="radio" name="0" ></label></td>
                             <td>
-                                <%= userinfo[i]["userId"]%>
+                                <%= user[i]["userid"]%>
                             </td>
                             <td>
-                                <%= userinfo[i]["userName"]%>
+                                <%= user[i]["username"]%>
                             </td>
-                            <td><button><a href="/listp?userId=<%= userinfo[i]["userId"]%>">信息</a></button></td>
-                            <td>ID</td>
-                            <td><button><a href="/liste?userId=<%= userinfo[i]["userId"]%>">关注表</a></button></td>
+                            <td><%= user[i]["userpwd"]%></td>
                             <td>
-                                    <%= userinfo[i]["userTel"]%>
+                                <!-- <%= user[i]["userauatar"]%> -->
+                                二进制编码有问题
+                            </td>
+                            <td><%= user[i]["usertel"]%></td>
+                            <td>
+                                    <!-- <%= user[i]["usertel"]%> -->
+                                    收货地址
                             </td>
                             <td>
-                                <%= userinfo[i]["userPassword"]%>
+                                <!-- <%= user[i]["userpwd"]%> -->
+                                租借时间
                             </td>
-                            <td><button><a href="/listd?userId=<%= userinfo[i]["userId"]%>">打卡表</a></button></td>
+                            <!-- <td><button><a href="/listd?userid=<%= user[i]["userid"]%>">打卡表</a></button></td> -->
                             <td>
-                                    <button><a href="/editU?userId=<%= userinfo[i]["userId"]%>">编辑</a></button>
-                                    <button><a href="/delu?userId=<%= userinfo[i]["userId"]%>">删除</a></button>
+                                    <button><a href="/editU?userid=<%= user[i]["userid"]%>">编辑</a></button>
+                                    <button><a href="/delu?userid=<%= user[i]["userid"]%>">删除</a></button>
                             </td>
                         </tr>
-                    <%}%> -->
+                    <%}%>
                     <!-- <tr>
                       <td>
                             <label><input type="radio" name="0" ></label>

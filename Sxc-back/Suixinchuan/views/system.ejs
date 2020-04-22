@@ -164,24 +164,24 @@
                     <%for(var i=0;i < manager.length;i++){%>
                         <tr>
                             <td>
-                                <%= manager[i]["mId"]%>
+                                <%= manager[i]["mid"]%>
                             </td>
                             <td>
-                                <%= manager[i]["mName"]%>
+                                <%= manager[i]["mname"]%>
                             </td>
                             <td>
-                                <%= manager[i]["mRealName"]%>
+                                <%= manager[i]["mrealname"]%>
                             </td>
                             <td>
-                                <%= manager[i]["mSex"]%>
+                                <%= manager[i]["msex"]%>
                             </td>
                             <td>
-                            <%= manager[i]["mTel"]%>
+                            <%= manager[i]["mtel"]%>
                             </td>
-                            <td><%= manager[i]["mEmail"]%></td>
+                            <td><%= manager[i]["memail"]%></td>
                             <td>
-                                <button><a href="/editM?mId=<%=manager[i]["mId"]%>">编辑</a></button>
-                                <button><a href="/del?mId=<%= manager[i]["mId"]%>">删除</a></button>
+                                <button><a href="/editM?mid=<%=manager[i]["mid"]%>">编辑</a></button>
+                                <button><a href="/del?mid=<%= manager[i]["mid"]%>">删除</a></button>
                             </td>
                         </tr>
                     <%}%>

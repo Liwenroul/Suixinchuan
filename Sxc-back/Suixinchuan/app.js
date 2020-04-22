@@ -26,7 +26,7 @@ app.all('*', function(req, res, next) {
 });
 
 
-// var indexRouter = require('./routes/index');
+var indexRouter = require('./routes/index');
 // var usersRouter = require('./routes/users');
 // var listRouter = require('./routes/list');
 // var listtRouter = require('./routes/list');
@@ -80,7 +80,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // app.use('/liste', listeRouter);
 // app.use('/zhuce', zhuceRouter);
 // app.use('/showPlay',showPlayRouter);
-app.use('/editM', editMRouter);
+// app.use('/editM', editMRouter);
 // app.use('/editD', editDRouter);
 // app.use('/editA', editARouter);
 // app.use('/editU', editURouter);
