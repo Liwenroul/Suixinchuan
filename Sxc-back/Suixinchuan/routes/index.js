@@ -28,6 +28,8 @@ router.get('/system', function(req, res, next) {
 // 编辑管理员
 router.get('/editM', function(req, res, next) {
   var mid=req.query.mid;
+  console.log('a')
+  console.log(mid);
   con.query("select * from manager where mid=?",[mid],function(err,result){
     if(err){
       console.log(err);
@@ -56,6 +58,58 @@ router.post('/editManager',function(req,res,next){
     }
   })
 })
+// // 注册管理（添加管理员）
+router.get('/zhuce', function(req, res, next) {
+  res.render('zhuceM', {List:List});
+});
+// // 添加管理员
+router.post('/add',function(req,res,next){
+  var mName=req.body.user;
+  var mRealName= req.body.username;
+  var mPwd=req.body.pwd;
+  var mSex=req.body.mSex;
+  var mTel=req.body.mTel;
+  var mEmail=req.body.mEmail;
+  con.query("insert into manager(mid,mname,mrealname,msex,mtel,memail,mpwd) values(?,?,?,?,?,?,?)",[parseInt((Math.random()*1000)),mName,mRealName,mSex,mTel,mEmail,mPwd],function(err,result){
+    if(err){
+      console.log(err);
+    }
+    else{
+      console.log(result);
+      res.redirect("/system");
+    }
+  });
+});
+// // 删除管理员
+router.get('/del',function(req,res,next){
+    var mid=req.query.mid;
+    con.query("delete from manager where mid=?",[mid],function(err,result){
+      if(err){
+        console.log(err);
+      }
+      else{
+        console.log(result);
+      res.redirect("/system");
+      }
+    });
+});
+// // 查询管理员
+router.post('/this_system',function(req,res,next){
+  console.log(req.body);
+  var search_result = JSON.stringify(req.body.search_Dongtai).slice(1,-1);
+  console.log(search_result);
+  var selectSQL = "select * from manager where mid=?";
+  console.log(selectSQL);
+  con.query(selectSQL,search_result,function(err,result){
+    console.log(result);
+    if(err){
+      console.log(err);
+    }
+    else{
+      res.render('editM',{editMList:result});
+    }
+  })
+});
 
 // 用户管理
 router.get('/userguanli', function(req, res, next) {
@@ -64,15 +118,15 @@ router.get('/userguanli', function(req, res, next) {
       console.log(err);
     }
     else{
-      res.render("userGuanli",{user:result});
+      res.render("userGuanli",{userinfo:result});
       // console.log(result);
     }
   });
 });
 // 编辑用户
 router.get('/editU', function(req, res, next) {
-  var userid=req.query.userid;
-  con.query("select * from user where userid=?",[userid],function(err,result){
+  var userId=req.query.userid;
+  con.query("select * from user where userid=?",[userId],function(err,result){
     if(err){
       console.log(err);
     }
@@ -83,11 +137,12 @@ router.get('/editU', function(req, res, next) {
   })
 });
 router.post('/editUser',function(req,res,next){
-  var userid=req.query.userid;
-  var username= req.body.username;
-  var userpwd=req.body.pwd;
-  var usertel=req.body.tel;
-  con.query("update user set username=?,usertel=?,userpwd=? where userid=?",[username,usertel,userpwd,userid],function(err,result){
+  var userId=req.query.userid;
+  var userName= req.body.username;
+  var userPassword=req.body.pwd;
+  var userTel=req.body.tel;
+  var userMon=req.body.mon;
+  con.query("update user set username=?,usertel=?,userpwd=?,userMon=? where userid=?",[userName,userTel,userPassword,userMon,userId],function(err,result){
     if(err){
       console.log(err);
     }
@@ -96,19 +151,139 @@ router.post('/editUser',function(req,res,next){
     }
   })
 })
+// 删除用户
+router.get('/delu',function(req,res,next){
+  var userId=req.query.userid;
+  con.query("SET FOREIGN_KEY_CHECKS=0")
+  con.query("delete from user where userid=?",[userId],function(err,result){
+    if(err){
+      console.log(err);
+    }
+    else{
+      console.log(result);
+    res.redirect("/userguanli");
+    }
+  });
+});
+//查询用户
+router.post('/this_user',function(req,res,next){
+  console.log(req.body);
+  var search_result = JSON.stringify(req.body.search_Dongtai).slice(1,-1);
+  console.log(search_result);
+  var selectSQL = "select * from user where userid=?";
+  console.log(selectSQL);
+  con.query(selectSQL,search_result,function(err,result){
+    console.log(result);
+    if(err){
+      console.log(err);
+    }
+    else{
+      res.render('editU',{editUList:result});
+    }
+  })
+});
+
+
+// // 商家管理
+router.get('/shop', function(req, res, next) {
+  con.query("select * from shop",function(err,result){
+    if(err){
+      console.log(err);
+    }
+    else{
+      res.render("shopM"
+      ,{shop:result}
+      );
+      console.log(result);
+    }
+  });
+});
+// 编辑商家
+router.get('/editS', function(req, res, next) {
+  var shopId=req.query.shopid;
+  con.query("select * from shop where shopid=?",[shopId],function(err,result){
+    if(err){
+      console.log(err);
+    }
+    else{
+      console.log(result);
+      res.render('editS',{editSList:result});
+    }
+  })
+});
+router.post('/editShop',function(req,res,next){
+  var shopId=req.query.shopid;
+  var shopName= req.body.shopname;
+  var shopPassword=req.body.pwd;
+  var shopTel=req.body.tel;
+  con.query("update shop set shopname=?,shoptel=?,shoppwd=? where shopid=?",[shopName,shopTel,shopPassword,shopId],function(err,result){
+    if(err){
+      console.log(err);
+    }
+    else{
+      res.redirect("/shop");
+    }
+  })
+})
+// 删除商家
+router.get('/dels',function(req,res,next){
+  var shopId=req.query.shopid;
+  con.query("SET FOREIGN_KEY_CHECKS=0")
+  con.query("delete from shop where shopid=?",[shopId],function(err,result){
+    if(err){
+      console.log(err);
+    }
+    else{
+      console.log(result);
+    res.redirect("/shop");
+    }
+  });
+});
+//查询商家
+router.post('/this_shop',function(req,res,next){
+  console.log(req.body);
+  var search_result = JSON.stringify(req.body.search_Dongtai).slice(1,-1);
+  console.log(search_result);
+  var selectSQL = "select * from shop where shopid=?";
+  console.log(selectSQL);
+  con.query(selectSQL,search_result,function(err,result){
+    console.log(result);
+    if(err){
+      console.log(err);
+    }
+    else{
+      res.render('editS',{editSList:result});
+    }
+  })
+});
+
+// // 商品管理
+router.get('/goods', function(req, res, next) {
+  con.query("select * from merchandise",function(err,result){
+    if(err){
+      console.log(err);
+    }
+    else{
+      res.render("goodsM"
+      ,{goods:result}
+      );
+      console.log(result);
+    }
+  });
+});
 
 // 动态管理
-// router.get('/dongtai', function(req, res, next) {
-//   con.query("select * from dynamic",function(err,result){
-//     if(err){
-//       console.log(err);
-//     }
-//     else{
-//       res.render("dongtaiM",{dynamic:result});
-//       // console.log(result);
-//     }
-//   });
-// });
+router.get('/dongtai', function(req, res, next) {
+  con.query("select * from wear",function(err,result){
+    if(err){
+      console.log(err);
+    }
+    else{
+      res.render("dongtaiM",{dynamic:result});
+      // console.log(result);
+    }
+  });
+});
 // router.post('/dongtai',function(req,res,next){
 // var search_result = JSON.stringify(req.body.search_Dongtai).slice(1,-1);
 // console.log(search_result);
@@ -153,69 +328,26 @@ router.post('/editUser',function(req,res,next){
 //   })
 // })
 
-// // 商家管理
-// router.get('/shop', function(req, res, next) {
-//   // con.query("select * from dynamic",function(err,result){
-//     // if(err){
-//     //   console.log(err);
-//     // }
-//     // else{
-//       res.render("shopM"
-//       // ,{dynamic:result}
-//       );
-//       // console.log(result);
-//     // }
-//   // });
-// });
-
-// // 商品管理
-// router.get('/goods', function(req, res, next) {
-//   res.render("goodsM");
-// });
-
 // // 租借管理
-// router.get('/rent', function(req, res, next) {
-//   res.render("rentM");
-// });
-
-// 注册管理（添加管理员）
-router.get('/zhuce', function(req, res, next) {
-res.render('zhuceM', {List:List});
+router.get('/rent', function(req, res, next) {
+  con.query("select * from rent",function(err,result){
+    if(err){
+      console.log(err);
+    }
+    else{
+      res.render("rentM"
+      ,{rent:result}
+      );
+      console.log(result);
+    }
+  });
 });
 
-//编辑
 
-// 添加管理员
-router.post('/add',function(req,res,next){
-    var mname=req.body.user;
-    var mrealname= req.body.username;
-    var mpwd=req.body.pwd;
-    var msex=req.body.msex;
-    var mtel=req.body.mtel;
-    var memail=req.body.memail;
-    con.query("insert into manager(mid,mname,mrealname,msex,mtel,memail,mpwd) values(?,?,?,?,?,?,?)",[parseInt((Math.random()*1000)),mname,mrealname,msex,mtel,memail,mpwd],function(err,result){
-      if(err){
-        console.log(err);
-      }
-      else{
-        console.log(result);
-        res.redirect("/system");
-      }
-    });
-  });
-// 删除管理员
-  router.get('/del',function(req,res,next){
-      var mid=req.query.mid;
-      con.query("delete from manager where mid=?",[mid],function(err,result){
-        if(err){
-          console.log(err);
-        }
-        else{
-          console.log(result);
-        res.redirect("/system");
-        }
-      });
-    });
+
+// //编辑
+
+
 // // 删除动态  
 //     router.get('/deld',function(req,res,next){
 //       var dynamicId=req.query.dynamicId;
@@ -229,99 +361,30 @@ router.post('/add',function(req,res,next){
 //         }
 //       });
 //     });
-// 删除用户
-    router.get('/delu',function(req,res,next){
-      var userid=req.query.userid;
-      con.query("SET FOREIGN_KEY_CHECKS=0")
-      con.query("delete from user where userid=?",[userid],function(err,result){
-        if(err){
-          console.log(err);
-        }
-        else{
-          console.log(result);
-        res.redirect("/userguanli");
-        }
-      });
-    });
 
-// 查询用户
-router.post('/this_user',function(req,res,next){
-  console.log(req.body);
-  var search_result = JSON.stringify(req.body.search_Dongtai).slice(1,-1);
-  console.log(search_result);
-  var selectSQL = "select * from user where userid=?";
-  console.log(selectSQL);
-  con.query(selectSQL,search_result,function(err,result){
-    console.log(result);
+
+
+
+
+//表中表
+//地址表（用户管理）
+router.get('/lista', function(req, res, next) {
+  var userId=req.query.userId;
+  console.log(userId)
+  con.query("select * from address where userid=?",[userId],function(err,result){
     if(err){
       console.log(err);
     }
     else{
-      res.render("userGuanli",{user:result});
+      console.log(result)
+      res.render("lista",{address:result});
+      // console.log(result);
     }
-  })
-});
-// 查询管理员
-router.post('/this_system',function(req,res,next){
-  console.log(req.body);
-  var search_result = JSON.stringify(req.body.search_Dongtai).slice(1,-1);
-  console.log(search_result);
-  var selectSQL = "select * from manager where mid=?";
-  console.log(selectSQL);
-  con.query(selectSQL,search_result,function(err,result){
-    console.log(result);
-    if(err){
-      console.log(err);
-    }
-    else{
-      res.render('editM',{editMList:result});
-    }
-  })
+  });
 });
 
-// // 表中表
-// router.get('/listt', function(req, res, next) {
-//   res.render('listt', {title:'吾宠后台管理系统'});
-//   // res.render('list', {List:List});
-// });
-// router.get('/listp', function(req, res, next) {
-//   var userId=req.query.userId;
-//   con.query("select * from petinfo where userId=?",[userId],function(err,result){
-//     if(err){
-//       console.log(err);
-//     }
-//     else{
-//       res.render("listp",{petinfo:result});
-//       // console.log(result);
-//     }
-//   });
-// });
-// router.get('/listb', function(req, res, next) {
-//   var activeId=req.query.activeId;
-//   con.query("select * from signup where activeId=?",[activeId],function(err,result){
-//     if(err){
-//       console.log(err);
-//     }
-//     else{
-//       res.render("listb",{signup:result});
-//       // console.log(result);
-//     }
-//   });
-// });
-// router.get('/listd', function(req, res, next) {
-//   var userId=req.query.userId
-//   con.query("select * from clockin where userId=?",[userId],function(err,result){
-//     if(err){
-//       console.log(err);
-//     }
-//     else{
-//       res.render("listd",{clockin:result});
-//       // console.log(result);
-//     }
-//   });
-// });
 
-// /* POST 登录验证 && GET login page. */
+// // /* POST 登录验证 && GET login page. */
 router.get('/login', function(req, res, next) {
   var response = {
     "username":req.query.username,

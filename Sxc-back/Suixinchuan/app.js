@@ -26,21 +26,20 @@ app.all('*', function(req, res, next) {
 });
 
 
-var indexRouter = require('./routes/index');
+// var indexRouter = require('./routes/index');
 // var usersRouter = require('./routes/users');
-// var listRouter = require('./routes/list');
+// var listRouter = require('./routes/index');
 // var listtRouter = require('./routes/list');
-// var listpRouter = require('./routes/index');
+
 // var listbRouter = require('./routes/index');
 // var listdRouter = require('./routes/index');
 // var listeRouter = require('./routes/index');
 // var dongtaiRouter = require('./routes/index');
 // var zhuceRouter = require('./routes/index');
 // var showPlayRouter = require('./routes/index');
-var editMRouter = require('./routes/index');
+
 // var editDRouter = require('./routes/index');
 // var editARouter = require('./routes/index');
-// var editURouter = require('./routes/index');
 // var activityRouter = require('./routes/index');
 // var systemRouter = require('./routes/index');
 // var userguanRouter = require('./routes/index');
@@ -57,6 +56,10 @@ var goodsRouter = require('./routes/index');
 var dongtaiRouter = require('./routes/index');
 var rentRouter = require('./routes/index');
 var zhuceRouter = require('./routes/index');
+var editMRouter = require('./routes/index');
+var editURouter = require('./routes/index');
+
+var listaRouter = require('./routes/index');
 var app = express();
 
 
@@ -74,16 +77,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 // app.use('/users', usersRouter);
 // app.use('/list', listRouter);
 // app.use('/listt', listtRouter);
-// app.use('/listp', listpRouter);
 // app.use('/listb', listbRouter);
 // app.use('/listd', listdRouter);
 // app.use('/liste', listeRouter);
 // app.use('/zhuce', zhuceRouter);
 // app.use('/showPlay',showPlayRouter);
-// app.use('/editM', editMRouter);
+
+
 // app.use('/editD', editDRouter);
 // app.use('/editA', editARouter);
-// app.use('/editU', editURouter);
 // app.use('/activity', activityRouter);
 // app.use('/dongtai', dongtaiRouter);
 // app.use('/system', systemRouter);
@@ -103,6 +105,10 @@ app.use('/goods', goodsRouter);
 app.use('/dongtai', dongtaiRouter);
 app.use('/rent', rentRouter);
 app.use('/zhuce', zhuceRouter);
+app.use('/editM', editMRouter);
+app.use('/editU', editURouter);
+app.use('/lista', listaRouter);
+
 
 
 //查找用户  httpS://localhost:8081/user

@@ -45,6 +45,8 @@
             margin-right: 30px;
             margin-top: 10px;
         }
+
+        
     </style>
 </head>
 <body>
@@ -54,10 +56,10 @@
             随心穿后台管理系统			
         </div>
         <div class="left">
-            <div class="a" style="background: #1daea9;">
+            <div class="a">
                 <h1 onclick="showSystem()">系统管理</h1>
             </div>
-            <div class="a">
+            <div class="a" style="background: #1daea9;">
                 <h1 onclick="showUser()">用户管理</h1>
             </div>
             <div class="a">
@@ -74,35 +76,19 @@
             </div>
         </div>
         
-        <form class="zhuce" action="/editManager?mid=<%=editMList[0].mid%>" method="POST">
+        <form class="zhuce" action="/editShop?shopid=<%=editSList[0].shopid%>" method="POST">
             <div class="divv">
-                <h3>用户名:</h3>
-                <input type="text" name="user" value=<%=editMList[0].mname%>>
+                <h3>商家名:</h3>
+                <input type="text" name="shopname" value=<%=editSList[0].shopname%>>
             </div>
             <div class="divv">
-                <h3>真实姓名:</h3>
-                <input type="text" name="username" value=<%=editMList[0].mrealname%>>
-            </div>
-            <div class="divv">
-                <h3>性别:</h3>
-                <input type="text" name="msex" value=<%=editMList[0].msex%>>
-            </div>
-            <div class="divv">
-                <h3>手机号:</h3>
-                <input type="text" name="mtel" value=<%=editMList[0].mtel%>>
-            </div>
-            <div class="divv">
-                <h3>邮箱:</h3>
-                <input type="text" name="memail" value=<%=editMList[0].memail%>>
+                <h3>商家电话:</h3>
+                <input type="text" name="tel" value=<%=editSList[0].shoptel%>>
             </div>
             <div class="divv">
                 <h3>密码:</h3>
-                <input type="text" value=<%=editMList[0].mpwd%> name="mpwd">
+                <input type="text" name="pwd" value=<%=editSList[0].shoppwd%>>
             </div>
-            <!-- <div class="divv">
-                <h3>确认密码:</h3>
-                <input type="text" placeholder="请再次输入密码" name="pwd">
-            </div> -->
             <div><button>确认</button></div>
             
         </form>

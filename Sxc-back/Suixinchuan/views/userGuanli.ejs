@@ -160,39 +160,38 @@
                       <th>密码</th>
                       <th>头像</th>
                       <th>手机号</th>
-                      <th>收货地址</th>
-                      <th>租借时间</th>
                       <th>余额</th>
+                      <th>收货地址</th>
+                      <!-- <th>租借时间</th> -->
                       <th>操作</th>
                     </tr>
-                    <%for(var i=0;i < user.length;i++){%>
+                    <%for(var i=0;i < userinfo.length;i++){%>
                         <tr>
                             <td ><label><input type="radio" name="0" ></label></td>
                             <td>
-                                <%= user[i]["userid"]%>
+                                <%= userinfo[i]["userid"]%>
                             </td>
                             <td>
-                                <%= user[i]["username"]%>
-                            </td>
-                            <td><%= user[i]["userpwd"]%></td>
-                            <td>
-                                <!-- <%= user[i]["userauatar"]%> -->
-                                二进制编码有问题
-                            </td>
-                            <td><%= user[i]["usertel"]%></td>
-                            <td>
-                                    <!-- <%= user[i]["usertel"]%> -->
-                                    收货地址
+                                <%= userinfo[i]["username"]%>
                             </td>
                             <td>
-                                <!-- <%= user[i]["userpwd"]%> -->
-                                租借时间
+                                <%= userinfo[i]["userpwd"]%>
                             </td>
-                            <!-- <td><button><a href="/listd?userid=<%= user[i]["userid"]%>">打卡表</a></button></td> -->
                             <td>
-                                    <button><a href="/editU?userid=<%= user[i]["userid"]%>">编辑</a></button>
-                                    <button><a href="/delu?userid=<%= user[i]["userid"]%>">删除</a></button>
+                                <!-- <%= userinfo[i]["userauatar"]%> -->
                             </td>
+                            <td>
+                                <%= userinfo[i]["usertel"]%>
+                            </td>
+                            <td>
+                                <%= userinfo[i]["userMon"]%>
+                            </td>
+                            <td><button><a href="/lista?userId=<%= userinfo[i]["userid"]%>">收货地址表</a></button></td>
+                            <td>
+                                <button><a href="/editU?userid=<%= userinfo[i]["userid"]%>">编辑</a></button>
+                                <button><a href="/delu?userid=<%= userinfo[i]["userid"]%>">删除</a></button>
+                            </td>
+
                         </tr>
                     <%}%>
                     <!-- <tr>

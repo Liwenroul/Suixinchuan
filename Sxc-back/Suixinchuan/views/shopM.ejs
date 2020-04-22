@@ -56,6 +56,30 @@
                         <th>商家头像</th>
                         <th>操作</th>
                     </tr> 
+                    <%for(var i=0;i < shop.length;i++){%>
+                        <tr>
+                            <td ><label><input type="radio" name="0" ></label></td>
+                            <td>
+                                <%= shop[i]["shopid"]%>
+                            </td>
+                            <td>
+                                <%= shop[i]["shopname"]%>
+                            </td>
+                            <td>
+                                <%= shop[i]["shoppwd"]%>
+                            </td>
+                            <td>
+                                <%= shop[i]["shoptel"]%>
+                            </td>
+                            <td>
+                                <!-- <%= shop[i]["shopauatar"]%> -->
+                            </td>
+                            <td>
+                                <button><a href="/editS?shopid=<%=shop[i]["shopid"]%>">编辑</a></button>
+                                <button><a href="/dels?shopid=<%= shop[i]["shopid"]%>">删除</a></button>
+                            </td>
+                        </tr>
+                    <%}%>
                 </table>
                 
             </div>
