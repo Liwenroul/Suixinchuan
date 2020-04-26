@@ -45,7 +45,6 @@ target 'myAppN' do
 
   pod 'react-native-image-picker', :path => '../node_modules/react-native-image-picker'
 
-  pod 'Picker', :path => '../node_modules/react-native-picker'
 
   target 'myAppNTests' do
     inherit! :search_paths
