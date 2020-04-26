@@ -17,7 +17,27 @@ export default class Home extends Component {
             // name:'heart-o',
             // color:'',
             wish:false,
+            tits: [],
+            page:1
         }
+    }
+    componentDidMount(){
+        // fetch('https://facebook.github.io/react-native/user')
+        //     .then(res=>res.json())
+        //     .then(res=>{
+        //         console.log(res);
+        //         this.setState({tits: res});
+        //     })
+        fetch('https://facebook.github.io/react-native/movies.json')
+      .then((response) => response.json())
+      .then((responseJson) => {
+        console.log(responseJson.movies);
+        this.setState({tits: responseJson.movies});
+        return responseJson.movies;
+      })
+      .catch((error) => {
+        console.error(error);
+      });
     }
     shoucang =()=>{
         if(!this.state.wish){
@@ -253,7 +273,27 @@ export default class Home extends Component {
                                 </TouchableOpacity>
                             </View>
                         </View>
-                        
+                        <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', alignItems: 'center', flexWrap: 'wrap', }}>
+                        {
+                            this.state.tits.map((item)=>{
+                                let ran=Math.random();
+                                return(
+                                <View style={{
+                                    width:'100%',
+                                    height:40,
+                                    backgroundColor:'#fff',
+                                    flexDirection:'row',
+                                    alignItems:'center',
+                                    justifyContent:'flex-start',  
+                                }}>
+                                <Text style={{paddingLeft:'2%',width:450*s}}>{item.id}</Text>
+                                <Text style={{fontSize:14,width:220*s}}>{item.title}</Text>
+                               
+                                </View>
+                                )
+                            })
+                        }
+                        </View>
                     </View>
                 </ScrollView>
             </View>
