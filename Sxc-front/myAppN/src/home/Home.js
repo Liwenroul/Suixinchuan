@@ -22,22 +22,28 @@ export default class Home extends Component {
         }
     }
     componentDidMount(){
-        // fetch('https://facebook.github.io/react-native/user')
-        //     .then(res=>res.json())
-        //     .then(res=>{
-        //         console.log(res);
-        //         this.setState({tits: res});
-        //     })
-        fetch('https://facebook.github.io/react-native/movies.json')
-      .then((response) => response.json())
-      .then((responseJson) => {
-        console.log(responseJson.movies);
-        this.setState({tits: responseJson.movies});
-        return responseJson.movies;
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+        // fetch('http://localhost:3000/user',
+        fetch('https://github.com/facebook/react-native/user',
+        {
+            method:'GET', 
+            headers:{ 'Accept':'application/json', 'Content-Type':'application/json', } 
+        })
+            .then(res=>res.json())
+            .then(json =>{ console.log(json); this.setState({ tits: json }) 
+            // .then(res=>{
+                // console.log(res);
+                // this.setState({tits: res});
+            })
+    //     fetch('https://facebook.github.io/react-native/movies.json')
+    //   .then((response) => response.json())
+    //   .then((responseJson) => {
+    //     console.log(responseJson.movies);
+    //     this.setState({tits: responseJson.movies});
+    //     return responseJson.movies;
+    //   })
+    //   .catch((error) => {
+    //     console.error(error);
+    //   });
     }
     shoucang =()=>{
         if(!this.state.wish){
@@ -274,10 +280,9 @@ export default class Home extends Component {
                             </View>
                         </View>
                         <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', alignItems: 'center', flexWrap: 'wrap', }}>
-                        {
-                            this.state.tits.map((item)=>{
-                                let ran=Math.random();
-                                return(
+                        {/* <Text>{this.state.tits}</Text> */}
+                        {/* {
+                            this.state.tits&&this.state.tits.map((item,key)=>
                                 <View style={{
                                     width:'100%',
                                     height:40,
@@ -291,8 +296,8 @@ export default class Home extends Component {
                                
                                 </View>
                                 )
-                            })
-                        }
+                            
+                        } */}
                         </View>
                     </View>
                 </ScrollView>
