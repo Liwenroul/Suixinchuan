@@ -54,9 +54,9 @@ export default class Wear extends Component {
                             />
                             </TouchableOpacity>
                             <Text style={{marginTop: 20*s}}>{item.title}</Text>
-                            <Text style={{fontSize:10,marginLeft:-90,color:'red'}} onPress={Actions.cloth}>衣服详情</Text>
-                            <Text style={{fontSize:10,marginLeft:40,marginTop:-20}}>{item.num}</Text>
-                            <Icon name='heart-o' style={{fontSize:25,color:'red',marginLeft:180*s,marginTop:-20}}/>
+                            <Text style={{fontSize:10,marginLeft:-90,color:'red',marginTop:12*s}} onPress={Actions.cloth}>衣服详情</Text>
+                            <Text style={{fontSize:10,marginLeft:40,marginTop:-35*s}}>{item.num}</Text>
+                            <Icon name='heart-o' style={{fontSize:25,color:'red',marginLeft:180*s,marginTop:-40*s}}/>
                         </View>
                     )}
                 />
