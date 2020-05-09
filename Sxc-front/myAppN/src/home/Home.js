@@ -22,18 +22,22 @@ export default class Home extends Component {
         }
     }
     componentDidMount(){
-        // fetch('http://localhost:3000/user',
-        fetch('https://github.com/facebook/react-native/user',
-        {
-            method:'GET', 
-            headers:{ 'Accept':'application/json', 'Content-Type':'application/json', } 
-        })
-            .then(res=>res.json())
-            .then(json =>{ console.log(json); this.setState({ tits: json }) 
-            // .then(res=>{
-                // console.log(res);
-                // this.setState({tits: res});
-            })
+        // fetch('http://192.168.0.106:3000/user')
+        //     .then(res=>res.json())
+        //     .then(res=>{
+        //         this.setState({tits: res});
+        //     })
+        // fetch('https://github.com/facebook/react-native/user',
+        // {
+        //     method:'GET', 
+        //     headers:{ 'Accept':'application/json', 'Content-Type':'application/json', } 
+        // })
+        //     .then(res=>res.json())
+        //     .then(json =>{ console.log(json); this.setState({ tits: json }) 
+        //     // .then(res=>{
+        //         // console.log(res);
+        //         // this.setState({tits: res});
+        //     })
     //     fetch('https://facebook.github.io/react-native/movies.json')
     //   .then((response) => response.json())
     //   .then((responseJson) => {
@@ -45,6 +49,13 @@ export default class Home extends Component {
     //     console.error(error);
     //   });
     }
+    // componentDidUpdate(){
+    //     fetch('http://192.168.0.106:3000/user')
+    //         .then(res=>res.json())
+    //         .then(res=>{
+    //             this.setState({tits: res});
+    //         })
+    // }
     shoucang =()=>{
         if(!this.state.wish){
             this.refs.changeColor.color='red',
@@ -282,7 +293,8 @@ export default class Home extends Component {
                         <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', alignItems: 'center', flexWrap: 'wrap', }}>
                         {/* <Text>{this.state.tits}</Text> */}
                         {/* {
-                            this.state.tits&&this.state.tits.map((item,key)=>
+                            // this.state.tits&&
+                            this.state.tits.map((item,key)=>
                                 <View style={{
                                     width:'100%',
                                     height:40,
@@ -291,9 +303,9 @@ export default class Home extends Component {
                                     alignItems:'center',
                                     justifyContent:'flex-start',  
                                 }}>
-                                <Text style={{paddingLeft:'2%',width:450*s}}>{item.id}</Text>
-                                <Text style={{fontSize:14,width:220*s}}>{item.title}</Text>
-                               
+                                <Text style={{paddingLeft:'2%',width:250*s}}>{item.userid}</Text>
+                                <Text style={{fontSize:14,width:220*s}}>{item.username}</Text>
+                                <Text style={{fontSize:14,width:220*s}}>{item.userpwd}</Text>
                                 </View>
                                 )
                             

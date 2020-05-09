@@ -1,5 +1,5 @@
 {
-    "host":"localhost",
+    "host":"192.168.0.106",
     "database":"sxc",
     "user":"root",
     "password":""

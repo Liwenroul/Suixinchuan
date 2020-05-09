@@ -33,20 +33,17 @@ export default class Login extends Component {
       tips:'',
       imageUrl: true,
       data: [],
-      userId: ''
+      userid: ''
     }
   }
   componentDidMount() {
     this.setState({ isloading: false });
     this.getData();
-    // fetch('/userinfo')
-    //   .then((res) => res.json())
-    //   .then((res) => {
-    //     console.log(res);
-    //     this.setState({
-    //       data: res,
-    //     })
-    //   })
+    fetch('http://192.168.0.106:3000/user')
+            .then(res=>res.json())
+            .then(res=>{
+                this.setState({data: res});
+            })
   }
   userhandle = (text) => {
     this.setState({ username: text })
@@ -54,70 +51,70 @@ export default class Login extends Component {
   pwdhandle = (text) => {
     this.setState({ pwd: text })
   }
-  // loginCheck = () => {
-  //   var loginname = this.state.username;
-  //   var password = this.state.pwd;
-  //   this.setState({ isloading: true })
-
-  //   if (loginname !== null) {
-  //     for (var i = 0; i < this.state.data.length; i++) {
-  //       if (loginname === this.state.data[i].userName && password === this.state.data[i].userPassword) {
-  //         registerValue = { "userId": this.state.data[i].userId }
-  //         this.setState({ userId: this.state.data[i].userId })
-  //         fetch('/denglu', {
-  //           method: "POST",
-  //           headers: {
-  //             "Content-type": "application/json;charset=utf-8",
-  //           },
-  //           body: JSON.stringify(registerValue),
-  //         }).then(res => res.text())
-  //           .then(data => {
-  //             console.log(data);
-  //           });
-
-  //         alert("success!");
-  //         AsyncStorage.setItem('user', JSON.stringify(res.data))
-  //           .then(() => {
-  //             this.setState({ isloading: false })
-  //             Actions.homePage();
-  //           })
-  //         // window.location = '/tab'+this.state.data[i].userId;
-  //       }
-  //       if (loginname === this.state.data[i].userName && password !== this.state.data[i].userPassword) {
-  //         alert("error!");
-  //       }
-  //     }
-  //   }
-  //   else {
-  //     alert("未完成验证");
-  //   }
-  //   console.log(registerValue.userId)
-  // }
-
   loginCheck = () => {
-    if(
-      this.state.username != '' &&
-      this.state.pwd != ''
-    ){
-      myFetch.post('/login',{
-        username:this.state.username,
-        pwd:this.state.pwd}
-      ).then(res=>{
-        if(res){
-          AsyncStorage.setItem('user',JSON.stringify(res.data))
-          .then(()=>{
-            this.setState({isloading:true},()=>{
-              setTimeout(()=>Actions.homePage(),1000);
+    var loginname = this.state.username;
+    var password = this.state.pwd;
+    this.setState({ isloading: true })
+
+    if (loginname !== null) {
+      for (var i = 0; i < this.state.data.length; i++) {
+        if (loginname === this.state.data[i].username && password === this.state.data[i].userpwd) {
+          registerValue = { "userId": this.state.data[i].userid }
+          this.setState({ userid: this.state.data[i].userid })
+          fetch('http://192.168.0.106:3000/denglu', {
+            method: "POST",
+            headers: {
+              "Content-type": "application/json;charset=utf-8",
+            },
+            body: JSON.stringify(registerValue),
+          }).then(res => res.text())
+            .then(data => {
+              console.log(data);
             });
-          })
-        }else{
-          this.setState({tips:"用户名/密码不正确 或 未注册"});
+
+          alert("success!");
+          AsyncStorage.setItem('user', JSON.stringify(this.state.data))
+            .then(() => {
+              this.setState({ isloading: false })
+              Actions.homePage();
+            })
+          // window.location = '/tab'+this.state.data[i].userId;
         }
-      })
-    }else{
-      this.setState({tips:"请填写登陆信息！"});
+        if (loginname === this.state.data[i].username && password !== this.state.data[i].userpwd) {
+          alert("error!");
+        }
+      }
     }
+    else {
+      alert("未完成验证");
+    }
+    console.log(registerValue.userid)
   }
+
+  // loginCheck = () => {
+  //   if(
+  //     this.state.username != '' &&
+  //     this.state.pwd != ''
+  //   ){
+  //     myFetch.post('/login',{
+  //       username:this.state.username,
+  //       pwd:this.state.pwd}
+  //     ).then(res=>{
+  //       if(res){
+  //         AsyncStorage.setItem('user',JSON.stringify(res.data))
+  //         .then(()=>{
+  //           this.setState({isloading:true},()=>{
+  //             setTimeout(()=>Actions.homePage(),1000);
+  //           });
+  //         })
+  //       }else{
+  //         this.setState({tips:"用户名/密码不正确 或 未注册"});
+  //       }
+  //     })
+  //   }else{
+  //     this.setState({tips:"请填写登陆信息！"});
+  //   }
+  // }
 
 
 

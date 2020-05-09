@@ -88,7 +88,24 @@ app.get('/user',jsonParser,(req,res)=>{
       res.json(result); 
   }); 
 }) 
-
+app.post('/user1',(req,res)=>{
+  let data=req.body;
+  console.log(data);
+  let insertData = {
+    userId:"u"+parseInt(Math.random()*1000000),
+    userName:data.username,
+    userTel:data.usertel,
+    userPassword:data.userpwd,
+    userAvatar:""
+  }
+  con.query('insert into user(userid,username,usertel,userpwd,userauatar) values(?,?,?,?,?)',[insertData.userId,insertData.userName,insertData.userTel,insertData.userPassword,insertData.userAvatar],function(err,result){
+    if(err){
+          console.log(err);
+      }
+        console.log(result);
+        res.json(result); 
+  })
+})
 app.post('/user',(req,res)=>{
   let data=req.body;
   console.log(data);
@@ -406,7 +423,7 @@ app.get('/denglu',jsonParser,(req,res)=>{
 app.post('/denglu',(req,res)=>{
   let data=req.body;
   console.log(data);
-        con.query('insert into denglu(userId) values(?)',[data.userId],function(err,result){
+        con.query('insert into denglu(userid) values(?)',[data.userid],function(err,result){
           if(err){
                 console.log(err);
             }else{

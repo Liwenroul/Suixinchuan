@@ -99,7 +99,7 @@ import { myFetch } from '../utils'
 // 	 return false;
 //  }
 
-var code='获取验证码';
+var code = '获取验证码';
 export default class Register extends Component {
 	constructor() {
 		super();
@@ -110,8 +110,16 @@ export default class Register extends Component {
 			yzpwd: '',
 			isregister: false,
 			tips: '',
-			yzm: code
+			yzm: code,
+			data: []
 		}
+	}
+	componentDidMount() {
+		fetch('http://192.168.0.106:3000/user')
+			.then(res => res.json())
+			.then(res => {
+				this.setState({ data: res });
+			})
 	}
 	userhandle = (text) => {
 		this.setState({ username: text })
@@ -126,39 +134,67 @@ export default class Register extends Component {
 		this.setState({ yzpwd: text })
 	}
 	register = () => {
-		if (
-			this.state.username != '' &&
-			this.state.pwd != '' &&
-			this.state.usertel != '' &&
-			this.state.yzpwd != ''
-		) {
-			myFetch.post('/register', {
-				username: this.state.username,
-				usertel: this.state.usertel,
-				pwd: this.state.pwd
-			}).then(res => {
-				if (res)
-					Actions.login();
-				else
-					this.setState({ tips: '该用户名已注册，注册失败' })
+		console.log(this.state.username);
+		const registerValue = { "username": this.state.username, "usertel": this.state.usertel, "userpwd": this.state.pwd }
+
+		if (this.state.username != "" && this.state.usertel != "" && this.state.userpwd != "") {
+			fetch('http://192.168.0.106:3000/user1', {
+				method: "POST",
+				headers: {
+					"Content-type": "application/json;charset=utf-8",
+				},
+				body: JSON.stringify(registerValue),
 			})
-		} else {
-			this.setState({ tips: '确认密码不正确 或 注册信息未填写！' })
+				.then(res => res.text())
+				.then(data => {
+					console.log(data);
+					this.setState({ isregister:true})
+					alert('register OK');
+						
+					AsyncStorage.setItem('user', JSON.stringify(this.state.data))
+						.then(() => {
+							this.setState({ isregister:false,isloading: false })
+							Actions.login();
+						})
+				
+				});
 		}
-		// this.setState({ isRegister: true })
-		// myFetch.post('/register',
-		// 	{
-		// 		username: this.state.username,
-		// 		usertel:this.state.usertel,
-		// 		pwd: this.state.pwd
-		// 	}).then(res => {
-		// 		AsyncStorage.setItem('user', JSON.stringify(res.data))
-		// 			.then(() => {
-		// 				ToastAndroid.show('注册成功', 1000);
-		// 				setTimeout(() => Actions.login(), 2000)
-		// 			})
-		// 	})
+
 	}
+	// register = () => {
+	// 	if (
+	// 		this.state.username != '' &&
+	// 		this.state.pwd != '' &&
+	// 		this.state.usertel != '' &&
+	// 		this.state.yzpwd != ''
+	// 	) {
+	// 		myFetch.post('/register', {
+	// 			username: this.state.username,
+	// 			usertel: this.state.usertel,
+	// 			pwd: this.state.pwd
+	// 		}).then(res => {
+	// 			if (res)
+	// 				Actions.login();
+	// 			else
+	// 				this.setState({ tips: '该用户名已注册，注册失败' })
+	// 		})
+	// 	} else {
+	// 		this.setState({ tips: '确认密码不正确 或 注册信息未填写！' })
+	// 	}
+	// 	// this.setState({ isRegister: true })
+	// 	// myFetch.post('/register',
+	// 	// 	{
+	// 	// 		username: this.state.username,
+	// 	// 		usertel:this.state.usertel,
+	// 	// 		pwd: this.state.pwd
+	// 	// 	}).then(res => {
+	// 	// 		AsyncStorage.setItem('user', JSON.stringify(res.data))
+	// 	// 			.then(() => {
+	// 	// 				ToastAndroid.show('注册成功', 1000);
+	// 	// 				setTimeout(() => Actions.login(), 2000)
+	// 	// 			})
+	// 	// 	})
+	// }
 	/* 随机验证码 */
 	//声明一个变量用于存储生成的验证码
 
@@ -186,7 +222,7 @@ export default class Register extends Component {
 		this.setState({ yzm: code });//将验证码写入指定区域
 	}
 
-	
+
 	render() {
 		return (
 			<View>
