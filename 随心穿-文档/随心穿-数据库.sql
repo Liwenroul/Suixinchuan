@@ -66,6 +66,19 @@ CREATE TABLE `complain` (
 
 insert  into `complain`(`compid`,`compcontent`,`userid`) values ('co742637','我就得不好。','u123456'),('co463267','我就得不好。','u654321');
 
+/*Table structure for table `denglu` */
+
+DROP TABLE IF EXISTS `denglu`;
+
+CREATE TABLE `denglu` (
+  `userid` varchar(20) NOT NULL,
+  PRIMARY KEY (`userid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+/*Data for the table `denglu` */
+
+insert  into `denglu`(`userid`) values ('u123456'),('u654321');
+
 /*Table structure for table `manager` */
 
 DROP TABLE IF EXISTS `manager`;
@@ -84,6 +97,25 @@ CREATE TABLE `manager` (
 /*Data for the table `manager` */
 
 insert  into `manager`(`mid`,`mname`,`mrealname`,`msex`,`mtel`,`memail`,`mpwd`) values ('m123456','小李','李梦雪','女','62367248','6452376@qq.com','123456'),('m654321','小郑','郑雨露','女','75983747','9868577@qq.com','654321');
+
+/*Table structure for table `manerger` */
+
+DROP TABLE IF EXISTS `manerger`;
+
+CREATE TABLE `manerger` (
+  `mid` varchar(20) NOT NULL,
+  `mname` varchar(20) NOT NULL,
+  `mrealname` varchar(20) NOT NULL,
+  `msex` char(10) NOT NULL,
+  `mtel` varchar(50) NOT NULL,
+  `memail` varchar(50) NOT NULL,
+  `mpwd` varchar(50) NOT NULL,
+  PRIMARY KEY (`mid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+/*Data for the table `manerger` */
+
+insert  into `manerger`(`mid`,`mname`,`mrealname`,`msex`,`mtel`,`memail`,`mpwd`) values ('m123456','小李','李梦雪','女','62367248','6452376@qq.com','123456'),('m654321','小郑','郑雨露','女','75983747','9868577@qq.com','654321');
 
 /*Table structure for table `merchandise` */
 
