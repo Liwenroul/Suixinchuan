@@ -22,11 +22,11 @@ export default class Home extends Component {
         }
     }
     componentDidMount(){
-        // fetch('http://192.168.0.106:3000/user')
-        //     .then(res=>res.json())
-        //     .then(res=>{
-        //         this.setState({tits: res});
-        //     })
+        fetch('http://192.168.0.106:3000/sale')
+            .then(res=>res.json())
+            .then(res=>{
+                this.setState({tits: res});
+            })
         // fetch('https://github.com/facebook/react-native/user',
         // {
         //     method:'GET', 
@@ -127,17 +127,6 @@ export default class Home extends Component {
                         />
                     </View>
                 </View>
-                {/* <Swiper style={{height:273*s,width:640*s}} showsButtons={false}>
-                        <View style={styles.slide}>
-                            <Image style={{width:width}} source={require('../../assets/icon/xk.png')} />
-                        </View>
-                        <View style={styles.slide}>
-                            <Image style={{width:width}} source={require('../../assets/icon/xk.png')} />
-                        </View>
-                        <View style={styles.slide}>
-                            <Image style={{width:width}} source={require('../../assets/icon/xk.png')} />
-                        </View>
-                    </Swiper> */}
 
                 <ScrollView>
                     <ScrollView
@@ -162,7 +151,28 @@ export default class Home extends Component {
                         pagingEnabled={true}
                         horizontal={true}
                     >
-                        <View style={{
+                        {
+                            // this.state.tits&&
+                            this.state.tits.map((item,key)=>
+                            <View style={{
+                                width: 190 * s,
+                                height: 200 * s,
+                                alignItems: 'center',
+                                justifyContent:'center'
+                            }}>
+                                <TouchableOpacity style={styles.btn}  onPress={()=>Actions.detail()}>
+                                    <Text>{item.saletit}</Text>
+                                    <Text style={{fontSize:10}}>{item.saleinfo}</Text>
+                                    <View style={styles.img}>
+                                        <Image style={{width:'30%',height:'100%'}} resizeMode='stretch' source={require('../../assets/v2_q5kktg.jpg')}/>
+                                        <Image  style={{width:'45%',height:'50%'}} resizeMode='stretch' source={require('../../assets/v2_q5kkuw.jpg')}/>
+                                    </View>
+                                </TouchableOpacity>
+                            </View>
+                                )
+                            
+                        }
+                        {/* <View style={{
                             width: 190 * s,
                             height: 200 * s,
                             alignItems: 'center',
@@ -235,7 +245,7 @@ export default class Home extends Component {
                                     <Image  style={{width:'36%',height:'85%',marginLeft:10*s}} resizeMode='stretch' source={require('../../assets/raw_1521984570.png')}/>
                                 </View>
                             </TouchableOpacity>
-                        </View>
+                        </View> */}
                         <View style={{
                             width: 190 * s,
                             height: 200 * s,

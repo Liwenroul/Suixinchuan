@@ -96,9 +96,43 @@ app.post('/user1',(req,res)=>{
     userName:data.username,
     userTel:data.usertel,
     userPassword:data.userpwd,
-    userAvatar:""
+    userAvatar:"",
+    isloading:0
   }
-  con.query('insert into user(userid,username,usertel,userpwd,userauatar) values(?,?,?,?,?)',[insertData.userId,insertData.userName,insertData.userTel,insertData.userPassword,insertData.userAvatar],function(err,result){
+  // con.query("select * from user",function(err,result){
+  //   if(err){
+  //     console.log(err);
+  //   } else {
+  //     console.log(result);
+  //     if (result == []) {
+        con.query('insert into user(userid,username,usertel,userpwd,userauatar,isloading) values(?,?,?,?,?,?)', [insertData.userId, insertData.userName, insertData.userTel, insertData.userPassword, insertData.userAvatar,insertData.isloading], function (err, result) {
+          if (err) {
+            console.log(err);
+          }
+          console.log(result);
+          res.json(result);
+        })
+      // }
+      // else {
+      //   con.query('update user set isloading=? where userid=?', [data.isloading, data.userid], function (err, result) {
+      //     if (err) {
+      //       console.log(err);
+      //     }
+      //     console.log(result);
+      //     res.json(result);
+      //   })
+      // }
+    // }
+  // })
+})
+app.post('/user2',(req,res)=>{
+  let data=req.body;
+  console.log(data);
+  let upData = {
+    isloading:data.isloading,
+    userid:data.userid
+  }
+  con.query('update user set isloading=? where userid=?',[upData.isloading,upData.userid],function(err,result){
     if(err){
           console.log(err);
       }

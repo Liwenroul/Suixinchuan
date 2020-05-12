@@ -59,9 +59,11 @@ export default class Login extends Component {
     if (loginname !== null) {
       for (var i = 0; i < this.state.data.length; i++) {
         if (loginname === this.state.data[i].username && password === this.state.data[i].userpwd) {
-          registerValue = { "userId": this.state.data[i].userid }
+          // this.setState({isloading:this.state.data[i].isloading })
+          registerValue = { "userid": this.state.data[i].userid,"isloading":1  }
           this.setState({ userid: this.state.data[i].userid })
-          fetch('http://192.168.0.106:3000/denglu', {
+          // fetch('http://192.168.0.106:3000/denglu', {
+            fetch('http://192.168.0.106:3000/user2', {
             method: "POST",
             headers: {
               "Content-type": "application/json;charset=utf-8",
@@ -71,11 +73,12 @@ export default class Login extends Component {
             .then(data => {
               console.log(data);
             });
-
+          
           alert("success!");
           AsyncStorage.setItem('user', JSON.stringify(this.state.data))
             .then(() => {
-              this.setState({ isloading: false })
+              // this.setState({ isloading: false })
+              // this.setState({isloading:this.state.data[i].isloading })
               Actions.homePage();
             })
           // window.location = '/tab'+this.state.data[i].userId;
