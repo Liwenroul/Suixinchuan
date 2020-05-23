@@ -140,6 +140,22 @@ app.post('/user2',(req,res)=>{
         res.json(result); 
   })
 })
+//重置密码
+app.post('/user3',(req,res)=>{
+  let data=req.body;
+  console.log(data);
+  let upData = {
+    userpwd:data.userpwd,
+    userid:data.userid
+  }
+  con.query('update user set userpwd=? where userid=?',[upData.userpwd,upData.userid],function(err,result){
+    if(err){
+          console.log(err);
+      }
+        console.log(result);
+        res.json(result); 
+  })
+})
 app.post('/user',(req,res)=>{
   let data=req.body;
   console.log(data);

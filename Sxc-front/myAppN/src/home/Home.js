@@ -18,7 +18,8 @@ export default class Home extends Component {
             // color:'',
             wish:false,
             tits: [],
-            page:1
+            page:1,
+            tit:[]
         }
     }
     componentDidMount(){
@@ -26,6 +27,11 @@ export default class Home extends Component {
             .then(res=>res.json())
             .then(res=>{
                 this.setState({tits: res});
+            })
+        fetch('http://192.168.0.106:3000/merchandise')
+            .then(res=>res.json())
+            .then(res=>{
+                this.setState({tit: res});
             })
         // fetch('https://github.com/facebook/react-native/user',
         // {
@@ -258,7 +264,10 @@ export default class Home extends Component {
                             </TouchableOpacity>
                         </View>
                     </ScrollView>
+                    {
+                        this.state.tit.map((item,key)=>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', alignItems: 'center', flexWrap: 'wrap', }}>
+                    
                         <View style={{
                             width: '45%',
                             height: 500 * s,
@@ -269,17 +278,19 @@ export default class Home extends Component {
                             backgroundColor:'#eee'
                         }}>
                             <TouchableOpacity style={{width:'100%',height:'90%'}} onPress={()=>Actions.detail()}>
-                                <Image  style={{width:'100%',height:'85%',borderRadius:20}} resizeMode='stretch' source={require('../../assets/v2_q5klar.jpg')} />
-                                <Text style={{marginTop:8*s}}>酒红色蕾丝优雅长款礼裙</Text>
-                                <Text style={{marginTop:8*s}}>BLANCHE</Text>
+                                <Image  style={{width:'100%',height:'90%',borderRadius:20}} resizeMode='stretch' source={require('../../assets/v2_q5klar.jpg')} />
+                                <Text style={{marginTop:15*s}}>{item.tit.slice(8,)}</Text>
+                                {/* <Text style={{marginTop:8*s}}>{item.shopbrand}</Text> */}
                             </TouchableOpacity>
                             <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',width:'100%',height:'10%'}}>
-                                <Text style={{color:'red',}}>￥399/4日</Text>
-                                <TouchableOpacity  onPress={this.shoucang}>
+                                <Text style={{marginTop:5*s}}>{item.shopbrand}</Text>
+                                <Text style={{color:'red',}}>￥{item.price}/4日</Text>
+                                {/* <TouchableOpacity  onPress={this.shoucang}>
                                     <Icon name='heart-o' ref="changeColor" style={{fontSize:25}}/>
-                                </TouchableOpacity>
+                                </TouchableOpacity> */}
                             </View>
                         </View>
+                        
                         <View style={{
                             width: '45%',
                             height: 500 * s,
@@ -289,39 +300,23 @@ export default class Home extends Component {
                             backgroundColor:'#eee'
                         }}>
                             <TouchableOpacity style={{width:'100%',height:'90%'}}>
-                                <Image   style={{width:'100%',height:'85%',borderRadius:20}} resizeMode='stretch' source={require('../../assets/v2_q5klq0.jpg')} />
-                                <Text style={{marginTop:8*s}}>宝石蓝抹胸晚礼服</Text>
-                                <Text style={{marginTop:8*s}}>BLANCHE</Text>
+                                <Image   style={{width:'100%',height:'90%',borderRadius:20}} resizeMode='stretch' source={require('../../assets/v2_q5klq0.jpg')} />
+                                <Text style={{marginTop:15*s}}>宝石蓝抹胸晚礼服</Text>
+                                {/* <Text style={{marginTop:8*s}}>BLANCHE</Text> */}
                             </TouchableOpacity>
                             <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',width:'100%',height:'10%'}}>
+                                
+                                <Text style={{marginTop:5*s}}>BLANCHE</Text>
                                 <Text style={{color:'red'}}>￥399/4日</Text>
-                                <TouchableOpacity  >
+                                {/* <TouchableOpacity  >
                                     <Icon name='heart-o' style={{fontSize:25,}}/>
-                                </TouchableOpacity>
+                                </TouchableOpacity> */}
                             </View>
                         </View>
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', alignItems: 'center', flexWrap: 'wrap', }}>
-                        {/* <Text>{this.state.tits}</Text> */}
-                        {/* {
-                            // this.state.tits&&
-                            this.state.tits.map((item,key)=>
-                                <View style={{
-                                    width:'100%',
-                                    height:40,
-                                    backgroundColor:'#fff',
-                                    flexDirection:'row',
-                                    alignItems:'center',
-                                    justifyContent:'flex-start',  
-                                }}>
-                                <Text style={{paddingLeft:'2%',width:250*s}}>{item.userid}</Text>
-                                <Text style={{fontSize:14,width:220*s}}>{item.username}</Text>
-                                <Text style={{fontSize:14,width:220*s}}>{item.userpwd}</Text>
-                                </View>
-                                )
-                            
-                        } */}
-                        </View>
+                        
                     </View>
+                    )
+                }
                 </ScrollView>
             </View>
 
