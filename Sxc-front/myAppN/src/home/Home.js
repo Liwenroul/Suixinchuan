@@ -277,17 +277,10 @@ export default class Home extends Component {
                             padding:4,
                             backgroundColor:'#eee'
                         }}>
-<<<<<<< Updated upstream
-                            <TouchableOpacity style={{width:'100%',height:'90%'}} onPress={()=>Actions.detail()}>
+                            <TouchableOpacity style={{width:'100%',height:'90%'}} onPress={()=>Actions.detail({'merid':'m123456'})}>
                                 <Image  style={{width:'100%',height:'90%',borderRadius:20}} resizeMode='stretch' source={require('../../assets/v2_q5klar.jpg')} />
                                 <Text style={{marginTop:15*s}}>{item.tit.slice(8,)}</Text>
                                 {/* <Text style={{marginTop:8*s}}>{item.shopbrand}</Text> */}
-=======
-                            <TouchableOpacity style={{width:'100%',height:'90%'}} onPress={()=>Actions.detail({'merid':'m123456'})}>
-                                <Image  style={{width:'100%',height:'85%',borderRadius:20}} resizeMode='stretch' source={require('../../assets/v2_q5klar.jpg')} />
-                                <Text style={{marginTop:8*s}}>酒红色蕾丝优雅长款礼裙</Text>
-                                <Text style={{marginTop:8*s}}>BLANCHE</Text>
->>>>>>> Stashed changes
                             </TouchableOpacity>
                             <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',width:'100%',height:'10%'}}>
                                 <Text style={{marginTop:5*s}}>{item.shopbrand}</Text>
