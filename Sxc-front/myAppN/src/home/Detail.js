@@ -71,8 +71,8 @@ const styles=StyleSheet.create({
 })
 
 export default class Detail extends Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state={
             name:'hearto',
             color:'',
@@ -83,8 +83,24 @@ export default class Detail extends Component {
             chooseS:false,
             chooseM:false,
             chooseL:false,
-            botn:'请选择尺码'
+            botn:'请选择尺码',
+            data:''
         }
+    }
+    componentDidMount(){
+        console.log(this.props.merid);
+        fetch("http://192.168.2.102:3000/merchandise")
+        .then(res=>res.json())
+        .then(res=>{
+            for(var i=0;i<res.length;i++){
+                if(this.props.merid==res[i].merid){
+                    this.setState({
+                        data:res[i]
+                    })
+                }
+            }
+            console.log(res[0].merimg)
+        })
     }
     shoucang=()=>{
         if(!this.state.wish){
@@ -178,29 +194,29 @@ export default class Detail extends Component {
                 <ScrollView
                         pagingEnabled={true}
                         horizontal={true}
-                        style={{width:width,height:380*s}} 
+                        style={{width:width,height:300*s}} 
                     >
                     <View>
-                        <Image  style={{width:width,height:380*s}} resizeMode='stretch' source={require('../../assets/v2_q5klar.jpg')} />
+                        <Image  style={{width:width,height:300*s}} resizeMode='stretch' source={'data:image/jpg;base64,'+this.state.data.merimg} />
                     </View>  
                     <View>
-                        <Image  style={{width:width,height:380*s}} resizeMode='stretch' source={require('../../assets/v2_q5klar.jpg')} />
+                        <Image  style={{width:width,height:300*s}} resizeMode='stretch' source={require('../../assets/v2_q5klar.jpg')} />
                     </View> 
                     <View>
-                        <Image  style={{width:width,height:380*s}} resizeMode='stretch' source={require('../../assets/v2_q5klar.jpg')} />
+                        <Image  style={{width:width,height:300*s}} resizeMode='stretch' source={require('../../assets/v2_q5klar.jpg')} />
                     </View> 
                 </ScrollView>
                 <View style={{flexDirection:'row'}}>
-                    <Text style={{color:'#ea3b3b',fontSize:16*s,marginTop:16*s,marginLeft:10*s}}>￥399/</Text>
-                    <Text style={{color:'#ea3b3b',marginTop:20*s}}>4日</Text>
+                    <Text style={{color:'#ea3b3b',fontSize:16*s,marginTop:16*s,marginLeft:10*s}}>￥{this.state.data.price}/</Text>
+                    <Text style={{color:'#ea3b3b',marginTop:20*s}}>{this.state.data.mtime}日</Text>
                 </View>
                 <View style={{position:'relative',left:225*s,top:-20}}>
-                    <Text>押金￥100/日</Text>
+                    <Text>押金￥{this.state.data.mermon}/日</Text>
                 </View>
                 <View>
-                    <Text style={{fontSize:16*s,marginTop:-10,marginLeft:10*s,fontWeight:'bold'}}>BLANVHE 酒红色蕾丝优雅长款礼服</Text>
+                    <Text style={{fontSize:16*s,marginTop:-10,marginLeft:10*s,fontWeight:'bold'}}>{this.state.data.tit}</Text>
                 </View>
-                <TouchableOpacity onPress={()=>Actions.sizedetail()}>
+                <TouchableOpacity onPress={()=>Actions.sizedetail({'sizeid':this.state.data.sizeid})}>
                 <View>
                     <Text style={{color:'#bdb9b9',marginLeft:249*s}}>尺码详情</Text>
                 </View>
@@ -211,15 +227,15 @@ export default class Detail extends Component {
                     <View style={styles.ginfo}>
                         <View style={styles.infos}>
                             <Text>价格</Text>
-                            <Text style={styles.inf}>￥5500</Text>
+                            <Text style={styles.inf}>￥{this.state.data.realp}</Text>
                         </View>
                         <View style={styles.infos}>
                             <Text>礼服品牌</Text>
-                            <Text style={styles.inf}>BLANVHE</Text>
+                            <Text style={styles.inf}>{this.state.data.shopbrand}</Text>
                         </View>
                         <View style={styles.infos}>
                             <Text>颜色</Text>
-                            <Text style={[styles.inf,{marginBottom:10*s}]}>酒红色</Text>
+                            <Text style={[styles.inf,{marginBottom:10*s}]}>{this.state.data.mercolor}</Text>
                         </View>
                     </View>
                 </View>

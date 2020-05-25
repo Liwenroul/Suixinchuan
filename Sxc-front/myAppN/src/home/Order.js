@@ -66,7 +66,7 @@ export default class Order extends Component {
                     <Icon name='left' style={{fontSize:16*s,marginLeft:10*s}}/>
                     <Text style={{fontSize:16*s,marginLeft:112*s,fontWeight:'bold'}}>确认订单</Text>
                 </View>
-                <TouchableOpacity onPress={()=>Actions.address()} style={styles.address}>
+                <TouchableOpacity onPress={()=>Actions.address({'userid':'u123456'})} style={styles.address}>
                     <Text style={styles.tit}>收货地址</Text>
                     <Text style={{color:'#aba8a8',marginTop:10*s,marginLeft:10*s}}>请添加收货地址</Text>
                     <Icon name='right' style={{fontSize:14*s,marginTop:-28*s,marginLeft:295*s}}/>

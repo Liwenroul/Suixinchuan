@@ -51,7 +51,9 @@ export default class AddAddress extends Component {
     render() {
         return (
             <Provider>
-                <Icon name="arrowleft" style={{fontSize:16*s,marginTop:20*s,marginLeft:10*s}}/>
+                <TouchableOpacity onPress={()=>Actions.pop()}>
+                  <Icon name="arrowleft" style={{fontSize:16*s,marginTop:20*s,marginLeft:10*s}}/>
+                </TouchableOpacity>
                 <Text style={{fontSize:16*s,fontWeight:'bold',marginTop:20*s,marginLeft:10*s}}>添加收货人</Text>
                 <TextInput style={{paddingLeft:15*s,backgroundColor:'white'}} autoFocus placeholder='收货人' editable></TextInput>
                 <TextInput style={{paddingLeft:15*s,backgroundColor:'white'}} placeholder='手机号码' editable></TextInput>

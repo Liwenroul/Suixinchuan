@@ -501,7 +501,10 @@ app.post('/delguanzhu',(req,res)=>{
   })
 })
 
-
+app.post('/chooseAdd',(req,res)=>{
+  console.log(req.body);
+  
+}) 
 
 
 
