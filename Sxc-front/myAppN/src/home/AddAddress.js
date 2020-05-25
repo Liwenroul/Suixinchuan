@@ -45,7 +45,14 @@ export default class AddAddress extends Component {
           data: [],
           value: [],
           pickerValue: [],
+          addname:'',
+          addtel:'',
+          addinfo:''
         };
+    }
+      caddname=(text)=>{
+        console.log(text);
+        this.setState({addname:text})
       }
     
     render() {
@@ -55,8 +62,8 @@ export default class AddAddress extends Component {
                   <Icon name="arrowleft" style={{fontSize:16*s,marginTop:20*s,marginLeft:10*s}}/>
                 </TouchableOpacity>
                 <Text style={{fontSize:16*s,fontWeight:'bold',marginTop:20*s,marginLeft:10*s}}>添加收货人</Text>
-                <TextInput style={{paddingLeft:15*s,backgroundColor:'white'}} autoFocus placeholder='收货人' editable></TextInput>
-                <TextInput style={{paddingLeft:15*s,backgroundColor:'white'}} placeholder='手机号码' editable></TextInput>
+                <TextInput onChange={this.caddname} id='aname' style={{paddingLeft:15*s,backgroundColor:'white'}} autoFocus placeholder='收货人' editable></TextInput>
+                <TextInput style={{paddingLeft:15*s,backgroundColor:'white'}} placeholder='电话号码' editable></TextInput>
                 <Picker
               data={data}
               cols={3}

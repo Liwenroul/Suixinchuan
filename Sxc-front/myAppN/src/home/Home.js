@@ -60,6 +60,7 @@ export default class Home extends Component {
         fetch('http://192.168.2.102:3000/sale')
             .then(res=>res.json())
             .then(res=>{
+                console.log(res)
                 this.setState({tits: res});
             })
         fetch('http://192.168.2.102:3000/merchandise')
@@ -67,6 +68,7 @@ export default class Home extends Component {
             .then(res=>{
                 this.setState({tit: res});
             })
+        console.log(this.state.tit)
     }
     // componentDidUpdate(){
     //     fetch('http://192.168.0.106:3000/user')

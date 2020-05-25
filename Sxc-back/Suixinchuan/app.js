@@ -500,11 +500,18 @@ app.post('/delguanzhu',(req,res)=>{
         res.json(result); 
   })
 })
-
+//选择默认地址
 app.post('/chooseAdd',(req,res)=>{
-  console.log(req.body);
-  
-}) 
+  let data=req.body;
+  console.log(data);
+  con.query('update address set isdefault=? where addressid=?',[1,data.addressid],function(err,result){
+    if(err){
+          console.log(err);
+      }
+        console.log(result);
+        res.json(result); 
+  })
+})
 
 
 
