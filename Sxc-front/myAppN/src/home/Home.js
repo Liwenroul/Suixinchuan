@@ -10,6 +10,40 @@ import { Actions } from 'react-native-router-flux';
 const { width } = Dimensions.get('window')
 const s = width / 640;
 
+const styles = StyleSheet.create({
+    btn: {
+        width: 170 * s,
+        height: 160 * s,
+        color: '#fff',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#eee',
+        marginTop: 10 * s,
+        // padding:'5%'
+    },
+    img:{
+        width:'100%',
+        height:'60%',
+        flexDirection: 'row',
+        flexWrap:'wrap',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 10 * s,
+    },
+    slide: {
+        // flex:1,
+        width: 640 * s,
+        // height: 280,
+        backgroundColor: 'red',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    rbtn: {
+        color: 'gray',
+        fontSize: 20
+    }
+})
+
 export default class Home extends Component {
     constructor(){
         super();
@@ -79,7 +113,7 @@ export default class Home extends Component {
         }
     }
     render() {
-        console.log('home')
+//         console.log('home')
         return (
             <View style={{
                 flex: 1,
@@ -88,23 +122,23 @@ export default class Home extends Component {
                 backgroundColor: '#fff'
             }}>
 
-                <StatusBar backgroundColor="red" />
-                <View style={{
+                 {/* <StatusBar backgroundColor="red" /> */}
+                 {/* <View style={{
                     width: '100%',
                     height: 70 * s,
                     borderColor: '#eee',
                     flexDirection: 'row',
                     alignItems: 'center',
-                }}>
-                    <TouchableOpacity style={{ width: '15%', alignItems: 'center' }}>
-                        <Icon
+                }}> */}
+                     {/* <TouchableOpacity style={{ width: '15%', alignItems: 'center' }}>
+                         <Icon
                             name="bars"
                             style={{
                                 color: '#ccc', fontSize: 25
                             }}
                         />
-                    </TouchableOpacity>
-                    <View style={{
+                    </TouchableOpacity> */}
+                    {/* <View style={{
                         marginTop: 10 * s,
                         marginBottom: 10 * s,
                         width: '80%',
@@ -116,26 +150,26 @@ export default class Home extends Component {
                         backgroundColor: '#eee',
                         opacity: 0.75,
                         paddingLeft: 10
-                    }}>
-                        <TouchableOpacity>
+                    }}> */}
+                        {/* <TouchableOpacity>
                             <Icon
                                 name="search"
                                 style={{ color: 'gray', fontSize: 20 }}
                             />
-                        </TouchableOpacity>
-                        <TextInput placeholderTextColor="gray"
+                        </TouchableOpacity> */}
+                        {/* <TextInput placeholderTextColor="gray"
                             placeholder="音乐会晚礼服"
                             style={{
                                 width: '86%',
                                 height: 40,
                                 color: '#fff'
                             }}
-                        />
-                    </View>
-                </View>
+                        /> */}
+                    {/* </View> */}
+                {/* </View> */}
 
                 <ScrollView>
-                    <ScrollView
+                    {/* <ScrollView
                         pagingEnabled={true}
                         horizontal={true}
                         style={{ height: 300 * s, width: 640 * s }}
@@ -152,14 +186,14 @@ export default class Home extends Component {
                         <View style={styles.slide}>
                             <Image style={{width:'100%',height:'100%'}} resizeMode='stretch' source={require('../../assets/raw_1528737314.png')} />
                         </View>
-                    </ScrollView>
+                    </ScrollView> */}
                     <ScrollView
                         pagingEnabled={true}
                         horizontal={true}
                     >
                         {
                             // this.state.tits&&
-                            this.state.tits.map((item,key)=>
+                            this.state.tits.map((item,key)=>(
                             <View style={{
                                 width: 190 * s,
                                 height: 200 * s,
@@ -173,11 +207,11 @@ export default class Home extends Component {
                                         <Image style={{width:'30%',height:'100%'}} resizeMode='stretch' source={require('../../assets/v2_q5kktg.jpg')}/>
                                         <Image  style={{width:'45%',height:'50%'}} resizeMode='stretch' source={require('../../assets/v2_q5kkuw.jpg')}/>
                                     </View>
-                                </TouchableOpacity>
+                                </TouchableOpacity> 
                             </View>
-                                )
-                            
-                        }
+                                ))
+                        }   
+                       
                         {/* <View style={{
                             width: 190 * s,
                             height: 200 * s,
@@ -252,7 +286,7 @@ export default class Home extends Component {
                                 </View>
                             </TouchableOpacity>
                         </View> */}
-                        <View style={{
+                        {/* <View style={{
                             width: 190 * s,
                             height: 200 * s,
                             alignItems: 'center',
@@ -262,10 +296,11 @@ export default class Home extends Component {
                                 <Text>查看全部</Text>
                                 <Text style={{fontSize:10}}>See more</Text>
                             </TouchableOpacity>
-                        </View>
-                    </ScrollView>
+                        </View> */}
+                </ScrollView>
+                </ScrollView>
                     {
-                        this.state.tit.map((item,key)=>
+                        this.state.tit.map((item,key)=>(
                     <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', alignItems: 'center', flexWrap: 'wrap', }}>
                     
                         <View style={{
@@ -277,10 +312,21 @@ export default class Home extends Component {
                             padding:4,
                             backgroundColor:'#eee'
                         }}>
+<<<<<<< Updated upstream
                             <TouchableOpacity style={{width:'100%',height:'90%'}} onPress={()=>Actions.detail({'merid':'m123456'})}>
                                 <Image  style={{width:'100%',height:'90%',borderRadius:20}} resizeMode='stretch' source={require('../../assets/v2_q5klar.jpg')} />
                                 <Text style={{marginTop:15*s}}>{item.tit.slice(8,)}</Text>
                                 {/* <Text style={{marginTop:8*s}}>{item.shopbrand}</Text> */}
+=======
+                            <TouchableOpacity style={{width:'100%',height:'90%'}} onPress={()=>Actions.detail()}>
+                                <Image  style={{width:'100%',height:'90%',borderRadius:20}} resizeMode='stretch' source={require('../../assets/v2_q5klar.jpg')} />
+                                <Text style={{marginTop:15*s}}>{item.tit.slice(8,)}</Text>
+                                {/* <Text style={{marginTop:8*s}}>{item.shopbrand}</Text> */}
+                            <TouchableOpacity style={{width:'100%',height:'90%'}} onPress={()=>Actions.detail({'merid':'m123456'})}>
+                                <Image  style={{width:'100%',height:'85%',borderRadius:20}} resizeMode='stretch' source={require('../../assets/v2_q5klar.jpg')} />
+                                <Text style={{marginTop:8*s}}>酒红色蕾丝优雅长款礼裙</Text>
+                                <Text style={{marginTop:8*s}}>BLANCHE</Text>
+>>>>>>> Stashed changes
                             </TouchableOpacity>
                             <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',width:'100%',height:'10%'}}>
                                 <Text style={{marginTop:5*s}}>{item.shopbrand}</Text>
@@ -289,7 +335,8 @@ export default class Home extends Component {
                                     <Icon name='heart-o' ref="changeColor" style={{fontSize:25}}/>
                                 </TouchableOpacity> */}
                             </View>
-                        </View>
+                        ))
+                        {/* </View> */}
                         
                         <View style={{
                             width: '45%',
@@ -317,44 +364,12 @@ export default class Home extends Component {
                     </View>
                     )
                 }
+                 
                 </ScrollView>
-            </View>
+                </View>
 
 
 
         )
     }
 }
-const styles = StyleSheet.create({
-    btn: {
-        width: 170 * s,
-        height: 160 * s,
-        color: '#fff',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#eee',
-        marginTop: 10 * s,
-        // padding:'5%'
-    },
-    img:{
-        width:'100%',
-        height:'60%',
-        flexDirection: 'row',
-        flexWrap:'wrap',
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: 10 * s,
-    },
-    slide: {
-        // flex:1,
-        width: 640 * s,
-        // height: 280,
-        backgroundColor: 'red',
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    rbtn: {
-        color: 'gray',
-        fontSize: 20
-    }
-})
