@@ -106,7 +106,7 @@ router.post('/this_system',function(req,res,next){
       console.log(err);
     }
     else{
-      res.render('system',{editMList:result});
+      res.render('system',{manager:result});
     }
   })
 });
@@ -178,7 +178,7 @@ router.post('/this_user',function(req,res,next){
       console.log(err);
     }
     else{
-      res.render('userGuanli',{editUList:result});
+      res.render('userGuanli',{userinfo:result});
     }
   })
 });
@@ -251,7 +251,7 @@ router.post('/this_shop',function(req,res,next){
       console.log(err);
     }
     else{
-      res.render('shopM',{editSList:result});
+      res.render('shopM',{shop:result});
     }
   })
 });
@@ -329,7 +329,7 @@ router.post('/this_goods',function(req,res,next){
       console.log(err);
     }
     else{
-      res.render('goodsM',{editGList:result});
+      res.render('goodsM',{goods:result});
     }
   })
 });
