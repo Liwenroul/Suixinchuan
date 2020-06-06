@@ -16,7 +16,7 @@ export default class Address extends Component {
         }
     }
     componentDidMount(){
-        fetch("http://192.168.2.102:3000/address")
+        fetch("http://192.168.43.245:3000/address")
         .then(res=>res.json())
         .then(res=>{
             for(var i=0;i<res.length;i++){
@@ -30,13 +30,13 @@ export default class Address extends Component {
         })
     }
     changeA=(aid)=>{
-        fetch("http://192.168.2.102:3000/address")
+        fetch("http://192.168.43.245:3000/address")
         .then(res=>res.json())
         .then(res=>{
             for(var i=0;i<res.length;i++){
                 if(aid==res[i].addressid){
                     const registerValue = {"addressid":aid};
-                    fetch('http://192.168.2.102:3000/chooseAdd', {
+                    fetch('http://192.168.43.245:3000/chooseAdd', {
                         method: "POST",
                         headers: {
                             "Content-type":"application/json;charset=utf-8",

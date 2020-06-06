@@ -57,13 +57,13 @@ export default class Home extends Component {
         }
     }
     componentDidMount(){
-        fetch('http://192.168.2.102:3000/sale')
+        fetch('http://192.168.43.245:3000/sale')
             .then(res=>res.json())
             .then(res=>{
                 console.log(res)
                 this.setState({tits: res});
             })
-        fetch('http://192.168.2.102:3000/merchandise')
+        fetch('http://192.168.43.245:3000/merchandise')
             .then(res=>res.json())
             .then(res=>{
                 this.setState({tit: res});
@@ -163,7 +163,9 @@ export default class Home extends Component {
                                 backgroundColor:'#eee'
                             }}>
                                 <TouchableOpacity style={{width:'100%',height:'90%'}} onPress={()=>Actions.detail({'merid':item.merid})}>
-                                    <Image  style={{width:'100%',height:'90%',borderRadius:20}} resizeMode='stretch' source={require('../../assets/v2_q5klar.jpg')} />
+                                    <Image  style={{width:'100%',height:'90%',borderRadius:20}} 
+                                    resizeMode='stretch' 
+                                    source={require('../../assets/v2_q5klar.jpg')} />
                                     <Text style={{marginTop:15*s}}>{item.tit.slice(8,)}</Text>
                                     {/* <Text style={{marginTop:8*s}}>{item.shopbrand}</Text> */}
                                 </TouchableOpacity>

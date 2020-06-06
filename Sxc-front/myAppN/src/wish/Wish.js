@@ -36,8 +36,26 @@ export default class Wish extends Component {
     constructor(){
         super();
         this.state = {
-            tits: []
+            tits: [],
+            data:[],
+            list:[],
         }
+    }
+    componentDidMount(){
+        fetch("http://192.168.43.245:3000/wish")
+        .then(res=>res.json())
+        .then(res=>{
+            for(var i=0;i<res.length;i++){
+                    this.setState({
+                        data:res,
+                        list:[...this.state.list,i]
+                })
+            }
+            // this.setState({data:res})
+            console.log(res);
+            // console.log(this.state.list);
+            // console.log("1].dynContentdata:"+this.state.data);
+        })
     }
     render() {
         return (
@@ -45,6 +63,7 @@ export default class Wish extends Component {
                 <View style={styles.header}>
                     <Text>心愿单</Text>
                 </View>
+                
                 <FlatList 
                     style={{backgroundColor: '#F4F4F4'}}
                     data={goods}
@@ -65,7 +84,7 @@ export default class Wish extends Component {
                             >{item.price}</Text>
                         </View>
                     )}
-                />
+                /> 
             </View>
         )
     }
