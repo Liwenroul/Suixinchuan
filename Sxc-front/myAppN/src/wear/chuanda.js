@@ -24,7 +24,10 @@ export default class chuanda extends Component {
             checkColor:'#cecccc',
             chooseAddress:0,
             data:[],
-            data1:[]
+            data1:[],
+            i:'',
+            n:'0',
+            color:'black',
         }
     }
     componentDidMount(){
@@ -47,15 +50,48 @@ export default class chuanda extends Component {
                 for(var i=0;i<res.length;i++){
                     if(this.props.userid==res[i].userid){
                         this.setState({
-                            data1:res[i]
+                            data1:res[i],
+                            i:res[i].likenum,
                         })
                     }
                 }
+                console.log("this.state.i:"+this.state.i)
             })
         })
+        console.log(this.state.i)
+        // if(this.state.i==0){
+        //     this.setState({
+        //         color:'black'
+        //     })
+        // }else {
+        //     this.setState({
+        //         color:'red'
+        //     })
+        // }
+        
     }
-    changeNum=(i)=>{
-        i=this.state.data1.likenum++
+    changeNum=()=>{
+        console.log("in the change");
+        this.setState({
+            n:Number(this.state.n)+1
+        })
+
+        console.log("the num of n:"+this.state.n);
+        console.log("the num of i:"+this.state.i);
+            if(this.state.n%2==0){
+                this.setState({
+                    i:Number(this.state.i)+1,
+                    color:'red'
+                })
+            }else{
+                this.setState({
+                    i:Number(this.state.i)-1,
+                    color:'black'
+                })
+                }
+        
+        
+        
     }
     render() {
         return (
@@ -68,10 +104,16 @@ export default class chuanda extends Component {
                 
                 <Image source={require('../../assets/wish1.jpg')} style={{width:350,height:350,marginTop:30,marginLeft:10*s,borderRadius:10}}/>
                 <Text style={{paddingLeft:50,paddingTop:20,fontFamily:'微软雅黑'}}>{this.state.data1.dynContent}</Text>
-                <View style={{marginLeft:250,marginTop:30,flexDirection:'row'}}>
-                <Text>{this.state.data1.likenum}</Text>
-                    <Icon name='heart' style={{fontSize:25,color:'red',marginLeft:50*s}} onpress={this.changeNum()}/>
-                </View>
+                <TouchableOpacity onPress={this.changeNum}>
+                    <View 
+                    style={{marginLeft:250,marginTop:30,flexDirection:'row'}}
+
+                    >
+                        <Text>{this.state.i}</Text>
+                        <Icon name='heart' style={{fontSize:25,color:this.state.color,marginLeft:50*s}}/>
+                    </View>
+                </TouchableOpacity>
+                
             </View>
         )
     }

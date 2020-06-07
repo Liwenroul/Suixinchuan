@@ -39,7 +39,7 @@ export default class Login extends Component {
   componentDidMount() {
     this.setState({ isloading: false });
     this.getData();
-    fetch('http://192.168.0.106:3000/user')
+    fetch('http://192.168.43.245:3000/user')
             .then(res=>res.json())
             .then(res=>{
                 this.setState({data: res});
@@ -54,8 +54,8 @@ export default class Login extends Component {
   loginCheck = () => {
     var loginname = this.state.username;
     var password = this.state.pwd;
-    this.setState({ isloading: true })
-
+    this.setState({ isloading: true });
+    
     if (loginname !== null) {
       for (var i = 0; i < this.state.data.length; i++) {
         if (loginname === this.state.data[i].username && password === this.state.data[i].userpwd) {
@@ -63,7 +63,7 @@ export default class Login extends Component {
           registerValue = { "userid": this.state.data[i].userid,"isloading":1  }
           this.setState({ userid: this.state.data[i].userid })
           // fetch('http://192.168.0.106:3000/denglu', {
-            fetch('http://192.168.0.106:3000/user2', {
+            fetch('http://192.168.43.245:3000/user2', {
             method: "POST",
             headers: {
               "Content-type": "application/json;charset=utf-8",
@@ -91,7 +91,8 @@ export default class Login extends Component {
     else {
       alert("未完成验证");
     }
-    console.log(registerValue.userid)
+    console.log("registerValue.userid"+registerValue.userid)
+    console.log(this.state.data)
   }
 
   // loginCheck = () => {

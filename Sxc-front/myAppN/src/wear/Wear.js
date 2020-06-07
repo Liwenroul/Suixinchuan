@@ -36,6 +36,7 @@ export default class Wear extends Component {
             chooseAddress:0,
             data:[],
             list:[],
+            num:[],
         }
     }
     componentDidMount(){
@@ -46,6 +47,11 @@ export default class Wear extends Component {
                     this.setState({
                         data:res,
                         list:[...this.state.list,i]
+                })
+            }
+            for(var i =0;i<this.state.data.length;i++){
+                this.setState({
+                    num:[...this.state.num,this.state.data[i].likenum]
                 })
             }
             // this.setState({data:res})
@@ -79,7 +85,7 @@ export default class Wear extends Component {
                                 </TouchableOpacity>
                                 <Text style={{marginTop: 20*s}}>{this.state.data[i].dyContent}</Text>
                                 <Text style={{fontSize:10,marginLeft:-90,color:'red',marginTop:12*s}} onPress={Actions.cloth}>衣服详情</Text>
-                                <Text style={{fontSize:10,marginLeft:40,marginTop:-35*s}}>{this.state.data[i].likenum}</Text>
+                                <Text style={{fontSize:10,marginLeft:40,marginTop:-35*s}}>{this.state.num[i]}</Text>
                                 <Icon name='heart-o' style={{fontSize:25,color:'red',marginLeft:180*s,marginTop:-40*s}}/>
                             </View>
 

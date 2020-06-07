@@ -25,11 +25,23 @@ export default class Mine extends Component {
         super();
         this.state = {
             imageUrl:true,
+            data:[],
         }
     }
-    
     componentDidMount(){
-        this.getData();        
+        this.getData();  
+        fetch("http://192.168.43.245:3000/user")
+        .then(res=>res.json())
+        .then(res=>{
+            for(var i=0;i<res.length;i++){
+                    this.setState({
+                        data:res[0],
+                })
+            }
+            // this.setState({data:res})
+            console.log(this.state.data);
+            // console.log("1].dynContentdata:"+this.state.data);
+        })
     }
     getData = ()=>{
         AsyncStorage.getItem('imgUrl')
@@ -85,7 +97,7 @@ export default class Mine extends Component {
 
                             }
                     </Button>
-                    <Text style={{fontSize:17,paddingTop:50,paddingLeft:20}}>用户名</Text>
+                        <Text style={{fontSize:17,paddingTop:50,paddingLeft:20}}>{this.state.data.username}</Text>
                 </View>
                 <View style={{height:100,flexDirection:'row',borderBottomWidth:1,borderBottomColor:'#bbb'}}>
                     <View style={styles.view}>
