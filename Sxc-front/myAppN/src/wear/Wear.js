@@ -40,6 +40,7 @@ export default class Wear extends Component {
         }
     }
     componentDidMount(){
+        console.log("the userid:"+this.props.userid)
         fetch("http://192.168.43.245:3000/wear")
         .then(res=>res.json())
         .then(res=>{

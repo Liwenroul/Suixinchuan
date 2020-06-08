@@ -196,6 +196,31 @@ app.post('/wear',(req,res)=>{
         })
 })
 
+//心愿单
+app.get('/wishs',jsonParser,(req,res)=>{
+  // console.log(req.body);
+  con.query('select * from wishs',function(err,result){
+      if(err){
+          console.log('[SELECT ERROR] - ', err.message);
+          return;
+      }
+      res.json(result); 
+  }); 
+}) 
+
+app.post('/wishs',(req,res)=>{
+  let data=req.body;
+  console.log(data);
+        con.query('insert into wishs(wishId) values(?)',[data.wishId],function(err,result){
+          if(err){
+                console.log(err);
+            }else{
+              console.log(result);
+              res.json(result);
+            }
+               
+        })
+})
 
 //查找商家  httpS://localhost:8081/allShop
 app.get('/allShop',jsonParser,(req,res)=>{

@@ -31,7 +31,7 @@ export default class chuanda extends Component {
         }
     }
     componentDidMount(){
-        console.log(this.props.userid);
+        console.log("the userid:"+this.props.userid);
         fetch("http://192.168.43.245:3000/user")
         .then(res=>res.json())
         .then(res=>{

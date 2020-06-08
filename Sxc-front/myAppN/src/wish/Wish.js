@@ -42,7 +42,8 @@ export default class Wish extends Component {
         }
     }
     componentDidMount(){
-        fetch("http://192.168.43.245:3000/wish")
+        console.log("the userid:"+this.props.userid)
+        fetch("http://192.168.43.245:3000/wishs")
         .then(res=>res.json())
         .then(res=>{
             for(var i=0;i<res.length;i++){
@@ -52,40 +53,63 @@ export default class Wish extends Component {
                 })
             }
             // this.setState({data:res})
-            console.log(res);
-            // console.log(this.state.list);
+            console.log(this.state.data);
+            console.log(this.state.list);
             // console.log("1].dynContentdata:"+this.state.data);
         })
     }
     render() {
         return (
-            <View style={{flex: 1,backgroundColor: '#fff'}}>
-                <View style={styles.header}>
-                    <Text>心愿单</Text>
-                </View>
-                
-                <FlatList 
-                    style={{backgroundColor: '#F4F4F4'}}
-                    data={goods}
-                    numColumns={1}
-                    renderItem={({item})=>(
-                        <View style={styles.good}>
-                            <Image 
-                                // resizeMode="contain"
-                                source={item.img}
-                                style={{height:220*s,marginTop: 15*s,width:180*s,borderRadius:10}}
-                            />
-                            <Text
-                                style={{marginTop:-180*s,marginLeft:350*s}}
-                            
-                            >{item.title}</Text>
-                            <Text 
-                                style={{width:'100%',color: 'red',marginLeft:320*s,marginTop:80*s}}
-                            >{item.price}</Text>
+            <ScrollView>
+                <View style={{flex: 1,backgroundColor: '#fff'}}>
+                    <View style={styles.header}>
+                        <Text>心愿单</Text>
+                    </View>
+                    {
+                    this.state.list.map((i) =>(
+                        <View>
+                            <View style={styles.good}>
+                                <Image 
+                                    // resizeMode="contain"
+                                    source={require('../../assets/wish1.jpg')}
+                                    style={{height:220*s,marginTop: 15*s,width:180*s,borderRadius:10}}
+                                />
+                                <Text
+                                    style={{marginTop:-180*s,marginLeft:350*s}}
+                                
+                                >{this.state.data[i].wishType}</Text>
+                                <Text 
+                                    style={{width:'100%',color: 'red',marginLeft:320*s,marginTop:80*s}}
+                                >￥{this.state.data[i].wishPrice}/{this.state.data[i].wishTime}天</Text>
+                            </View>
                         </View>
-                    )}
-                /> 
-            </View>
+                        
+                    ))
+                }
+                    {/* <FlatList 
+                        style={{backgroundColor: '#F4F4F4'}}
+                        data={goods}
+                        numColumns={1}
+                        renderItem={({item})=>(
+                            <View style={styles.good}>
+                                <Image 
+                                    // resizeMode="contain"
+                                    source={item.img}
+                                    style={{height:220*s,marginTop: 15*s,width:180*s,borderRadius:10}}
+                                />
+                                <Text
+                                    style={{marginTop:-180*s,marginLeft:350*s}}
+                                
+                                >{item.title}</Text>
+                                <Text 
+                                    style={{width:'100%',color: 'red',marginLeft:320*s,marginTop:80*s}}
+                                >{item.price}</Text>
+                            </View>
+                        )}
+                    />  */}
+                </View>
+            </ScrollView>
+            
         )
     }
 }

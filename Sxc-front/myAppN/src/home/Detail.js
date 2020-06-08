@@ -289,6 +289,7 @@ export default class Detail extends Component {
                     </TouchableOpacity>
                     </Modal>
                 </Provider>
+           
             </View>
         )
     }
