@@ -61,7 +61,7 @@ export default class Login extends Component {
         if (loginname === this.state.data[i].username && password === this.state.data[i].userpwd) {
           // this.setState({isloading:this.state.data[i].isloading })
           registerValue = { "userid": this.state.data[i].userid,"isloading":1  }
-          this.setState({ userid: this.state.data[i].userid })
+          this.setState({ userid: this.state.userid})
           // fetch('http://192.168.0.106:3000/denglu', {
             fetch('http://192.168.43.245:3000/user2', {
             method: "POST",

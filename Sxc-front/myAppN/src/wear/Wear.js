@@ -85,7 +85,7 @@ export default class Wear extends Component {
                                 />
                                 </TouchableOpacity>
                                 <Text style={{marginTop: 20*s}}>{this.state.data[i].dyContent}</Text>
-                                <Text style={{fontSize:10,marginLeft:-90,color:'red',marginTop:12*s}} onPress={Actions.cloth}>衣服详情</Text>
+                                <Text style={{fontSize:10,marginLeft:-90,color:'red',paddingTop:8*s}} onPress={Actions.cloth}>衣服详情</Text>
                                 <Text style={{fontSize:10,marginLeft:40,marginTop:-35*s}}>{this.state.num[i]}</Text>
                                 <Icon name='heart-o' style={{fontSize:25,color:'red',marginLeft:180*s,marginTop:-40*s}}/>
                             </View>
@@ -103,12 +103,12 @@ export default class Wear extends Component {
                                 <TouchableOpacity onPress={()=>Actions.chuanda({'userid':this.state.data[i].userid})}>
                                 <Image 
                                     // resizeMode="contain"
-                                    source={require('../../assets/wish1.jpg')}
+                                    source={require('../../assets/wish2.jpg')}
                                     style={{height:350*s,marginTop: 10*s,width:280*s,borderRadius:10}}
                                 />
                                 </TouchableOpacity>
                                 <Text style={{marginTop: 20*s}}>{this.state.data[i].dyContent}</Text>
-                                <Text style={{fontSize:10,marginLeft:-90,color:'red',marginTop:12*s}} onPress={Actions.cloth}>衣服详情</Text>
+                                <Text style={{fontSize:10,marginLeft:-90,color:'red',paddingTop:8*s}} onPress={Actions.cloth}>衣服详情</Text>
                                 <Text style={{fontSize:10,marginLeft:40,marginTop:-35*s}}>{this.state.data[i].likenum}</Text>
                                 <Icon name='heart-o' style={{fontSize:25,color:'red',marginLeft:180*s,marginTop:-40*s}} onPress={this.changeNum(this.state.data.likenum)}/>
                             </View>
