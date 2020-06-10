@@ -44,7 +44,10 @@ export default class Wish extends Component {
             list:[],
             DidList:[],
             Dynid0:[],
-            userID:''
+            userID:'',
+            WishImg:[],
+            merID:[],
+            tit:[]
         }
     }
     componentDidMount(){
@@ -60,47 +63,65 @@ export default class Wish extends Component {
             }
             console.log("userid:"+this.state.userID);
         })
-        fetch("http://192.168.43.245:3000/wishs")
+        fetch("http://192.168.43.245:3000/collect")
         .then(res=>res.json())
         .then(res=>{
             for(var i=0;i<res.length;i++){
                 if(res[i].userid==this.state.userID){
+                    console.log(res[i].merid)
                     this.setState({
                         data:res,
-                        list:[...this.state.list,i],
+                        
+                        merID:[...this.state.merID,res[i].merid]
                     })
                 }
                 
             }
-            for(var i=0;i<res.length;i++){
-                this.setState({
-                    Dynid0:[...this.state.Dynid0,this.state.data[i].userid]
-                })
-            }
+            console.log('this.state.merID:'+this.state.merID)
             // this.setState({data:res})
             console.log(this.state.data);
-            console.log('this.state.Dynid0:'+this.state.Dynid0);
-            console.log('this.state.list:'+this.state.list);
+            // console.log('this.state.Dynid0:'+this.state.Dynid0);
+            // console.log('this.state.WishImg:'+this.state.WishImg);
+            // console.log('this.state.list:'+this.state.list);
             // console.log("1].dynContentdata:"+this.state.data);
         })
-        // fetch("http://192.168.43.245:3000/wear")
-        // .then(res=>res.json())
-        // .then(res=>{
-        //     for(var i=0;i<this.state.Did0.length;i++){
-        //         for(var j =0;j<res.length;j++){
-        //             if(res[j].dynid==this.state.Did0[i]){
-        //                 console.log("res.dynid"+res[j].dynid)
-        //                 console.log('Did0'+this.state.Did0[i])
-        //                 this.setState({
-        //                     DidList:[...this.state.DidList,res[j]],
-        //                 })
-        //             }
-                    
-        //         }
-        //         console.log(res)
-        //     }
-        //     console.log('this.state.DidList:'+this.state.DidList)
-        // })
+        fetch("http://192.168.43.245:3000/merchandise")
+        .then(res=>res.json())
+        .then(res=>{
+            for(var i=0;i<res.length;i++){
+                console.log(res[i])
+                for(var j =0;j<this.state.merID.length;j++){
+                    console.log('this.state.merID[j]'+this.state.merID[j])
+                    console.log('res[i].merid'+res[i].merid)
+                    if(res[i].merid==this.state.merID[j]){
+                        this.setState({
+                            tit: [...this.state.tit,res[i]],
+                            
+                        })
+                    }
+                }
+                
+                
+            
+            console.log("dfafd")
+            console.log(this.state.tit);
+            console.log('this.state.list'+this.state.list)
+            // this.setState({data:res})
+            console.log(this.state.data);
+            // console.log('this.state.Dynid0:'+this.state.Dynid0);
+            // console.log('this.state.WishImg:'+this.state.WishImg);
+            // console.log('this.state.list:'+this.state.list);
+            // console.log("1].dynContentdata:"+this.state.data);
+        
+        
+        }
+        for(var i =0;i<this.state.tit.length;i++){
+            this.setState({
+                list:[...this.state.list,i]
+            })
+        }
+        console.log(this.state.list)
+    })
         console.log("你进来了")
     }
     render() {
@@ -115,20 +136,20 @@ export default class Wish extends Component {
                         <View>
                             <View style={styles.charge}></View>
                             <View style={styles.good}>
-                            <TouchableOpacity onPress={()=>Actions.chuanda({'userid':this.state.Dynid0[i]})}>
+                            <TouchableOpacity onPress={()=>Actions.detail({'merid':this.state.merID[i],'userid':this.state.userID})}>
                                 <Image 
                                     // resizeMode="contain"
-                                    source={require('../../assets/wish1.jpg')}
+                                    source={{uri:`${this.state.tit[i].merimg}`}}
                                     style={{height:220*s,marginTop: 15*s,width:180*s,borderRadius:10}}
                                 />
                                 </TouchableOpacity>
                                 <Text
-                                    style={{marginTop:-180*s,marginLeft:350*s}}
+                                    style={{marginTop:-180*s,marginLeft:250*s}}
                                 
-                                >{this.state.data[i].wishType}</Text>
+                                >{this.state.tit[i].tit}</Text>
                                 <Text 
                                     style={{width:'100%',color: 'red',marginLeft:320*s,marginTop:80*s}}
-                                >￥{this.state.data[i].wishPrice}/{this.state.data[i].wishTime}天</Text>
+                                >￥{this.state.tit[i].price}/{this.state.tit[i].mtime}天</Text>
                             </View>
                             
 
