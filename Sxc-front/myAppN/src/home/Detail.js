@@ -88,12 +88,11 @@ export default class Detail extends Component {
             botn:'请选择尺码',
             data:'',
             sizeid:'',
-            user:this.props.userid
         }
     }
     componentDidMount(){
-        console.log(this.props.merid);
-        fetch("http://192.168.43.245:3000/merchandise")
+        console.log(this.props.userid+'a');
+        fetch("http://192.168.0.105:3000/merchandise")
         .then(res=>res.json())
         .then(res=>{
             for(var i=0;i<res.length;i++){
@@ -149,7 +148,8 @@ export default class Detail extends Component {
                 chooseS:true,
                 chooseM:false,
                 chooseL:false,
-                botn:'请选择租期'
+                botn:'请选择租期',
+                chooseSize:'S'
             })
         }
         else{
@@ -169,7 +169,8 @@ export default class Detail extends Component {
                 chooseS:false,
                 chooseM:true,
                 chooseL:false,
-                botn:'请选择租期'
+                botn:'请选择租期',
+                chooseSize:'M'
             })
         }
         else{
@@ -189,7 +190,8 @@ export default class Detail extends Component {
                 chooseS:false,
                 chooseM:false,
                 chooseL:true,
-                botn:'请选择租期'
+                botn:'请选择租期',
+                chooseSize:'L'
             })
         }
         else{
@@ -203,7 +205,7 @@ export default class Detail extends Component {
     chooseDate=()=>{
         console.log(this.state.data.merid+'a')
         if(this.state.botn=="请选择租期"){
-            Actions.date({'merid':this.state.data.merid});
+            Actions.date({'merid':this.state.data.merid,'chooseSize':this.state.chooseSize});
         }
     }
     render() {

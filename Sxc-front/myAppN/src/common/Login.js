@@ -75,13 +75,14 @@ export default class Login extends Component {
             });
           
           alert("success!");
+
           AsyncStorage.setItem('user', JSON.stringify(this.state.data))
             .then(() => {
               // this.setState({ isloading: false })
               // this.setState({isloading:this.state.data[i].isloading })
-              Actions.homePage({'userid':this.state.data.userid});
+              Actions.homePage({'userid':registerValue.userid});
             })
-            console.log(this.state.data.userid)
+            
           // window.location = '/tab'+this.state.data[i].userId;
         }
         if (loginname === this.state.data[i].username && password !== this.state.data[i].userpwd) {

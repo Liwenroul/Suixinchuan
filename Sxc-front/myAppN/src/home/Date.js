@@ -27,8 +27,11 @@ export default class Date extends Component {
      })
   }
   choo=()=>{
-    // console.log('a'+this.props.merid)
-    Actions.order({"date":this.state.data,'merid':this.props.merid});
+    // console.log('a'+this.props.chooseSize)
+    Actions.order({"date":this.state.data,'merid':this.props.merid,'chooseSize':this.props.chooseSize});
+  }
+  back=()=>{
+    Actions.pop();
   }
   render() {
 
@@ -40,9 +43,14 @@ export default class Date extends Component {
               <Text style={{fontSize:15,color:'black'}}>{this.state.data}</Text>
           </TouchableOpacity>
          <MinimalismCalendar DateTransfer={this.DateTransfer}/>
-         <TouchableOpacity onPress={this.choo} style={styles.ensure}>
-           <Text style={{color:'white'}}>确定</Text>
-         </TouchableOpacity>
+         <View style={{flexDirection:'row'}}>
+          <TouchableOpacity onPress={this.choo} style={styles.ensure}>
+            <Text style={{color:'white'}}>确定</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={this.back} style={[styles.ensure,{marginLeft:10}]}>
+            <Text style={{color:'white'}}>返回</Text>
+          </TouchableOpacity>
+         </View>
       </View>
     );
   }

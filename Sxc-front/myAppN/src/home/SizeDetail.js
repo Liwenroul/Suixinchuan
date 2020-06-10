@@ -42,7 +42,7 @@ export default class SizeDetail extends Component {
         }
     }
     componentDidMount(){
-        fetch("http://192.168.43.245:3000/size")
+        fetch("http://192.168.0.105:3000/size")
         .then(res=>res.json())
         .then(res=>{
             for(var i=0;i<res.length;i++){

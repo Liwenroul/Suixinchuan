@@ -12,11 +12,12 @@ export default class Address extends Component {
         this.state={
             checkColor:'#cecccc',
             chooseAddress:0,
-            data:[]
+            data:[],
+            chadd:''
         }
     }
     componentDidMount(){
-        fetch("http://192.168.43.245:3000/address")
+        fetch("http://192.168.0.105:3000/address")
         .then(res=>res.json())
         .then(res=>{
             for(var i=0;i<res.length;i++){
@@ -30,37 +31,49 @@ export default class Address extends Component {
         })
     }
     changeA=(aid)=>{
-        fetch("http://192.168.43.245:3000/address")
+        console.log(aid)
+        fetch("http://192.168.0.105:3000/address")
         .then(res=>res.json())
         .then(res=>{
             for(var i=0;i<res.length;i++){
                 if(aid==res[i].addressid){
-                    const registerValue = {"addressid":aid};
-                    fetch('http://192.168.43.245:3000/chooseAdd', {
-                        method: "POST",
-                        headers: {
-                            "Content-type":"application/json;charset=utf-8",
-                        },
-                        body:JSON.stringify(registerValue) ,
-                    }).then( res => res.text())
-                      .then( data => {
-                          console.log(data);
-                      });
-                    // console.log(clockId);
-                }
-                else{
                     this.setState({
-                        checkColor:'#cecccc',
-                        chooseAddress:false
-                    })
-                }
+                        chadd:res[i].addpro+res[i].addcity+res[i].addarea+res[i].addinfo
+                    },()=>{console.log(this.state.chadd)})
+                }  
             }
         })
+
+        // .then(res=>res.json())
+        // .then(res=>{
+        //     for(var i=0;i<res.length;i++){
+        //         if(aid==res[i].addressid){
+        //             const registerValue = {"addressid":aid,"userid":this.props.userid};
+        //             fetch('http://192.168.0.105:3000/chooseAdd', {
+        //                 method: "POST",
+        //                 headers: {
+        //                     "Content-type":"application/json;charset=utf-8",
+        //                 },
+        //                 body:JSON.stringify(registerValue) ,
+        //             }).then( res => res.text())
+        //               .then( data => {
+        //                   console.log(data);
+        //               });
+        //             // console.log(clockId);
+        //         }
+        //         else{
+        //             this.setState({
+        //                 checkColor:'#cecccc',
+        //                 chooseAddress:false
+        //             })
+        //         }
+        //     }
+        // })
         // if(!this.state.chooseAddress){
         //     this.setState({
         //         checkColor:'#ea3b3b',
         //         chooseAddress:true
-        //     })
+            // })
         // }
         
     }
@@ -68,7 +81,7 @@ export default class Address extends Component {
         return (
             <View style={{width:width,height:height,backgroundColor:'white'}}>
                 <View style={{flexDirection:'row',marginTop:20*s}}>
-                    <TouchableOpacity onPress={()=>Actions.pop()}>
+                    <TouchableOpacity onPress={()=>Actions.pop({refresh:({'chadd':this.state.chadd  })})}>
                         <Icon name='arrowleft' style={{fontSize:16*s,marginLeft:10*s}}/>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={Actions.addAddress}>

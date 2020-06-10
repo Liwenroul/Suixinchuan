@@ -170,12 +170,13 @@ CREATE TABLE `sale` (
   `saletit` varchar(20) NOT NULL,
   `salepercent` varchar(20) NOT NULL,
   `saleinfo` varchar(20) DEFAULT NULL,
+  `saleimg` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`saleid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 /*Data for the table `sale` */
 
-insert  into `sale`(`saleid`,`saletit`,`salepercent`,`saleinfo`) values ('sa475623','å®ç”¨åˆ¸æ”»ç•¥','130','ç¤¼ç›’åˆ¸åç›´å‡130'),('sa758538','ç¥ä»·çƒ­é”€æ¦œ','0.5','å…¨åœº5æŠ˜ä¼˜æƒ '),('sa547657','åŒ…åŒ…ç‰¹ä»·','0.92','æ‰“ç‰Œä¹äºŒæŠ˜'),('sa746573','é˜²æ™’ç¾ç™½æ¦œ','100','ç¤¼ç›’åˆ¸åç›´å‡130'),('sa573656','äººæ°”é¢è†œæ¦œ','100','ç¤¼ç›’åˆ¸åç›´å‡130'),('','','0',NULL);
+insert  into `sale`(`saleid`,`saletit`,`salepercent`,`saleinfo`,`saleimg`) values ('sa475623','å®ç”¨åˆ¸æ”»ç•¥','130','ç¤¼ç›’åˆ¸åç›´å‡130','https://liwenroul.gi'),('sa758538','ç¥ä»·çƒ­é”€æ¦œ','0.5','å…¨åœº5æŠ˜ä¼˜æƒ ','https://liwenroul.gi'),('sa547657','åŒ…åŒ…ç‰¹ä»·','0.92','æ‰“ç‰Œä¹äºŒæŠ˜','https://liwenroul.gi'),('sa746573','é˜²æ™’ç¾ç™½æ¦œ','100','ç¤¼ç›’åˆ¸åç›´å‡130','https://liwenroul.gi'),('sa573656','äººæ°”é¢è†œæ¦œ','100','ç¤¼ç›’åˆ¸åç›´å‡130','https://liwenroul.gi');
 
 /*Table structure for table `shop` */
 
@@ -186,13 +187,13 @@ CREATE TABLE `shop` (
   `shopname` varchar(20) NOT NULL,
   `shoptel` varchar(50) NOT NULL,
   `shoppwd` varchar(50) NOT NULL,
-  `shopauatar` varchar(100) NOT NULL,
+  `shopauatar` tinyblob NOT NULL,
   PRIMARY KEY (`shopid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 /*Data for the table `shop` */
 
-insert  into `shop`(`shopid`,`shopname`,`shoptel`,`shoppwd`,`shopauatar`) values ('sp123456','HM','4656273','123456','https://liwenroul.github.io/Suixinchuan/Sxc-front/myAppN/assets/v2_q5klq0.jpg'),('sp213456','ZARA','6436783','654321','');
+insert  into `shop`(`shopid`,`shopname`,`shoptel`,`shoppwd`,`shopauatar`) values ('sp123456','HM','4656273','123456','‰PNG\r\n\Z\n\0\0\0\rIHDR\0\0Ù\0\0\"\0\0\0:p?\0\0\0bKGD\0ÿ\0ÿ\0ÿ ½§“\0\0\0	pHYs\0\0Ä\0\0Ä•+\0\0 \0IDATxœì½iG¶-¶ÖÈ<CGqĞ@©µºo÷½îá°aÆıà÷0lxø]ü\'<\06çğsß×÷öínµ&R%Šçy,Ö©s23b/ˆÈÃ[­n–¤¦¤Ë\"Q¬bUFfFìX{íµwPÛÓ˜ÊÂ	FP@ùpP\'Ä$ˆn€˜(J”EÈ2!Âä†„$¸8\Z‹–‚É%2&ˆà—z#IF'),('sp213456','ZARA','6436783','654321','‰PNG\r\n\Z\n\0\0\0\rIHDR\0\0Ù\0\0\"\0\0\0:p?\0\0\0bKGD\0ÿ\0ÿ\0ÿ ½§“\0\0\0	pHYs\0\0Ä\0\0Ä•+\0\0 \0IDATxœì½iG¶-¶ÖÈ<CGqĞ@©µºo÷½îá°aÆıà÷0lxø]ü\'<\06çğsß×÷öínµ&R%Šçy,Ö©s23b/ˆÈÃ[­n–¤¦¤Ë\"Q¬bUFfFìX{íµwPÛÓ˜ÊÂ	FP@ùpP\'Ä$ˆn€˜(J”EÈ2!Âä†„$¸8\Z‹–‚É%2&ˆà—z#IF');
 
 /*Table structure for table `size` */
 
@@ -221,7 +222,7 @@ CREATE TABLE `user` (
   `username` varchar(20) NOT NULL,
   `usertel` varchar(50) NOT NULL,
   `userpwd` varchar(50) NOT NULL,
-  `userauatar` varchar(100) DEFAULT NULL,
+  `userauatar` tinyblob,
   `userMon` int(20) DEFAULT NULL,
   `isloading` tinyint(1) NOT NULL,
   PRIMARY KEY (`userid`,`username`,`usertel`,`userpwd`,`isloading`)
@@ -229,7 +230,7 @@ CREATE TABLE `user` (
 
 /*Data for the table `user` */
 
-insert  into `user`(`userid`,`username`,`usertel`,`userpwd`,`userauatar`,`userMon`,`isloading`) values ('u123456','å°é»„','123456','123456','https://liwenroul.github.io/Suixinchuan/Sxc-front/myAppN/assets/v2_q5klq0.jpg',280,1),('u654321','å°å­™','654321','654321','https://liwenroul.github.io/Suixinchuan/Sxc-front/myAppN/assets/v2_q5klq0.jpg',0,0);
+insert  into `user`(`userid`,`username`,`usertel`,`userpwd`,`userauatar`,`userMon`,`isloading`) values ('u123456','å°é»„','123456','123456','ÿØÿà\0JFIF\0\0H\0H\0\0ÿÛ\0C\0\r	\n\n\r\n\r \' .)10.)-,3:J>36F7,-@WAFLNRSR2>ZaZP`JQROÿÛ\0C&&O5-5OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOÿÀ\0 î\"\0ÿÄ\0\0\0\0\0\0\0\0\0\0\0\0\0\0ÿÄ\0C\0	\0!1AQa\"q‘25R’#%T',280,1),('u654321','å°å­™','654321','654321','ÿØÿà\0JFIF\0,,\0\0ÿÛ\0C\0		\n\r\Z\Z $.\' \",#(7),01444\'9=82<.342ÿÛ\0C			\r\r2!!22222222222222222222222222222222222222222222222222ÿÀ\0îô\"\0ÿÄ\0\0\0\0\0\0\0\0\0\0\0\0\0ÿÄ\0C\0\0\0!1A\"Qaq2‘¡#B±Á',0,0);
 
 /*Table structure for table `wear` */
 
@@ -237,7 +238,7 @@ DROP TABLE IF EXISTS `wear`;
 
 CREATE TABLE `wear` (
   `dynid` varchar(20) NOT NULL,
-  `dynImg` varchar(100) NOT NULL,
+  `dynImg` tinyblob NOT NULL,
   `dynContent` varchar(100) DEFAULT NULL,
   `likenum` int(10) NOT NULL,
   `userid` varchar(20) NOT NULL,
@@ -246,7 +247,23 @@ CREATE TABLE `wear` (
 
 /*Data for the table `wear` */
 
-insert  into `wear`(`dynid`,`dynImg`,`dynContent`,`likenum`,`userid`) values ('d123456','https://liwenroul.github.io/Suixinchuan/Sxc-front/myAppN/assets/wish1.jpg','ä»Šå¤©çš„è¡£æœå¾ˆå¥½çœ‹ï¼Œæˆ‘çš„æˆ‘çš„æˆ‘çš„æˆ‘çš„æˆ‘çš„ã€‚',0,'u123456'),('d654321','https://liwenroul.github.io/Suixinchuan/Sxc-front/myAppN/assets/wish2.jpg','å¥½å§å¥½å§å¥½å§å¥½å§å¥½å§å¥½å§ï¼Œå¥½å§ä¼šä¸ä¼šå¥½å§å¥½å§ä¸ä¼šå¥½å§ã€‚',20,'u654321');
+insert  into `wear`(`dynid`,`dynImg`,`dynContent`,`likenum`,`userid`) values ('d123456','ÿØÿà\0JFIF\0,,\0\0ÿÛ\0C\0		\n\r\Z\Z $.\' \",#(7),01444\'9=82<.342ÿÛ\0C			\r\r2!!22222222222222222222222222222222222222222222222222ÿÀ\0îô\"\0ÿÄ\0\0\0\0\0\0\0\0\0\0\0\0\0ÿÄ\0C\0\0\0!1A\"Qaq2‘¡#B±Á','ä»Šå¤©çš„è¡£æœå¾ˆå¥½çœ‹ï¼Œæˆ‘çš„æˆ‘çš„æˆ‘çš„æˆ‘çš„æˆ‘çš„ã€‚',0,'u123456'),('d654321','ÿØÿà\0JFIF\0\0H\0H\0\0ÿÛ\0C\0		\n\r\Z\Z $.\' \",#(7),01444\'9=82<.342ÿÛ\0C			\r\r2!!22222222222222222222222222222222222222222222222222ÿÀ\0íô\"\0ÿÄ\0\0\0\0\0\0\0\0\0\0\0\0\0\0ÿÄ\0A\0\0\0!1A\"Qaq#2‘B¡±Á','å¥½å§å¥½å§å¥½å§å¥½å§å¥½å§å¥½å§ï¼Œå¥½å§ä¼šä¸ä¼šå¥½å§å¥½å§ä¸ä¼šå¥½å§ã€‚',20,'u654321');
+
+/*Table structure for table `wish` */
+
+DROP TABLE IF EXISTS `wish`;
+
+CREATE TABLE `wish` (
+  `wishId` varchar(20) NOT NULL,
+  `wishPrice` int(11) DEFAULT NULL,
+  `wishTime` varchar(20) DEFAULT NULL,
+  `wishType` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`wishId`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+/*Data for the table `wish` */
+
+insert  into `wish`(`wishId`,`wishPrice`,`wishTime`,`wishType`) values ('w001',20,'1','ä¸Šè¡£'),('w002',100,'3','å¥—è£…');
 
 /*Table structure for table `wishs` */
 

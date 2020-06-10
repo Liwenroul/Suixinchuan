@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#eee',
-        marginTop: 10 * s,
+        // marginTop: 10 * s,
         // padding:'5%'
     },
     img:{
@@ -53,15 +53,22 @@ export default class Home extends Component {
             wish:false,
             tits: [],
             page:1,
-            tit:[],
+            tit:[],data:'',
             // user:this.props.userid
         }
     }
     componentDidMount(){
-        console.log(this.props.userid)
-        fetch('http://192.168.43.245:3000/sale')
+        console.log(this.props.userid+'a')
+        fetch('http://192.168.0.105:3000/sale')
             .then(res=>res.json())
             .then(res=>{
+                // for(var i=0;i<res.length;i++){
+                //     if(this.props.saleid==res[i].saleid){
+                //         this.setState({
+                //             data:res[i],
+                //         })
+                //     }
+                // }
                 console.log(res)
                 this.setState({tits: res});
             })
@@ -104,11 +111,13 @@ export default class Home extends Component {
                 backgroundColor: '#fff'
             }}>
 
-                <ScrollView>
+                <ScrollView
+                    style={{ height: 740 * s, width: 640 * s }}
+                >
                     <ScrollView
                         pagingEnabled={true}
                         horizontal={true}
-                        style={{ height: 300 * s, width: 640 * s }}
+                        style={{ height: 290 * s, width: 640 * s }}
                     >
                         <View style={styles.slide}>
                             <Image style={{width:'100%',height:'100%'}} resizeMode='stretch' source={require('../../assets/raw_1528737077.png')} />
@@ -136,12 +145,12 @@ export default class Home extends Component {
                                 alignItems: 'center',
                                 justifyContent:'center'
                             }}>
-                                <TouchableOpacity style={styles.btn}  onPress={()=>Actions.detail()}>
+                                <TouchableOpacity style={styles.btn}  onPress={()=>Actions.listdetail()}>
                                     <Text>{item.saletit}</Text>
                                     <Text style={{fontSize:10}}>{item.saleinfo}</Text>
                                     <View style={styles.img}>
-                                        <Image style={{width:'30%',height:'100%'}} resizeMode='stretch' source={require('../../assets/v2_q5kktg.jpg')}/>
-                                        <Image  style={{width:'45%',height:'50%'}} resizeMode='stretch' source={require('../../assets/v2_q5kkuw.jpg')}/>
+                                        <Image style={{width:'30%',height:'100%'}} resizeMode='stretch' source={{uri:'https://liwenroul.github.io/Suixinchuan/Sxc-front/myAppN/assets/v2_q5kktg.jpg'}}/>
+                                        <Image  style={{width:'45%',height:'50%'}} resizeMode='stretch' source={{uri:'https://liwenroul.github.io/Suixinchuan/Sxc-front/myAppN/assets/v2_q5kkvl.jpg'}}/>
                                     </View>
                                 </TouchableOpacity> 
                             </View>
