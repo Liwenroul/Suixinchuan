@@ -26,6 +26,7 @@ export default class Mine extends Component {
         this.state = {
             imageUrl:true,
             data:[],
+            userID:'',
         }
     }
     componentDidMount(){
@@ -33,10 +34,21 @@ export default class Mine extends Component {
         fetch("http://192.168.43.245:3000/user")
         .then(res=>res.json())
         .then(res=>{
+            for(var i =0;i<res.length;i++){
+                if(res[i].isloading==1){
+                    this.setState({
+                        userID:res[i].userid,
+                    })
+                }
+            }
+            console.log("userid:"+this.state.userID);
             for(var i=0;i<res.length;i++){
+                if(res[i].userid==this.state.userID){
                     this.setState({
                         data:res[0],
-                })
+                    })
+                }
+                    
             }
             // this.setState({data:res})
             console.log(this.state.data);

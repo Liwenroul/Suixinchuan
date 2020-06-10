@@ -43,19 +43,34 @@ export default class Wish extends Component {
             data:[],
             list:[],
             DidList:[],
-            Dynid0:[]
+            Dynid0:[],
+            userID:''
         }
     }
     componentDidMount(){
-        // console.log("the userid:"+this.props.userid)
+        fetch("http://192.168.43.245:3000/user")
+        .then(res=>res.json())
+        .then(res=>{
+            for(var i =0;i<res.length;i++){
+                if(res[i].isloading==1){
+                    this.setState({
+                        userID:res[i].userid,
+                    })
+                }
+            }
+            console.log("userid:"+this.state.userID);
+        })
         fetch("http://192.168.43.245:3000/wishs")
         .then(res=>res.json())
         .then(res=>{
             for(var i=0;i<res.length;i++){
-                this.setState({
-                    data:res,
-                    list:[...this.state.list,i],
-                })
+                if(res[i].userid==this.state.userID){
+                    this.setState({
+                        data:res,
+                        list:[...this.state.list,i],
+                    })
+                }
+                
             }
             for(var i=0;i<res.length;i++){
                 this.setState({
