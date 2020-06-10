@@ -1,6 +1,6 @@
 /*
 SQLyog Ultimate v12.08 (64 bit)
-MySQL - 5.7.1-m11 : Database - sxc
+MySQL - 5.7.14 : Database - sxc
 *********************************************************************
 */
 
@@ -12,7 +12,7 @@ MySQL - 5.7.1-m11 : Database - sxc
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`sxc` /*!40100 DEFAULT CHARACTER SET utf8 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`sxc` /*!40100 DEFAULT CHARACTER SET latin1 */;
 
 USE `sxc`;
 
@@ -247,6 +247,24 @@ CREATE TABLE `wear` (
 /*Data for the table `wear` */
 
 insert  into `wear`(`dynid`,`dynImg`,`dynContent`,`likenum`,`userid`) values ('d123456','https://liwenroul.github.io/Suixinchuan/Sxc-front/myAppN/assets/wish1.jpg','今天的衣服很好看，我的我的我的我的我的。',0,'u123456'),('d654321','https://liwenroul.github.io/Suixinchuan/Sxc-front/myAppN/assets/wish2.jpg','好吧好吧好吧好吧好吧好吧，好吧会不会好吧好吧不会好吧。',20,'u654321');
+
+/*Table structure for table `wishs` */
+
+DROP TABLE IF EXISTS `wishs`;
+
+CREATE TABLE `wishs` (
+  `wishId` varchar(20) NOT NULL,
+  `wishPrice` int(11) NOT NULL,
+  `wishTime` varchar(20) NOT NULL,
+  `wishType` varchar(20) NOT NULL,
+  `userid` varchar(30) NOT NULL,
+  `dynid` varchar(20) NOT NULL,
+  PRIMARY KEY (`wishId`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+/*Data for the table `wishs` */
+
+insert  into `wishs`(`wishId`,`wishPrice`,`wishTime`,`wishType`,`userid`,`dynid`) values ('w001',20,'1','上衣','u123456','d123456'),('w002',100,'3','套装','u123456','d123456'),('w003',40,'4','套装','u654321','d654321');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

@@ -29,6 +29,7 @@ export default class chuanda extends Component {
             i:'',
             n:'0',
             color:'black',
+            Img1:'',
         }
     }
     componentDidMount(){
@@ -53,6 +54,7 @@ export default class chuanda extends Component {
                         this.setState({
                             data1:res[i],
                             i:res[i].likenum,
+                            img1:res[i].dynImg
                         })
                     }
                 }
@@ -105,7 +107,7 @@ export default class chuanda extends Component {
                     <Text style={{paddingLeft:25,paddingTop:8,color:'black'}}>{this.state.data.username}</Text>
                 </View>
                 
-                <Image source={require('../../assets/wish1.jpg')} style={{width:350,height:350,marginTop:30,marginLeft:10*s,borderRadius:10}}/>
+                <Image source={{uri:`${this.state.img1}`}} style={{width:350,height:350,marginTop:30,marginLeft:10*s,borderRadius:10}}/>
                 <Text style={{paddingLeft:50,paddingTop:20,fontFamily:'微软雅黑'}}>{this.state.data1.dynContent}</Text>
                 <TouchableOpacity onPress={this.changeNum}>
                     <View 

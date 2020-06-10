@@ -38,22 +38,33 @@ export default class Mine extends Component {
                 if(res[i].isloading==1){
                     this.setState({
                         userID:res[i].userid,
+                        data:res[i],
                     })
                 }
             }
-            console.log("userid:"+this.state.userID);
-            for(var i=0;i<res.length;i++){
-                if(res[i].userid==this.state.userID){
-                    this.setState({
-                        data:res[0],
-                    })
-                }
-                    
-            }
+            console.log("userid:"+this.state.userID); 
             // this.setState({data:res})
-            console.log(this.state.data);
+            console.log('this.state.data:'+this.state.data);
             // console.log("1].dynContentdata:"+this.state.data);
         })
+        // fetch("http://192.168.43.245:3000/user")
+        // .then(res=>res.json())
+        // .then(res=>{ 
+        //     for(var i=0;i<res.length;i++){
+        //         console.log(res[i])
+        //         console.log(this.state.userID)
+        //         if(res[i].userid==this.state.userID){
+        //             this.setState({
+        //                 data:res[i],
+        //             })
+        //         }
+                    
+        //     }
+        //     console.log(res)
+        //     // this.setState({data:res})
+        //     console.log('this.state.data:'+this.state.data);
+        //     // console.log("1].dynContentdata:"+this.state.data);
+        // })
     }
     getData = ()=>{
         AsyncStorage.getItem('imgUrl')

@@ -59,13 +59,13 @@ export default class Home extends Component {
     }
     componentDidMount(){
         console.log(this.props.userid)
-        fetch('http://192.168.0.105:3000/sale')
+        fetch('http://192.168.43.245:3000/sale')
             .then(res=>res.json())
             .then(res=>{
                 console.log(res)
                 this.setState({tits: res});
             })
-        fetch('http://192.168.0.105:3000/merchandise')
+        fetch('http://192.168.43.245:3000/merchandise')
             .then(res=>res.json())
             .then(res=>{
                 this.setState({tit: res});

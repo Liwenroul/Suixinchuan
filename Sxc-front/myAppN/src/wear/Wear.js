@@ -40,6 +40,7 @@ export default class Wear extends Component {
             num:[],
             color:[],
             i:[],
+            DynImg:[],
         }
     }
     componentDidMount(){
@@ -55,9 +56,11 @@ export default class Wear extends Component {
             }
             for(var i =0;i<this.state.data.length;i++){
                 this.setState({
-                    num:[...this.state.num,this.state.data[i].likenum]
+                    num:[...this.state.num,this.state.data[i].likenum],
+                    DynImg:[...this.state.DynImg,this.state.data[i].dynImg]
                 })
             }
+            console.log('this.state.DynImg'+this.state.DynImg)
             for(var i = 0;i<this.state.num.length;i++){
                 if(Number(this.state.num[i])==0){
                     this.setState({
@@ -98,13 +101,13 @@ export default class Wear extends Component {
                                 <TouchableOpacity onPress={()=>Actions.chuanda({'userid':this.state.data[i].userid})}>
                                 <Image 
                                     // resizeMode="contain"
-                                    source={require('../../assets/wish1.jpg')}
+                                    source={{uri:`${this.state.DynImg[i]}`}}
                                     style={{height:350*s,marginTop: 10*s,width:280*s,borderRadius:10}}
                                 />
                                 </TouchableOpacity>
                                 <Text style={{marginTop: 20*s}}>{this.state.data[i].dyContent}</Text>
-                                <Text style={{fontSize:10,marginLeft:-90,color:'red',paddingTop:8*s,marginTop:-5}} onPress={Actions.cloth}>衣服详情</Text>
-                                <Text style={{fontSize:10,marginLeft:40,marginTop:-35*s}}>{this.state.num[i]}</Text>
+                                {/* <Text style={{fontSize:10,marginLeft:-90,color:'red',paddingTop:8*s,marginTop:-5}} onPress={Actions.cloth}>衣服详情</Text> */}
+                                <Text style={{fontSize:10,marginLeft:40,marginBottom:15*s}}>{this.state.num[i]}</Text>
                                 <Icon name='heart' style={{fontSize:25,color:this.state.color[i],marginLeft:180*s,marginTop:-40*s}}/>
                             </View>
 
@@ -118,8 +121,9 @@ export default class Wear extends Component {
                                 />
                                 </TouchableOpacity> 
                                 <Text style={{marginTop: 20*s}}>{this.state.data[i].dyContent}</Text>
-                                <Text style={{fontSize:10,marginLeft:-90,color:'red',paddingTop:8*s,marginTop:-5}} onPress={Actions.cloth}>衣服详情</Text>
-                                <Text style={{fontSize:10,marginLeft:40,marginTop:-35*s}}>{this.state.data[i].likenum}</Text>
+                                {/* <Text style={{fontSize:10,marginLeft:-90,color:'red',paddingTop:8*s,marginTop:-5}} onPress={Actions.cloth}>衣服详情</Text> */}
+                               {/* <Text></Text> */}
+                               <Text style={{fontSize:10,marginLeft:40,marginBottom:15*s}}>{this.state.data[i].likenum}</Text>
                                 <Icon name='heart' style={{fontSize:25,color:this.state.color[i],marginLeft:180*s,marginTop:-40*s}} onPress={this.changeNum(this.state.data.likenum)}/>
                             </View>
                         </View>
@@ -161,7 +165,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         marginLeft:240,
         marginRight: 20*s,
-        marginTop: -300,
+        marginTop: -320,
         paddingLeft: 10,
         paddingRight: 10,
         paddingBottom: 10,

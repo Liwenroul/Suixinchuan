@@ -93,7 +93,7 @@ export default class Detail extends Component {
     }
     componentDidMount(){
         console.log(this.props.merid);
-        fetch("http://192.168.0.105:3000/merchandise")
+        fetch("http://192.168.43.245:3000/merchandise")
         .then(res=>res.json())
         .then(res=>{
             for(var i=0;i<res.length;i++){
@@ -116,7 +116,7 @@ export default class Detail extends Component {
                 color:'#ea3b3b',
                 wish:true
             })
-            fetch('http://192.168.0.105:3000/collect', {
+            fetch('http://192.168.43.245:3000/collect', {
             method: "POST",
             headers: {
               "Content-type": "application/json;charset=utf-8",

@@ -101,6 +101,7 @@ export default class Wish extends Component {
         //     }
         //     console.log('this.state.DidList:'+this.state.DidList)
         // })
+        console.log("你进来了")
     }
     render() {
         return (
