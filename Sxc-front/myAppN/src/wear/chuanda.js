@@ -11,7 +11,8 @@ import {
     Button,
     ScrollView
 } from 'react-native';
-import { Icon } from '@ant-design/react-native'
+// import { Icon } from '@ant-design/react-native'
+import Icon from 'react-native-vector-icons/AntDesign';
 import { Actions } from 'react-native-router-flux';
 const {width,scale} = Dimensions.get('window');
 const s = width / 640;
@@ -96,7 +97,9 @@ export default class chuanda extends Component {
     render() {
         return (
             <View style={{flex: 1,backgroundColor: '#fff'}}>
-                <Icon name='left' color='black' style={{paddingLeft:10}} onPress={Actions.pop}/>
+                <TouchableOpacity onPress={()=>Actions.pop()}>
+                        <Icon name='leftcircleo' style={{fontSize:36*s,marginLeft:10*s,marginTop:20*s}}/>
+                    </TouchableOpacity>
                 <Image source={'data:image/jpg;base64,'+this.state.data.dynImg} style={{width:120*s,height:120*s,borderRadius:50,marginLeft:10}}/>
                 <View style={{width:100,height:40,backgroundColor:'gray',opacity:0.2,marginLeft:100,marginTop:-50}}>
                     <Text style={{paddingLeft:25,paddingTop:8,color:'black'}}>{this.state.data.username}</Text>

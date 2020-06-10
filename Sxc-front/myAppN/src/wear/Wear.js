@@ -10,23 +10,24 @@ import {
     TouchableOpacity,
     ScrollView
 } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+// import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/AntDesign';
 import { Actions } from 'react-native-router-flux';
 const {width,scale} = Dimensions.get('window');
 const s = width / 640;
 
-const goods = [
-    {
-        title: '仙气十足的一条裙子',
-        num:1,
-        img: require('../../assets/wish1.jpg')
-    },
-    {
-        title: '简单的说就是好看',
-        num:2,
-        img: require('../../assets/wish2.jpg')
-    },
-]
+// const goods = [
+//     {
+//         title: '仙气十足的一条裙子',
+//         num:1,
+//         img: require('../../assets/wish1.jpg')
+//     },
+//     {
+//         title: '简单的说就是好看',
+//         num:2,
+//         img: require('../../assets/wish2.jpg')
+//     },
+// ]
 
 export default class Wear extends Component {
     constructor(){
@@ -37,6 +38,8 @@ export default class Wear extends Component {
             data:[],
             list:[],
             num:[],
+            color:[],
+            i:[],
         }
     }
     componentDidMount(){
@@ -55,9 +58,24 @@ export default class Wear extends Component {
                     num:[...this.state.num,this.state.data[i].likenum]
                 })
             }
+            for(var i = 0;i<this.state.num.length;i++){
+                if(Number(this.state.num[i])==0){
+                    this.setState({
+                        color:[...this.state.color,'black']
+                    })
+                }
+                else if(this.state.num[i]!=0){
+                    this.setState({
+                        color:[...this.state.color,'red']
+                    })
+                }
+                
+            }
             // this.setState({data:res})
+            console.log(this.state.color)
             console.log(this.state.data);
             console.log(this.state.list);
+            console.log(this.state.num);
             // console.log("1].dynContentdata:"+this.state.data);
         })
     }
@@ -85,32 +103,24 @@ export default class Wear extends Component {
                                 />
                                 </TouchableOpacity>
                                 <Text style={{marginTop: 20*s}}>{this.state.data[i].dyContent}</Text>
-                                <Text style={{fontSize:10,marginLeft:-90,color:'red',paddingTop:8*s}} onPress={Actions.cloth}>衣服详情</Text>
+                                <Text style={{fontSize:10,marginLeft:-90,color:'red',paddingTop:8*s,marginTop:-5}} onPress={Actions.cloth}>衣服详情</Text>
                                 <Text style={{fontSize:10,marginLeft:40,marginTop:-35*s}}>{this.state.num[i]}</Text>
-                                <Icon name='heart-o' style={{fontSize:25,color:'red',marginLeft:180*s,marginTop:-40*s}}/>
+                                <Icon name='heart' style={{fontSize:25,color:this.state.color[i],marginLeft:180*s,marginTop:-40*s}}/>
                             </View>
 
 
-                            <View style={{width: '45%',
-                                backgroundColor: '#fff',
-                                marginLeft:230,
-                                marginTop: -305,
-                                paddingLeft: 10,
-                                paddingRight: 10,
-                                paddingBottom: 10,
-                                justifyContent:'center',
-                                alignItems: 'center'}}>
+                            <View style={styles.good1}>
                                 <TouchableOpacity onPress={()=>Actions.chuanda({'userid':this.state.data[i].userid})}>
                                 <Image 
                                     // resizeMode="contain"
                                     source={require('../../assets/wish2.jpg')}
                                     style={{height:350*s,marginTop: 10*s,width:280*s,borderRadius:10}}
                                 />
-                                </TouchableOpacity>
+                                </TouchableOpacity> 
                                 <Text style={{marginTop: 20*s}}>{this.state.data[i].dyContent}</Text>
-                                <Text style={{fontSize:10,marginLeft:-90,color:'red',paddingTop:8*s}} onPress={Actions.cloth}>衣服详情</Text>
+                                <Text style={{fontSize:10,marginLeft:-90,color:'red',paddingTop:8*s,marginTop:-5}} onPress={Actions.cloth}>衣服详情</Text>
                                 <Text style={{fontSize:10,marginLeft:40,marginTop:-35*s}}>{this.state.data[i].likenum}</Text>
-                                <Icon name='heart-o' style={{fontSize:25,color:'red',marginLeft:180*s,marginTop:-40*s}} onPress={this.changeNum(this.state.data.likenum)}/>
+                                <Icon name='heart' style={{fontSize:25,color:this.state.color[i],marginLeft:180*s,marginTop:-40*s}} onPress={this.changeNum(this.state.data.likenum)}/>
                             </View>
                         </View>
                         
@@ -149,8 +159,9 @@ const styles = StyleSheet.create({
         // flirectionexD: 'row', justifyContent: 'space-evenly', alignItems: 'center', flexWrap: 'wrap', 
         width: '45%',
         backgroundColor: '#fff',
+        marginLeft:240,
         marginRight: 20*s,
-        marginTop: 20*s,
+        marginTop: -300,
         paddingLeft: 10,
         paddingRight: 10,
         paddingBottom: 10,

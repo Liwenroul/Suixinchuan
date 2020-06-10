@@ -16,6 +16,7 @@ import {
 } from 'react-native';
 import Test from '../goods/Goods';
 // import Icon from '@ant-design/react-native';
+import Icon from 'react-native-vector-icons/AntDesign';
 const {width,scale} = Dimensions.get('window');
 const s = width / 640;
 
@@ -68,6 +69,7 @@ export default class Wish extends Component {
                     {
                     this.state.list.map((i) =>(
                         <View>
+                            <View style={styles.charge}></View>
                             <View style={styles.good}>
                                 <Image 
                                     // resizeMode="contain"
@@ -82,6 +84,8 @@ export default class Wish extends Component {
                                     style={{width:'100%',color: 'red',marginLeft:320*s,marginTop:80*s}}
                                 >￥{this.state.data[i].wishPrice}/{this.state.data[i].wishTime}天</Text>
                             </View>
+                            
+
                         </View>
                         
                     ))
@@ -121,11 +125,15 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
+    charge:{
+    height:20*s,
+    backgroundColor:'#F4F4F4'
+    },
     good:{
         width: 600*s,
         height: 250*s,
         backgroundColor: '#fff',
         marginLeft: 20*s,
-        marginTop: 20*s
+        // marginTop: 20*s
     }
 })
