@@ -26,19 +26,21 @@ export default class Date extends Component {
         data:cont[0]+'-'+cont[1]+'-'+cont[2]
      })
   }
-  
+  choo=()=>{
+    // console.log('a'+this.props.merid)
+    Actions.order({"date":this.state.data,'merid':this.props.merid});
+  }
   render() {
 
     return (
       <View style={styles.container}>
           <TouchableOpacity
             style={{paddingVertical:15,
-              paddingHorizontal:30,borderRadius:3,alignItems:'center',justifyContent:'center'}}
-              onPress={()=>{}}>
+              paddingHorizontal:30,borderRadius:3,alignItems:'center',justifyContent:'center'}}>
               <Text style={{fontSize:15,color:'black'}}>{this.state.data}</Text>
           </TouchableOpacity>
          <MinimalismCalendar DateTransfer={this.DateTransfer}/>
-         <TouchableOpacity onPress={Actions.order()} style={styles.ensure}>
+         <TouchableOpacity onPress={this.choo} style={styles.ensure}>
            <Text style={{color:'white'}}>确定</Text>
          </TouchableOpacity>
       </View>

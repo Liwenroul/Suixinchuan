@@ -39,7 +39,7 @@ export default class Login extends Component {
   componentDidMount() {
     this.setState({ isloading: false });
     this.getData();
-    fetch('http://192.168.43.245:3000/user')
+    fetch('http://192.168.0.105:3000/user')
             .then(res=>res.json())
             .then(res=>{
                 this.setState({data: res});
@@ -63,7 +63,7 @@ export default class Login extends Component {
           registerValue = { "userid": this.state.data[i].userid,"isloading":1  }
           this.setState({ userid: this.state.userid})
           // fetch('http://192.168.0.106:3000/denglu', {
-            fetch('http://192.168.43.245:3000/user2', {
+            fetch('http://192.168.0.105:3000/user2', {
             method: "POST",
             headers: {
               "Content-type": "application/json;charset=utf-8",
@@ -79,8 +79,9 @@ export default class Login extends Component {
             .then(() => {
               // this.setState({ isloading: false })
               // this.setState({isloading:this.state.data[i].isloading })
-              Actions.homePage();
+              Actions.homePage({'userid':this.state.data.userid});
             })
+            console.log(this.state.data.userid)
           // window.location = '/tab'+this.state.data[i].userId;
         }
         if (loginname === this.state.data[i].username && password !== this.state.data[i].userpwd) {

@@ -45,30 +45,31 @@ const styles = StyleSheet.create({
 })
 
 export default class Home extends Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state={
             // name:'heart-o',
             // color:'',
             wish:false,
             tits: [],
             page:1,
-            tit:[]
+            tit:[],
+            // user:this.props.userid
         }
     }
     componentDidMount(){
-        fetch('http://192.168.43.245:3000/sale')
+        console.log(this.props.userid)
+        fetch('http://192.168.0.105:3000/sale')
             .then(res=>res.json())
             .then(res=>{
                 console.log(res)
                 this.setState({tits: res});
             })
-        fetch('http://192.168.43.245:3000/merchandise')
+        fetch('http://192.168.0.105:3000/merchandise')
             .then(res=>res.json())
             .then(res=>{
                 this.setState({tit: res});
-            })
-        console.log(this.state.tit)
+            },console.log(this.state.tit))
     }
     // componentDidUpdate(){
     //     fetch('http://192.168.0.106:3000/user')
@@ -162,10 +163,10 @@ export default class Home extends Component {
                                 padding:4,
                                 backgroundColor:'#eee'
                             }}>
-                                <TouchableOpacity style={{width:'100%',height:'90%'}} onPress={()=>Actions.detail({'merid':item.merid})}>
+                                <TouchableOpacity style={{width:'100%',height:'90%'}} onPress={()=>Actions.detail({'merid':item.merid,'userid':this.state.user})}>
                                     <Image  style={{width:'100%',height:'90%',borderRadius:20}} 
                                     resizeMode='stretch' 
-                                    source={require('../../assets/v2_q5klar.jpg')} />
+                                    source={{uri:`${item.merimg}`}} />
                                     <Text style={{marginTop:15*s}}>{item.tit.slice(8,)}</Text>
                                     {/* <Text style={{marginTop:8*s}}>{item.shopbrand}</Text> */}
                                 </TouchableOpacity>

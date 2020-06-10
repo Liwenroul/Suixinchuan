@@ -70,6 +70,8 @@ const styles=StyleSheet.create({
      }
 })
 
+let registerValue="";
+
 export default class Detail extends Component {
     constructor(props){
         super(props);
@@ -84,31 +86,46 @@ export default class Detail extends Component {
             chooseM:false,
             chooseL:false,
             botn:'请选择尺码',
-            data:''
+            data:'',
+            sizeid:'',
+            user:this.props.userid
         }
     }
     componentDidMount(){
         console.log(this.props.merid);
-        fetch("http://192.168.43.245:3000/merchandise")
+        fetch("http://192.168.0.105:3000/merchandise")
         .then(res=>res.json())
         .then(res=>{
             for(var i=0;i<res.length;i++){
                 if(this.props.merid==res[i].merid){
                     this.setState({
-                        data:res[i]
+                        data:res[i],
+                        sizeid:res[i].sizeid
                     })
                 }
             }
-            console.log(res[0].merimg)
+            console.log(this.state.data.merimg)
         })
     }
     shoucang=()=>{
+        console.log(this.props.userid)
         if(!this.state.wish){
+            registerValue ={'userid':this.state.user,'merid':this.props.merid}
             this.setState({
                 name:'heart',
                 color:'#ea3b3b',
                 wish:true
             })
+            fetch('http://192.168.0.105:3000/collect', {
+            method: "POST",
+            headers: {
+              "Content-type": "application/json;charset=utf-8",
+            },
+            body: JSON.stringify(registerValue),
+          }).then(res => res.text())
+            .then(data => {
+              console.log(data);
+            });
         }
         else{
             this.setState({
@@ -184,8 +201,9 @@ export default class Detail extends Component {
         }
     }
     chooseDate=()=>{
+        console.log(this.state.data.merid+'a')
         if(this.state.botn=="请选择租期"){
-            Actions.date();
+            Actions.date({'merid':this.state.data.merid});
         }
     }
     render() {
@@ -197,13 +215,13 @@ export default class Detail extends Component {
                         style={{width:width,height:300*s}} 
                     >
                     <View>
-                        <Image  style={{width:width,height:300*s}} resizeMode='stretch' source={'data:image/jpg;base64,'+this.state.data.merimg} />
+                        <Image  style={{width:width,height:300*s}} resizeMode='stretch' source={{uri:`${this.state.data.merimg}`}} />
                     </View>  
                     <View>
-                        <Image  style={{width:width,height:300*s}} resizeMode='stretch' source={require('../../assets/v2_q5klar.jpg')} />
+                        <Image  style={{width:width,height:300*s}} resizeMode='stretch' source={{uri:`${this.state.data.merimg}`}} />
                     </View> 
                     <View>
-                        <Image  style={{width:width,height:300*s}} resizeMode='stretch' source={require('../../assets/v2_q5klar.jpg')} />
+                        <Image  style={{width:width,height:300*s}} resizeMode='stretch' source={{uri:`${this.state.data.merimg}`}} />
                     </View> 
                 </ScrollView>
                 <View style={{flexDirection:'row'}}>
@@ -266,7 +284,7 @@ export default class Detail extends Component {
                         <Icon name='close' style={{marginLeft:283*s,marginTop:18*s}}/>
                     </TouchableOpacity>    
                     <Text style={{fontSize:14*s,marginTop:50*s,marginLeft:10*s,fontWeight:'bold'}}>请选择尺码</Text>
-                    <TouchableOpacity onPress={()=>Actions.sizedetail()} style={{flexDirection:'row',alignItems:'center',marginLeft:217*s,marginTop:-20}}>
+                    <TouchableOpacity onPress={()=>Actions.sizedetail({'sizeid':this.state.sizeid})} style={{flexDirection:'row',alignItems:'center',marginLeft:217*s,marginTop:-20}}>
                         <Text style={{color:'#ea3b3b'}}>尺码详情页</Text>
                         <Icon name='caretright' style={{color:'#ea3b3b'}}/>
                     </TouchableOpacity>
