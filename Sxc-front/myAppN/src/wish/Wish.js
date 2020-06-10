@@ -12,9 +12,11 @@ import {
     TouchableOpacity,
     ScrollView,
     StatusBar,
+    // Actions,
     BackHandler
 } from 'react-native';
 import Test from '../goods/Goods';
+import { Actions } from 'react-native-router-flux';
 // import Icon from '@ant-design/react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 const {width,scale} = Dimensions.get('window');
@@ -40,24 +42,50 @@ export default class Wish extends Component {
             tits: [],
             data:[],
             list:[],
+            DidList:[],
+            Dynid0:[]
         }
     }
     componentDidMount(){
-        console.log("the userid:"+this.props.userid)
+        // console.log("the userid:"+this.props.userid)
         fetch("http://192.168.43.245:3000/wishs")
         .then(res=>res.json())
         .then(res=>{
             for(var i=0;i<res.length;i++){
-                    this.setState({
-                        data:res,
-                        list:[...this.state.list,i]
+                this.setState({
+                    data:res,
+                    list:[...this.state.list,i],
+                })
+            }
+            for(var i=0;i<res.length;i++){
+                this.setState({
+                    Dynid0:[...this.state.Dynid0,this.state.data[i].userid]
                 })
             }
             // this.setState({data:res})
             console.log(this.state.data);
-            console.log(this.state.list);
+            console.log('this.state.Dynid0:'+this.state.Dynid0);
+            console.log('this.state.list:'+this.state.list);
             // console.log("1].dynContentdata:"+this.state.data);
         })
+        // fetch("http://192.168.43.245:3000/wear")
+        // .then(res=>res.json())
+        // .then(res=>{
+        //     for(var i=0;i<this.state.Did0.length;i++){
+        //         for(var j =0;j<res.length;j++){
+        //             if(res[j].dynid==this.state.Did0[i]){
+        //                 console.log("res.dynid"+res[j].dynid)
+        //                 console.log('Did0'+this.state.Did0[i])
+        //                 this.setState({
+        //                     DidList:[...this.state.DidList,res[j]],
+        //                 })
+        //             }
+                    
+        //         }
+        //         console.log(res)
+        //     }
+        //     console.log('this.state.DidList:'+this.state.DidList)
+        // })
     }
     render() {
         return (
@@ -71,11 +99,13 @@ export default class Wish extends Component {
                         <View>
                             <View style={styles.charge}></View>
                             <View style={styles.good}>
+                            <TouchableOpacity onPress={()=>Actions.chuanda({'userid':this.state.Dynid0[i]})}>
                                 <Image 
                                     // resizeMode="contain"
                                     source={require('../../assets/wish1.jpg')}
                                     style={{height:220*s,marginTop: 15*s,width:180*s,borderRadius:10}}
                                 />
+                                </TouchableOpacity>
                                 <Text
                                     style={{marginTop:-180*s,marginLeft:350*s}}
                                 
