@@ -80,7 +80,7 @@ export default class Login extends Component {
             .then(() => {
               // this.setState({ isloading: false })
               // this.setState({isloading:this.state.data[i].isloading })
-              Actions.homePage({'userid':registerValue.userid});
+              Actions.homePage();
             })
             
           // window.location = '/tab'+this.state.data[i].userId;

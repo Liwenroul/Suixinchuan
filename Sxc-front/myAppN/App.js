@@ -34,6 +34,8 @@ import chuanda from './src/wear/chuanda';
 import Order from './src/home/Order';
 import Address  from './src/home/Address';
 import AddAddress  from './src/home/AddAddress';
+import ListDetail  from './src/home/ListDetail';
+
 // import City  from './src/home/City';
 
 
@@ -189,6 +191,8 @@ const App = () => {
 									<Scene key='zudao' hideNavBar={true} component={Zudao}/>
 									<Scene key='daishai' hideNavBar={true} component={Daishai}/>
 									<Scene key='zuguo' hideNavBar={true} component={Zuguo}/>
+									<Scene key='' hideNavBar={true} component={Zuguo}/>
+
 								</Scene>
 								
 							</Tabs>
@@ -200,7 +204,7 @@ const App = () => {
 				<Scene initial={!isLogin} key="login" component={Login} />
 				<Scene key='register' hideNavBar component={Register} />
 				<Scene key='forget' hideNavBar component={Forget} />
-				{/* <Scene key="login" component={ShowMyName}/> */}
+				<Scene key="listdetail" component={ListDetail}/>
 				{/* <Scene key="login1" component={Login}/> */}
 				<Scene key='detail' hideNavBar component={Detail} />
 				<Scene key='cloth' hideNavBar component={cloth} />
