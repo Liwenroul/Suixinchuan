@@ -80,7 +80,7 @@ export default class Detail extends Component {
         }
     }
     componentDidMount(){
-        fetch('http://192.168.0.102:3000/merchandise')
+        fetch('http://192.168.43.245:3000/merchandise')
             .then(res=>res.json())
             .then(res=>{
                 this.setState({tit: res});

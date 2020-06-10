@@ -92,7 +92,7 @@ export default class Detail extends Component {
     }
     componentDidMount(){
         console.log(this.props.userid+'a');
-        fetch("http://192.168.0.105:3000/merchandise")
+        fetch("http://192.168.43.245:3000/merchandise")
         .then(res=>res.json())
         .then(res=>{
             for(var i=0;i<res.length;i++){

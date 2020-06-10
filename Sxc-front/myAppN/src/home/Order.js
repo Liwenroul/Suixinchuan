@@ -82,8 +82,9 @@ export default class Order extends Component {
     //   }
     componentDidMount(){
         console.log(this.props.date.split("-"))
+        // console.log(this.props.chadd)
         console.log(this.props.chooseSize)
-        fetch("http://192.168.0.105:3000/address")
+        fetch("http://192.168.43.245:3000/address")
         .then(res=>res.json())
         .then(res=>{
             if(res!=null){
